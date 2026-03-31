@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个股分析 - 批次 6 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root { --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF; --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF; --accent-green: #30D158; --border-color: #333333; --radius-lg: 12px; --radius-md: 8px; }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo { color: #E5E5E5 !important; }
+    .content-hero { background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, var(--bg-primary) 100%); padding: 60px 0; border-bottom: 1px solid var(--border-color); }
+    .content-section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    .stock-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 32px 0; }
+    @media (min-width: 768px) { .stock-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stock-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; transition: all 0.2s ease; }
+    .stock-card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+    .stock-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .stock-name { font-size: 20px; font-weight: 700; color: #FFFFFF; }
+    .stock-ticker { font-size: 14px; color: var(--accent-blue); font-family: monospace; }
+    .stock-sector { font-size: 14px; color: var(--text-tertiary); margin-bottom: 12px; }
+    .stock-desc { font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+    .stock-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 16px; }
+    .stat-box { background: var(--bg-primary); padding: 12px; border-radius: var(--radius-md); }
+    .stat-label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
+    .stat-value { font-size: 16px; font-weight: 600; color: #FFFFFF; }
+    .recommendation { padding: 16px; border-radius: var(--radius-md); margin-top: 16px; font-weight: 500; text-align: center; }
+    .rec-buy { background: rgba(48, 209, 88, 0.1); color: var(--accent-green); border: 1px solid var(--accent-green); }
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo"><img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;"><span class="logo-text">哈基偷知识库</span></a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="active">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="/">首页</a> → <a href="/investment">投资知识库</a> → <a href="/investment#stocks">个股分析</a> → <span>批次 6</span></div>
+        <h1 style="font-size:40px;margin-bottom:16px;">📊 个股分析 - 批次 6</h1>
+        <p style="font-size:18px;color:#E5E5E5;">ETF 配置：QQQ · SMH · 沪深 300 · 科创 50</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="stock-grid">
+        <div class="stock-card">
+          <div class="stock-header"><div><div class="stock-name">Invesco QQQ</div><div class="stock-ticker">QQQ</div></div></div>
+          <div class="stock-sector">ETF · 纳斯达克 100</div>
+          <p class="stock-desc">追踪纳斯达克 100 指数，科技股权重 50%+。苹果/微软/英伟达/谷歌为前四大持仓。适合长期配置科技成长。</p>
+          <div class="stock-stats">
+            <div class="stat-box"><div class="stat-label">规模</div><div class="stat-value">~2500 亿美元</div></div>
+            <div class="stat-box"><div class="stat-label">费率</div><div class="stat-value">0.20%</div></div>
+            <div class="stat-box"><div class="stat-label">10 年年化</div><div class="stat-value">~18%</div></div>
+            <div class="stat-box"><div class="stat-label">股息率</div><div class="stat-value">~0.5%</div></div>
+          </div>
+          <div class="recommendation rec-buy">✅ 建议建仓 · 核心配置</div>
+        </div>
+        <div class="stock-card">
+          <div class="stock-header"><div><div class="stock-name">VanEck Semiconductor</div><div class="stock-ticker">SMH</div></div></div>
+          <div class="stock-sector">ETF · 半导体</div>
+          <p class="stock-desc">追踪半导体行业指数，台积电/英伟达权重 40%+。纯半导体暴露，波动大但长期收益高。</p>
+          <div class="stock-stats">
+            <div class="stat-box"><div class="stat-label">规模</div><div class="stat-value">~150 亿美元</div></div>
+            <div class="stat-box"><div class="stat-label">费率</div><div class="stat-value">0.35%</div></div>
+            <div class="stat-box"><div class="stat-label">10 年年化</div><div class="stat-value">~25%</div></div>
+            <div class="stat-box"><div class="stat-label">持仓数</div><div class="stat-value">25 只</div></div>
+          </div>
+          <div class="recommendation rec-buy">✅ 建议建仓 · 卫星配置</div>
+        </div>
+        <div class="stock-card">
+          <div class="stock-header"><div><div class="stock-name">沪深 300ETF</div><div class="stock-ticker">510300.SH</div></div></div>
+          <div class="stock-sector">ETF · A 股核心资产</div>
+          <p class="stock-desc">追踪沪深 300 指数，A 股核心资产代表。金融/消费/科技均衡配置。适合长期配置中国核心资产。</p>
+          <div class="stock-stats">
+            <div class="stat-box"><div class="stat-label">规模</div><div class="stat-value">~1500 亿人民币</div></div>
+            <div class="stat-box"><div class="stat-label">费率</div><div class="stat-value">0.15%</div></div>
+            <div class="stat-box"><div class="stat-label">10 年年化</div><div class="stat-value">~8%</div></div>
+            <div class="stat-box"><div class="stat-label">股息率</div><div class="stat-value">~2.5%</div></div>
+          </div>
+          <div class="recommendation rec-buy">✅ 建议建仓 · 核心配置</div>
+        </div>
+        <div class="stock-card">
+          <div class="stock-header"><div><div class="stock-name">科创 50ETF</div><div class="stock-ticker">588000.SH</div></div></div>
+          <div class="stock-sector">ETF · 科创板</div>
+          <p class="stock-desc">追踪科创 50 指数，硬科技代表。半导体/新能源/生物医药权重高。波动大但成长性强。</p>
+          <div class="stock-stats">
+            <div class="stat-box"><div class="stat-label">规模</div><div class="stat-value">~800 亿人民币</div></div>
+            <div class="stat-box"><div class="stat-label">费率</div><div class="stat-value">0.50%</div></div>
+            <div class="stat-box"><div class="stat-label">成立以来</div><div class="stat-value">~5%</div></div>
+            <div class="stat-box"><div class="stat-label">持仓数</div><div class="stat-value">50 只</div></div>
+          </div>
+          <div class="recommendation rec-buy">✅ 建议建仓 · 卫星配置</div>
+        </div>
+      </div>
+    </section>
+    <section class="content-section">
+      <h2>💡 哈基偷的 ETF 配置建议</h2>
+      <div style="background:var(--bg-secondary);padding:24px;border-radius:12px;">
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;"><strong>核心配置（60%）：</strong>QQQ 40% · 沪深 300 20%</p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;"><strong>卫星配置（40%）：</strong>SMH 25% · 科创 50 15%</p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;"><strong>定投策略：</strong>每月固定日期定投，平滑成本</p>
+        <p style="font-size:16px;line-height:1.8;"><strong>再平衡：</strong>每半年再平衡一次，维持目标比例</p>
+      </div>
+    </section>
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/investment#stocks" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">← 返回个股分析</a>
+    </section>
+  </main>
+  <script>document.addEventListener('DOMContentLoaded', function() { const loading = document.getElementById('loading'); if (loading) loading.style.display = 'none'; });</script>
+</body>
+</html>
