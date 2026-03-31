@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>技术分析 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF;
+      --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF;
+      --border-color: #333333; --radius-lg: 12px; --radius-md: 8px;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo, .content-card, .content-card * { color: #E5E5E5 !important; }
+    .content-title { color: #FFFFFF !important; }
+    
+    .content-hero {
+      background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, var(--bg-primary) 100%);
+      padding: 60px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    .content-section h3 { font-size: 22px; margin: 32px 0 16px; color: #FFFFFF; }
+    .content-section p { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+    
+    .doc-card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 20px; margin: 20px 0;
+      transition: all 0.2s ease;
+    }
+    .doc-card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+    .doc-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #FFFFFF; }
+    .doc-excerpt { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    
+    .indicator-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 24px 0; }
+    @media (min-width: 768px) { .indicator-grid { grid-template-columns: repeat(2, 1fr); } }
+    
+    .indicator-card {
+      background: var(--bg-primary); border: 1px solid var(--border-color);
+      border-radius: 8px; padding: 16px;
+    }
+    .indicator-name { font-size: 16px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
+    .indicator-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="active">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">首页</a> → 
+          <a href="/investment">投资知识库</a> → 
+          <span>技术分析</span>
+        </div>
+        <h1 style="font-size:40px;margin-bottom:16px;">📉 技术分析</h1>
+        <p style="font-size:18px;color:#E5E5E5;">K 线/均线/成交量/指标/形态，技术分析入门到实战</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📊 K 线基础</h2>
+      
+      <div class="indicator-grid">
+        <div class="indicator-card">
+          <div class="indicator-name">阳线（红色）</div>
+          <p class="indicator-desc">
+            收盘价&gt;开盘价，表示上涨。实体越长，买方力量越强。
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">阴线（绿色）</div>
+          <p class="indicator-desc">
+            收盘价&lt;开盘价，表示下跌。实体越长，卖方力量越强。
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">十字星</div>
+          <p class="indicator-desc">
+            开盘价≈收盘价，表示多空平衡。高位十字星可能见顶，低位十字星可能见底。
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">锤头线</div>
+          <p class="indicator-desc">
+            实体小、下影线长，出现在下跌趋势中可能见底信号。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📈 均线系统</h2>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">短期均线（5 日/10 日/20 日）</h3>
+        <p class="doc-excerpt">
+          <strong>5 日线：</strong>攻击线，短线操作参考<br>
+          <strong>10 日线：</strong>操盘线，短线趋势判断<br>
+          <strong>20 日线：</strong>月线，中线趋势参考
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">中长期均线（60 日/120 日/250 日）</h3>
+        <p class="doc-excerpt">
+          <strong>60 日线：</strong>季线，中线生命线<br>
+          <strong>120 日线：</strong>半年线，长线趋势参考<br>
+          <strong>250 日线：</strong>年线，牛熊分界线
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">均线形态</h3>
+        <p class="doc-excerpt">
+          <strong>金叉：</strong>短期均线上穿长期均线，买入信号<br>
+          <strong>死叉：</strong>短期均线下穿长期均线，卖出信号<br>
+          <strong>多头排列：</strong>短期&gt;中期&gt;长期，强势上涨<br>
+          <strong>空头排列：</strong>短期&lt;中期&lt;长期，弱势下跌
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📊 成交量分析</h2>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">量价关系</h3>
+        <p class="doc-excerpt">
+          <strong>量增价涨：</strong>健康上涨，趋势延续<br>
+          <strong>量增价跌：</strong>恐慌抛售，可能见底<br>
+          <strong>量缩价涨：</strong>上涨乏力，可能见顶<br>
+          <strong>量缩价跌：</strong>下跌动能减弱，观望
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">成交量形态</h3>
+        <p class="doc-excerpt">
+          <strong>放量突破：</strong>突破关键位置时成交量放大，可信度高<br>
+          <strong>缩量回调：</strong>上涨趋势中缩量回调，正常调整<br>
+          <strong>天量天价：</strong>成交量创天量，价格可能见顶<br>
+          <strong>地量地价：</strong>成交量创地量，价格可能见底
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🔧 常用技术指标</h2>
+      
+      <div class="indicator-grid">
+        <div class="indicator-card">
+          <div class="indicator-name">MACD（指数平滑异同移动平均线）</div>
+          <p class="indicator-desc">
+            <strong>金叉：</strong>DIF 上穿 DEA，买入信号<br>
+            <strong>死叉：</strong>DIF 下穿 DEA，卖出信号<br>
+            <strong>背离：</strong>价格创新高但 MACD 不创新高，可能见顶
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">KDJ（随机指标）</div>
+          <p class="indicator-desc">
+            <strong>超买：</strong>K&gt;80，可能回调<br>
+            <strong>超卖：</strong>K&lt;20，可能反弹<br>
+            <strong>金叉/死叉：</strong>K 上穿/下穿 D
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">RSI（相对强弱指标）</div>
+          <p class="indicator-desc">
+            <strong>超买：</strong>RSI&gt;70，可能回调<br>
+            <strong>超卖：</strong>RSI&lt;30，可能反弹<br>
+            <strong>背离：</strong>价格创新高但 RSI 不创新高
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">布林带（BOLL）</div>
+          <p class="indicator-desc">
+            <strong>上轨：</strong>压力位，触及可能回调<br>
+            <strong>下轨：</strong>支撑位，触及可能反弹<br>
+            <strong>收口：</strong>变盘前兆，即将选择方向
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📐 经典形态</h2>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">反转形态</h3>
+        <p class="doc-excerpt">
+          <strong>头肩顶/底：</strong>经典反转形态，突破颈线确认<br>
+          <strong>双顶/双底：</strong>M 头/W 底，第二次测试失败后反转<br>
+          <strong>圆弧顶/底：</strong>缓慢反转，时间周期长
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">持续形态</h3>
+        <p class="doc-excerpt">
+          <strong>三角形：</strong>对称/上升/下降，突破后延续原趋势<br>
+          <strong>旗形：</strong>快速上涨/下跌后的整理，突破后继续<br>
+          <strong>矩形：</strong>箱体震荡，突破上下轨后选择方向
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>💡 哈基偷的技术分析建议</h2>
+      <div style="background:var(--bg-secondary);padding:24px;border-radius:12px;">
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>技术分析定位：</strong>辅助工具，不是决策依据。基本面为主，技术面为辅。
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>建议组合：</strong>均线系统（趋势）+ 成交量（确认）+ MACD/RSI（择时）
+        </p>
+        <p style="font-size:16px;line-height:1.8;">
+          <strong>风险提示：</strong>技术指标有滞后性，单一指标不可靠，需多维度验证
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/investment" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">
+        ← 返回投资知识库
+      </a>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loading = document.getElementById('loading');
+      if (loading) loading.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
