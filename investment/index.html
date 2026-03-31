@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>投资知识库 | 哈基偷知识库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* 投资知识库专属样式 */
+    .investment-hero {
+      background: linear-gradient(135deg, rgba(41, 151, 255, 0.1) 0%, var(--bg-primary) 100%);
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 40px 0;
+    }
+
+    @media (min-width: 768px) {
+      .module-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .module-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .module-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .module-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .module-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .module-title {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      color: var(--text-primary);
+    }
+
+    .module-desc {
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+      line-height: 1.6;
+    }
+
+    .module-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .module-tag {
+      background: var(--bg-tertiary);
+      color: var(--accent-blue);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: var(--font-medium);
+    }
+
+    /* 批次导航 */
+    .batch-nav {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 40px 0;
+    }
+
+    @media (min-width: 768px) {
+      .batch-nav {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .batch-nav {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    .batch-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--transition-base);
+      text-align: center;
+    }
+
+    .batch-card:hover {
+      border-color: var(--accent-blue);
+      background: var(--bg-tertiary);
+      transform: translateY(-2px);
+    }
+
+    .batch-card.active {
+      border-color: var(--accent-blue);
+      background: linear-gradient(135deg, rgba(41, 151, 255, 0.1) 0%, var(--bg-secondary) 100%);
+    }
+
+    .batch-number {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--accent-blue);
+      margin-bottom: 8px;
+    }
+
+    .batch-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .batch-stocks {
+      font-size: var(--text-xs);
+      color: var(--text-tertiary);
+    }
+
+    /* 检查清单预览 */
+    .checklist-preview {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin: 40px 0;
+    }
+
+    .checklist-category {
+      margin-bottom: 24px;
+    }
+
+    .checklist-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .checklist-category h4 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .checklist-items {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    @media (min-width: 640px) {
+      .checklist-items {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      padding: 10px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+    }
+
+    .checklist-icon {
+      color: var(--accent-success);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* 统计卡片 */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 40px 0;
+    }
+
+    @media (min-width: 768px) {
+      .stats-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-box-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--accent-blue);
+      margin-bottom: 4px;
+    }
+
+    .stat-box-label {
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="../" class="logo" data-router>
+        <span class="logo-emoji">🐱</span>
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../investment" class="nav-link active" data-router>📈 投资</a></li>
+        <li><a href="../ui-ux" class="nav-link" data-router>🎨 UI/UX</a></li>
+        <li><a href="../ai-agent" class="nav-link" data-router>🤖 AI Agent</a></li>
+        <li><a href="../quantum" class="nav-link" data-router>⚛️ 量子计算</a></li>
+        <li><a href="../daily-notes" class="nav-link" data-router>📰 笔记</a></li>
+        <li><a href="../freedom-log" class="nav-link" data-router>📔 日记</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="菜单">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 主内容区 -->
+  <main id="main-content">
+    <!-- Hero 区 -->
+    <section class="investment-hero">
+      <div class="container">
+        <h1 class="hero-title">
+          <span class="hero-emoji">📈</span>
+          投资知识库
+        </h1>
+        <p class="hero-subtitle">
+          从零基础到实战的完整投资知识体系，21 天学习成果沉淀
+        </p>
+      </div>
+    </section>
+
+    <!-- 统计概览 -->
+    <section class="section">
+      <div class="container">
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-box-value">30+</div>
+            <div class="stat-box-label">文档</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-value">9</div>
+            <div class="stat-box-label">知识模块</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-value">12</div>
+            <div class="stat-box-label">个股分析</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-value">5 万</div>
+            <div class="stat-box-label">配置建议</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 知识模块 -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">📚 知识模块</h2>
+        <div class="module-grid">
+          <a href="#basics" class="module-card">
+            <div class="module-icon">📖</div>
+            <h3 class="module-title">投资基础</h3>
+            <p class="module-desc">投资品类、策略、风险、原则，从零开始建立投资认知框架</p>
+            <div class="module-tags">
+              <span class="module-tag">入门必读</span>
+              <span class="module-tag">基础概念</span>
+            </div>
+          </a>
+
+          <a href="#macro" class="module-card">
+            <div class="module-icon">🌍</div>
+            <h3 class="module-title">宏观经济</h3>
+            <p class="module-desc">GDP/CPI/PMI/美林时钟，理解宏观经济指标与资产配置</p>
+            <div class="module-tags">
+              <span class="module-tag">宏观</span>
+              <span class="module-tag">政策</span>
+            </div>
+          </a>
+
+          <a href="#industry" class="module-card">
+            <div class="module-icon">🏢</div>
+            <h3 class="module-title">行业分析</h3>
+            <p class="module-desc">AI/半导体/医药/新能源，四大热门行业机会与风险深度解析</p>
+            <div class="module-tags">
+              <span class="module-tag">行业</span>
+              <span class="module-tag">赛道</span>
+            </div>
+          </a>
+
+          <a href="#stocks" class="module-card featured">
+            <div class="module-icon">📊</div>
+            <h3 class="module-title">个股分析</h3>
+            <p class="module-desc">12 只股票深度调研，6 个批次完整分析报告</p>
+            <div class="module-tags">
+              <span class="module-tag">实战</span>
+              <span class="module-tag">个股</span>
+              <span class="module-tag">6 批次</span>
+            </div>
+          </a>
+
+          <a href="#technical" class="module-card">
+            <div class="module-icon">📉</div>
+            <h3 class="module-title">技术分析</h3>
+            <p class="module-desc">K 线/均线/成交量/指标/形态，技术分析入门到实战</p>
+            <div class="module-tags">
+              <span class="module-tag">技术面</span>
+              <span class="module-tag">图表</span>
+            </div>
+          </a>
+
+          <a href="#quantitative" class="module-card">
+            <div class="module-icon">🧮</div>
+            <h3 class="module-title">量化投资</h3>
+            <p class="module-desc">量化策略/回测/风险管理/AI 应用，数据驱动投资决策</p>
+            <div class="module-tags">
+              <span class="module-tag">量化</span>
+              <span class="module-tag">AI</span>
+            </div>
+          </a>
+
+          <a href="#tools" class="module-card">
+            <div class="module-icon">🛠️</div>
+            <h3 class="module-title">实战工具</h3>
+            <p class="module-desc">交易软件/量化平台/数据源/学习资源，实战必备工具清单</p>
+            <div class="module-tags">
+              <span class="module-tag">工具</span>
+              <span class="module-tag">平台</span>
+            </div>
+          </a>
+
+          <a href="#checklist" class="module-card featured">
+            <div class="module-icon">✅</div>
+            <h3 class="module-title">检查清单</h3>
+            <p class="module-desc">选股/买入/持仓/卖出/风控/复盘，完整检查清单可直接使用</p>
+            <div class="module-tags">
+              <span class="module-tag">实战</span>
+              <span class="module-tag">清单</span>
+              <span class="module-tag">必用</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 个股分析批次导航 -->
+    <section class="section section-alt" id="stocks">
+      <div class="container">
+        <h2 class="section-title">📊 个股分析（6 批次）</h2>
+        <p class="text-center text-muted" style="max-width: 600px; margin: 0 auto 40px;">
+          12 只股票深度调研，涵盖 AI/半导体/医药/机器人四大热门赛道
+        </p>
+        
+        <div class="batch-nav">
+          <a href="#batch-1" class="batch-card active">
+            <div class="batch-number">批次 1</div>
+            <div class="batch-label">AI 芯片四巨头</div>
+            <div class="batch-stocks">NVDA · TSM · ASML · AVGO</div>
+          </a>
+
+          <a href="#batch-2" class="batch-card">
+            <div class="batch-number">批次 2</div>
+            <div class="batch-label">医药龙头</div>
+            <div class="batch-stocks">药明康德 · 恒瑞医药</div>
+          </a>
+
+          <a href="#batch-3" class="batch-card">
+            <div class="batch-number">批次 3</div>
+            <div class="batch-label">半导体设备</div>
+            <div class="batch-stocks">AMEC · Naura</div>
+          </a>
+
+          <a href="#batch-4" class="batch-card">
+            <div class="batch-number">批次 4</div>
+            <div class="batch-label">AI 应用</div>
+            <div class="batch-stocks">MSFT · GOOGL</div>
+          </a>
+
+          <a href="#batch-5" class="batch-card">
+            <div class="batch-number">批次 5</div>
+            <div class="batch-label">机器人</div>
+            <div class="batch-stocks">TSLA · ISRG</div>
+          </a>
+
+          <a href="#batch-6" class="batch-card">
+            <div class="batch-number">批次 6</div>
+            <div class="batch-label">ETF 配置</div>
+            <div class="batch-stocks">QQQ · SMH · 沪深 300 · 科创 50</div>
+          </a>
+        </div>
+
+        <div id="pagination" class="text-center"></div>
+      </div>
+    </section>
+
+    <!-- 检查清单预览 -->
+    <section class="section" id="checklist">
+      <div class="container">
+        <h2 class="section-title">✅ 投资检查清单</h2>
+        <p class="text-center text-muted" style="max-width: 600px; margin: 0 auto 40px;">
+          可直接用于实战的检查清单，帮助避免常见错误
+        </p>
+
+        <div class="checklist-preview">
+          <div class="checklist-category">
+            <h4>📋 选股检查清单</h4>
+            <ul class="checklist-items">
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>公司质地：商业模式清晰，护城河深</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>财务健康：负债率&lt;60%，现金流为正</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>估值水平：PE/PB 处于历史低位</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>行业前景：处于成长期或成熟期</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="checklist-category">
+            <h4>💰 买入检查清单</h4>
+            <ul class="checklist-items">
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>买入理由：至少 3 个独立理由支持</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>仓位规划：单只股票不超过总仓位 20%</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>止损设置：最大亏损不超过 15%</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>分批建仓：分 3-5 次完成建仓</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="checklist-category">
+            <h4>📈 持仓检查清单</h4>
+            <ul class="checklist-items">
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>每日：快速浏览股价和新闻（5 分钟）</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>每周：检查技术面和资金流向（30 分钟）</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>每月：复盘投资逻辑是否改变（2 小时）</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>每季度：检查财报和行业动态（半天）</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="checklist-category">
+            <h4>🛡️ 风险管理清单</h4>
+            <ul class="checklist-items">
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>组合分散：不超过 5 个行业，不少于 8 只股票</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>最大回撤：总仓位最大回撤不超过 20%</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>现金储备：始终保持 20-30% 现金</span>
+              </li>
+              <li class="checklist-item">
+                <span class="checklist-icon">✓</span>
+                <span>情绪管理：不因贪婪/恐惧做出决策</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center mt-xl">
+          <a href="#full-checklist" class="btn-primary" data-router style="display: inline-block; padding: 12px 32px; background: var(--accent-blue); color: white; text-decoration: none; border-radius: 8px; font-weight: 500;">
+            查看完整检查清单 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 学习路径建议 -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">🎯 学习路径建议</h2>
+        <div class="module-grid">
+          <div class="module-card">
+            <div class="module-icon">🌱</div>
+            <h3 class="module-title">新手入门（2-4 周）</h3>
+            <p class="module-desc">投资基础 → 宏观经济 → 行业分析 → 模拟练习</p>
+            <div class="module-tags">
+              <span class="module-tag">零基础</span>
+              <span class="module-tag">系统性</span>
+            </div>
+          </div>
+
+          <div class="module-card">
+            <div class="module-icon">📈</div>
+            <h3 class="module-title">进阶提升（1-2 周）</h3>
+            <p class="module-desc">技术分析 → 量化基础 → 个股分析 → 实战工具</p>
+            <div class="module-tags">
+              <span class="module-tag">有基础</span>
+              <span class="module-tag">实战</span>
+            </div>
+          </div>
+
+          <div class="module-card">
+            <div class="module-icon">🎯</div>
+            <h3 class="module-title">快速查阅</h3>
+            <p class="module-desc">检查清单 → 个股分析 → 实战工具 → 学习资源</p>
+            <div class="module-tags">
+              <span class="module-tag">速查</span>
+              <span class="module-tag">实用</span>
+            </div>
+          </div>
+
+          <div class="module-card">
+            <div class="module-icon">💡</div>
+            <h3 class="module-title">哈基偷建议</h3>
+            <p class="module-desc">先学习后实战，先模拟后真金，保持学习持续复盘</p>
+            <div class="module-tags">
+              <span class="module-tag">忠告</span>
+              <span class="module-tag">心态</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>📈 哈基偷投资知识库 | 2026-03-31 | 学习周期：6 天 | 产出：30+ 文档</p>
+        <p class="text-muted">投资有风险，入市需谨慎。本知识库仅供学习参考，不构成投资建议喵～</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 加载状态 -->
+  <div id="loading" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p>加载中...</p>
+  </div>
+
+  <script src="../router.js"></script>
+  <script src="../pagination.js"></script>
+  <script>
+    // 初始化批次分页（6 批次）
+    const batchPagination = new PaginationController({
+      currentPage: 1,
+      totalPages: 6,
+      container: '#pagination',
+      onChange: (page) => {
+        // 高亮对应批次
+        document.querySelectorAll('.batch-card').forEach((card, index) => {
+          card.classList.toggle('active', index === page - 1);
+        });
+        
+        // 滚动到对应批次
+        const batchElement = document.getElementById(`batch-${page}`);
+        if (batchElement) {
+          batchElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        console.log('切换到批次:', page);
+        // 实际部署时：router.navigate(`/investment/stocks/batch-${page}`);
+      }
+    });
+
+    // 移动端菜单切换
+    document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+      this.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
