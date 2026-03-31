@@ -499,8 +499,6 @@
           </a>
         </div>
 
-        <div id="pagination" class="text-center"></div>
-      </div>
     </section>
 
     <!-- 检查清单预览 -->
@@ -678,15 +676,6 @@
   <script src="../pagination.js"></script>
   <script>
     // 初始化批次分页（6 批次）
-    const batchPagination = new PaginationController({
-      currentPage: 1,
-      totalPages: 6,
-      container: '#pagination',
-      onChange: (page) => {
-        // 高亮对应批次
-        document.querySelectorAll('.batch-card').forEach((card, index) => {
-          card.classList.toggle('active', index === page - 1);
-        });
         
         // 滚动到对应批次
         const batchElement = document.getElementById(`batch-${page}`);
