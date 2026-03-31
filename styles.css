@@ -253,7 +253,13 @@ body {
     font-size: var(--text-4xl);
   }
 }
-
+.hero-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(41, 151, 255, 0.3);
+}
 .hero-emoji {
   font-size: 48px;
 }
