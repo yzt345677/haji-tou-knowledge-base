@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent 知识库 | 哈基偷知识库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --bg-tertiary: #252525;
+      --text-primary: #FFFFFF; --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1;
+      --accent-blue: #2997FF; --accent-purple: #BF5AF2; --border-color: #333333;
+      --radius-lg: 12px; --radius-md: 8px; --radius-full: 9999px;
+      --transition-base: 0.2s ease;
+      --text-sm: 14px; --text-base: 16px; --text-lg: 18px; --text-xl: 24px; --text-2xl: 32px; --text-3xl: 40px;
+      --font-semibold: 600; --font-medium: 500; --font-bold: 700;
+      --spacing-xs: 8px; --spacing-sm: 12px; --spacing-md: 16px; --spacing-lg: 24px; --spacing-xl: 32px; --spacing-2xl: 48px;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    a:hover { color: #FFFFFF !important; }
+    body, .navbar, .nav-link, .logo, .module-card, .module-card * { color: #E5E5E5 !important; }
+    .module-title, .stat-box-value, .hero-title { color: #FFFFFF !important; }
+    .module-tag { color: #2997FF !important; }
+    
+    .ai-hero {
+      background: linear-gradient(135deg, rgba(191, 90, 242, 0.08) 0%, rgba(41, 151, 255, 0.05) 50%, var(--bg-primary) 100%);
+      padding: 80px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+    @media (min-width: 768px) { .hero-stats { grid-template-columns: repeat(4, 1fr); } }
+    .hero-stat {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px; text-align: center; backdrop-filter: blur(10px);
+    }
+    .hero-stat-number {
+      font-size: 40px; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 8px;
+    }
+    .hero-stat-label { font-size: var(--text-sm); color: var(--text-tertiary); }
+    
+    .module-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 40px 0; }
+    @media (min-width: 768px) { .module-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .module-grid { grid-template-columns: repeat(3, 1fr); } }
+    
+    .module-card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px; text-decoration: none; color: inherit;
+      transition: all var(--transition-base); display: flex; flex-direction: column; gap: 12px;
+    }
+    .module-card:hover { border-color: var(--accent-blue); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+    .module-card.featured { border-color: var(--accent-purple); background: linear-gradient(135deg, rgba(191, 90, 242, 0.05) 0%, var(--bg-secondary) 100%); }
+    
+    .module-icon { font-size: 32px; margin-bottom: 8px; }
+    .module-title { font-size: var(--text-xl); font-weight: 600; margin-bottom: 8px; }
+    .module-desc { font-size: var(--text-sm); color: var(--text-tertiary); line-height: 1.7; }
+    .module-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+    .module-tag {
+      background: var(--bg-tertiary); padding: 4px 10px; border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 500; border: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../cat-avatar.png" alt="哈基偷" class="logo-avatar" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="nav-link">📈 投资</a></li>
+        <li><a href="/ui-ux" class="nav-link">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent" class="nav-link active">🤖 AI Agent</a></li>
+        <li><a href="/quantum" class="nav-link">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes" class="nav-link">📰 笔记</a></li>
+        <li><a href="/freedom-log" class="nav-link">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="ai-hero">
+      <div class="container">
+        <h1 class="hero-title">
+          <span class="hero-emoji">🤖</span>
+          AI Agent 知识库
+        </h1>
+        <p class="hero-subtitle" style="font-size:18px;color:#E5E5E5;max-width:600px;margin:16px auto;">
+          2026=Agent 元年，从框架对比到安全部署的完整指南
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-number">15</div>
+            <div class="hero-stat-label">文档</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">3</div>
+            <div class="hero-stat-label">框架</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">5</div>
+            <div class="hero-stat-label">安全实践</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">2030</div>
+            <div class="hero-stat-label">未来趋势</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">📚 核心学习</h2>
+        <div class="module-grid">
+          <div class="module-card featured">
+            <div class="module-icon">📖</div>
+            <h3 class="module-title">完整学习笔记</h3>
+            <p class="module-desc">从 0 到 1 的 AI Agent 学习路径，涵盖核心概念、架构设计、应用场景</p>
+            <div class="module-tags">
+              <span class="module-tag">入门必读</span>
+              <span class="module-tag">15KB</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">⚖️</div>
+            <h3 class="module-title">框架对比</h3>
+            <p class="module-desc">LangGraph vs CrewAI vs AutoGen，三大主流框架深度对比</p>
+            <div class="module-tags">
+              <span class="module-tag">LangGraph</span>
+              <span class="module-tag">CrewAI</span>
+              <span class="module-tag">AutoGen</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">📋</div>
+            <h3 class="module-title">完整指南索引</h3>
+            <p class="module-desc">15 篇文档完整索引，快速定位所需内容</p>
+            <div class="module-tags">
+              <span class="module-tag">导航</span>
+              <span class="module-tag">索引</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">🛡️ 安全最佳实践</h2>
+        <div class="module-grid">
+          <div class="module-card">
+            <div class="module-icon">🔒</div>
+            <h3 class="module-title">安全最佳实践</h3>
+            <p class="module-desc">提示词注入防护、供应链安全、记忆污染防御、650+ 安全模式</p>
+            <div class="module-tags">
+              <span class="module-tag">安全</span>
+              <span class="module-tag">防护</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">🏭</div>
+            <h3 class="module-title">生产环境安全</h3>
+            <p class="module-desc">从开发到部署的全链路安全，权限管理、日志审计、异常监控</p>
+            <div class="module-tags">
+              <span class="module-tag">生产</span>
+              <span class="module-tag">部署</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">🔧 高级主题</h2>
+        <div class="module-grid">
+          <div class="module-card">
+            <div class="module-icon">🧠</div>
+            <h3 class="module-title">上下文管理</h3>
+            <p class="module-desc">长上下文处理、记忆压缩、RAG 检索增强生成</p>
+            <div class="module-tags">
+              <span class="module-tag">上下文</span>
+              <span class="module-tag">RAG</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">📝</div>
+            <h3 class="module-title">提示词工程</h3>
+            <p class="module-desc">系统提示词、Few-shot、CoT 思维链、结构化输出</p>
+            <div class="module-tags">
+              <span class="module-tag">Prompt</span>
+              <span class="module-tag">工程</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">💰</div>
+            <h3 class="module-title">成本优化</h3>
+            <p class="module-desc">Token 优化、模型路由、缓存策略、从$1500/月到$50/月</p>
+            <div class="module-tags">
+              <span class="module-tag">成本</span>
+              <span class="module-tag">优化</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">🚀</div>
+            <h3 class="module-title">开发与部署</h3>
+            <p class="module-desc">本地开发环境、Docker 部署、CI/CD、监控告警</p>
+            <div class="module-tags">
+              <span class="module-tag">开发</span>
+              <span class="module-tag">部署</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">💼 应用案例</h2>
+        <div class="module-grid">
+          <div class="module-card">
+            <div class="module-icon">📊</div>
+            <h3 class="module-title">应用案例研究</h3>
+            <p class="module-desc">客服自动化、内容生成、代码助手、数据分析等实战案例</p>
+            <div class="module-tags">
+              <span class="module-tag">案例</span>
+              <span class="module-tag">实战</span>
+            </div>
+          </div>
+          <div class="module-card featured">
+            <div class="module-icon">📈</div>
+            <h3 class="module-title">金融投资应用</h3>
+            <p class="module-desc">智能投顾、量化交易、银行反洗钱、语音代理，2026 金融 AI 爆发</p>
+            <div class="module-tags">
+              <span class="module-tag">金融</span>
+              <span class="module-tag">投资</span>
+              <span class="module-tag">91.4 亿→1390 亿</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">🚀 未来趋势</h2>
+        <div class="module-grid">
+          <div class="module-card">
+            <div class="module-icon">📅</div>
+            <h3 class="module-title">2026 年 3 月更新</h3>
+            <p class="module-desc">腾讯投入翻倍、小米 3 年 600 亿、OpenClaw 爆火登顶开源榜首</p>
+            <div class="module-tags">
+              <span class="module-tag">最新</span>
+              <span class="module-tag">动态</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">🔮</div>
+            <h3 class="module-title">2026-2030 趋势</h3>
+            <p class="module-desc">多 Agent 协作、具身智能、AGI 路径、行业变革预测</p>
+            <div class="module-tags">
+              <span class="module-tag">未来</span>
+              <span class="module-tag">预测</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">🎯 学习路径建议</h2>
+        <div class="module-grid">
+          <div class="module-card">
+            <div class="module-icon">🌱</div>
+            <h3 class="module-title">新手入门（2-4 周）</h3>
+            <p class="module-desc">核心概念 → 框架对比 → 提示词工程 → 简单项目</p>
+            <div class="module-tags">
+              <span class="module-tag">零基础</span>
+              <span class="module-tag">系统性</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">📈</div>
+            <h3 class="module-title">进阶提升（1-2 周）</h3>
+            <p class="module-desc">上下文管理 → 安全实践 → 成本优化 → 部署上线</p>
+            <div class="module-tags">
+              <span class="module-tag">有基础</span>
+              <span class="module-tag">实战</span>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">🎯</div>
+            <h3 class="module-title">快速查阅</h3>
+            <p class="module-desc">框架对比 → 安全实践 → 成本优化 → 应用案例</p>
+            <div class="module-tags">
+              <span class="module-tag">速查</span>
+              <span class="module-tag">实用</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>🤖 哈基偷 AI Agent 知识库 | 2026-03-31 | 学习周期：10 天 | 产出：15 文档</p>
+        <p class="text-muted">2026=Agent 元年 | OpenClaw 登顶开源榜首 | 从理论到实战喵～</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="loading" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p>加载中...</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a').forEach(link => {
+        if (!link.getAttribute('href')?.startsWith('http') && !link.getAttribute('href')?.startsWith('#')) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = this.getAttribute('href');
+          });
+        }
+      });
+      const loading = document.getElementById('loading');
+      if (loading) loading.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
