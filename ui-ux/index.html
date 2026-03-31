@@ -10,6 +10,67 @@
   <link rel="stylesheet" href="../styles.css">
   <style>
     /* UI/UX 知识库专属样式 */
+    :root {
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #1A1A1A;
+  --bg-tertiary: #252525;
+  --bg-card: #141414;
+  --text-primary: #FFFFFF;
+  --text-secondary: #E5E5E5;
+  --text-tertiary: #A1A1A1;
+  --text-muted: #666666;
+  --accent-blue: #2997FF;
+  --accent-purple: #BF5AF2;
+  --accent-warning: #FF9F0A;
+  --border-color: #333333;
+  --border-light: #2A2A2A;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --radius-sm: 6px;
+  --radius-full: 9999px;
+  --transition-base: 0.2s ease;
+  --transition-fast: 0.15s ease;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 40px;
+  --font-semibold: 600;
+  --font-medium: 500;
+  --font-bold: 700;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+}
+
+/* 强制所有文字为白色/灰色系 */
+.principle-card, .principle-card *, .case-card, .case-card *,
+.style-item, .style-item *, .stat-box, .stat-box *,
+.checklist-item, .checklist-item *, .module-card, .module-card * {
+  color: var(--text-secondary) !important;
+}
+
+.principle-title, .case-title, .style-name, .stat-box-value, .batch-number {
+  color: var(--text-primary) !important;
+}
+
+.principle-topic, .case-tag, .module-tag {
+  color: var(--accent-blue) !important;
+}
+
+/* 链接颜色强制为白色 */
+a {
+  color: var(--text-secondary) !important;
+}
+
+a:hover {
+  color: var(--text-primary) !important;
+}
     .uiux-hero {
       background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, rgba(191, 90, 242, 0.05) 50%, var(--bg-primary) 100%);
       padding: 80px 0;
