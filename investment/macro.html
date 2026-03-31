@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宏观经济 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF;
+      --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF;
+      --border-color: #333333; --radius-lg: 12px;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo, .content-card, .content-card * { color: #E5E5E5 !important; }
+    .content-title { color: #FFFFFF !important; }
+    
+    .content-hero {
+      background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, var(--bg-primary) 100%);
+      padding: 60px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    .content-section h3 { font-size: 22px; margin: 32px 0 16px; color: #FFFFFF; }
+    .content-section p { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+    
+    .doc-card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 20px; margin: 20px 0;
+      transition: all 0.2s ease;
+    }
+    .doc-card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+    .doc-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #FFFFFF; }
+    .doc-excerpt { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    
+    .indicator-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 24px 0; }
+    @media (min-width: 768px) { .indicator-grid { grid-template-columns: repeat(2, 1fr); } }
+    
+    .indicator-card {
+      background: var(--bg-primary); border: 1px solid var(--border-color);
+      border-radius: 8px; padding: 16px;
+    }
+    .indicator-name { font-size: 16px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
+    .indicator-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="active">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">首页</a> → 
+          <a href="/investment">投资知识库</a> → 
+          <span>宏观经济</span>
+        </div>
+        <h1 style="font-size:40px;margin-bottom:16px;">🌍 宏观经济</h1>
+        <p style="font-size:18px;color:#E5E5E5;">理解 GDP/CPI/PMI/美林时钟，把握宏观经济与资产配置</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📊 核心经济指标</h2>
+      
+      <div class="indicator-grid">
+        <div class="indicator-card">
+          <div class="indicator-name">GDP（国内生产总值）</div>
+          <p class="indicator-desc">
+            衡量经济总体规模。增速&gt;6% 为高速增长，&lt;4% 为放缓。关注季度环比和同比数据。
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">CPI（消费者物价指数）</div>
+          <p class="indicator-desc">
+            衡量通胀水平。2-3% 为温和通胀，&gt;5% 为高通胀，&lt;0% 为通缩。影响央行加息/降息决策。
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">PMI（采购经理指数）</div>
+          <p class="indicator-desc">
+            衡量制造业景气度。50 为荣枯线，&gt;50 为扩张，&lt;50 为收缩。是经济先行指标。
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">失业率</div>
+          <p class="indicator-desc">
+            衡量就业市场。&lt;4% 为充分就业，&gt;6% 为高失业。影响消费和经济增长。
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">利率决策</div>
+          <p class="indicator-desc">
+            央行加息抑制通胀，降息刺激经济。影响债券价格、股市估值、汇率波动。
+          </p>
+        </div>
+        
+        <div class="indicator-card">
+          <div class="indicator-name">货币供应量 M2</div>
+          <p class="indicator-desc">
+            衡量市场流动性。M2 增速快 = 流动性宽松，利好股市；M2 增速慢 = 流动性收紧。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🕐 美林时钟与资产配置</h2>
+      <p>
+        美林时钟根据经济增长（GDP）和通胀（CPI）两个维度，将经济周期分为四个阶段：
+      </p>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">📈 复苏期（经济↑ 通胀↓）</h3>
+        <p class="doc-excerpt">
+          <strong>特征：</strong>经济回暖，通胀低位，央行宽松<br>
+          <strong>配置：</strong>股票 &gt; 债券 &gt; 现金 &gt; 大宗商品<br>
+          <strong>行业：</strong>科技、金融、可选消费
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">🔥 过热期（经济↑ 通胀↑）</h3>
+        <p class="doc-excerpt">
+          <strong>特征：</strong>经济强劲，通胀上升，央行收紧<br>
+          <strong>配置：</strong>大宗商品 &gt; 股票 &gt; 现金 &gt; 债券<br>
+          <strong>行业：</strong>能源、材料、工业
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">📉 滞胀期（经济↓ 通胀↑）</h3>
+        <p class="doc-excerpt">
+          <strong>特征：</strong>经济放缓，通胀高企，最难应对<br>
+          <strong>配置：</strong>现金 &gt; 大宗商品 &gt; 债券 &gt; 股票<br>
+          <strong>行业：</strong>防御性板块（医疗、公用事业）
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">❄️ 衰退期（经济↓ 通胀↓）</h3>
+        <p class="doc-excerpt">
+          <strong>特征：</strong>经济萎缩，通胀低位，央行宽松<br>
+          <strong>配置：</strong>债券 &gt; 现金 &gt; 股票 &gt; 大宗商品<br>
+          <strong>行业：</strong>债券、高股息股票
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🇨🇳 中国宏观政策框架</h2>
+      <div class="doc-card">
+        <h3 class="doc-title">财政政策</h3>
+        <p class="doc-excerpt">
+          <strong>积极财政：</strong>增发国债、减税降费、基建投资<br>
+          <strong>稳健财政：</strong>收支平衡、结构性调整<br>
+          <strong>2026 年基调：</strong>积极财政加力提效，支持科技创新和产业升级
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">货币政策</h3>
+        <p class="doc-excerpt">
+          <strong>宽松货币：</strong>降准、降息、MLF、逆回购<br>
+          <strong>稳健货币：</strong>灵活适度、精准滴灌<br>
+          <strong>2026 年基调：</strong>稳健货币政策灵活适度，保持流动性合理充裕
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">产业政策</h3>
+        <p class="doc-excerpt">
+          <strong>重点支持：</strong>半导体、AI、新能源、生物医药、高端制造<br>
+          <strong>政策工具：</strong>税收优惠、研发补贴、产业基金、政府采购<br>
+          <strong>投资方向：</strong>跟随国家政策，布局战略新兴产业
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/investment" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">
+        ← 返回投资知识库
+      </a>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loading = document.getElementById('loading');
+      if (loading) loading.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
