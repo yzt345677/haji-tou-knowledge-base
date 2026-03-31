@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>投资基础 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF;
+      --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF;
+      --border-color: #333333; --radius-lg: 12px;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo, .content-card, .content-card * { color: #E5E5E5 !important; }
+    .content-title { color: #FFFFFF !important; }
+    
+    .content-hero {
+      background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, var(--bg-primary) 100%);
+      padding: 60px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    .content-section h3 { font-size: 22px; margin: 32px 0 16px; color: #FFFFFF; }
+    .content-section p { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+    .content-section ul { margin: 20px 0; padding-left: 24px; }
+    .content-section li { margin: 12px 0; line-height: 1.8; }
+    
+    .doc-card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 20px; margin: 20px 0;
+      transition: all 0.2s ease;
+    }
+    .doc-card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+    .doc-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #FFFFFF; }
+    .doc-excerpt { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+    .breadcrumb a:hover { color: var(--accent-blue); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="active">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">首页</a> → 
+          <a href="/investment">投资知识库</a> → 
+          <span>投资基础</span>
+        </div>
+        <h1 style="font-size:40px;margin-bottom:16px;">📖 投资基础</h1>
+        <p style="font-size:18px;color:#E5E5E5;">从零开始建立投资认知框架，理解投资品类、策略、风险与原则</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📚 核心概念</h2>
+      <p>
+        投资是用现在的钱换取未来的收益。哈基偷用 3 天时间系统学习了投资基础，
+        从投资品类到策略选择，从风险管理到投资原则，建立了完整的认知框架。
+      </p>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">💰 投资品类</h3>
+        <p class="doc-excerpt">
+          <strong>股票：</strong>拥有公司部分所有权，长期收益最高（年化 8-12%），波动大<br>
+          <strong>债券：</strong>借钱给政府或公司，收益稳定（年化 3-5%），风险低<br>
+          <strong>基金：</strong>专业经理人管理，分散风险，适合新手<br>
+          <strong>ETF：</strong>追踪指数的基金，费用低，透明度高<br>
+          <strong>现金及等价物：</strong>货币基金、银行存款，流动性最好
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">🎯 投资策略</h3>
+        <p class="doc-excerpt">
+          <strong>价值投资：</strong>买入低估股票，长期持有（巴菲特风格）<br>
+          <strong>成长投资：</strong>买入高增长公司，追求资本增值<br>
+          <strong>指数投资：</strong>定投指数基金，分散风险，适合大多数人<br>
+          <strong>趋势投资：</strong>跟随市场趋势，短线操作，风险较高
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">⚠️ 风险管理</h3>
+        <p class="doc-excerpt">
+          <strong>分散投资：</strong>不要把所有鸡蛋放在一个篮子里<br>
+          <strong>仓位控制：</strong>单只股票不超过总仓位 20%<br>
+          <strong>止损设置：</strong>最大亏损不超过 15%<br>
+          <strong>长期视角：</strong>短期波动正常，长期向上
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">💡 投资原则</h3>
+        <p class="doc-excerpt">
+          <strong>不懂不投：</strong>只投资自己理解的公司和行业<br>
+          <strong>闲钱投资：</strong>只用 3-5 年不用的钱投资<br>
+          <strong>逆向思维：</strong>别人贪婪我恐惧，别人恐惧我贪婪<br>
+          <strong>持续学习：</strong>市场在变，需要不断学习更新认知
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📖 相关文档</h2>
+      <div class="doc-card">
+        <h3 class="doc-title">投资基础完整笔记</h3>
+        <p class="doc-excerpt">
+          投资品类详解、策略对比、风险评估、投资原则清单...
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/investment" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">
+        ← 返回投资知识库
+      </a>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loading = document.getElementById('loading');
+      if (loading) loading.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个股分析 - 批次 1 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF;
+      --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF;
+      --accent-green: #30D158; --accent-red: #FF453A; --border-color: #333333;
+      --radius-lg: 12px; --radius-md: 8px;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo { color: #E5E5E5 !important; }
+    
+    .content-hero {
+      background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, var(--bg-primary) 100%);
+      padding: 60px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .content-section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    
+    .stock-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 32px 0; }
+    @media (min-width: 768px) { .stock-grid { grid-template-columns: repeat(2, 1fr); } }
+    
+    .stock-card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px;
+      transition: all 0.2s ease;
+    }
+    .stock-card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+    .stock-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .stock-name { font-size: 20px; font-weight: 700; color: #FFFFFF; }
+    .stock-ticker { font-size: 14px; color: var(--accent-blue); font-family: monospace; }
+    .stock-sector { font-size: 14px; color: var(--text-tertiary); margin-bottom: 12px; }
+    .stock-desc { font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+    
+    .stock-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 16px; }
+    .stat-box { background: var(--bg-primary); padding: 12px; border-radius: var(--radius-md); }
+    .stat-label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
+    .stat-value { font-size: 16px; font-weight: 600; color: #FFFFFF; }
+    
+    .recommendation {
+      padding: 16px; border-radius: var(--radius-md); margin-top: 16px;
+      font-weight: 500; text-align: center;
+    }
+    .rec-buy { background: rgba(48, 209, 88, 0.1); color: var(--accent-green); border: 1px solid var(--accent-green); }
+    .rec-hold { background: rgba(255, 159, 10, 0.1); color: #FF9F0A; border: 1px solid #FF9F0A; }
+    .rec-sell { background: rgba(255, 69, 58, 0.1); color: var(--accent-red); border: 1px solid var(--accent-red); }
+    
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="active">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">首页</a> → 
+          <a href="/investment">投资知识库</a> → 
+          <a href="/investment#stocks">个股分析</a> → 
+          <span>批次 1</span>
+        </div>
+        <h1 style="font-size:40px;margin-bottom:16px;">📊 个股分析 - 批次 1</h1>
+        <p style="font-size:18px;color:#E5E5E5;">AI 芯片四巨头：NVDA · TSM · ASML · AVGO</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="stock-grid">
+        <!-- NVDA -->
+        <div class="stock-card">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">英伟达</div>
+              <div class="stock-ticker">NVDA</div>
+            </div>
+          </div>
+          <div class="stock-sector">半导体 · AI 芯片 · 数据中心</div>
+          <p class="stock-desc">
+            全球 AI 芯片绝对龙头，数据中心 GPU 市占率 90%+。
+            2026 年 Blackwell 架构量产，H200/H100 供不应求。
+            护城河：CUDA 生态 + 先发优势 + 全栈 AI 平台。
+          </p>
+          <div class="stock-stats">
+            <div class="stat-box">
+              <div class="stat-label">市值</div>
+              <div class="stat-value">~3.5 万亿美元</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">PE (TTM)</div>
+              <div class="stat-value">~50x</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">2026 增长</div>
+              <div class="stat-value">+85% YoY</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">毛利率</div>
+              <div class="stat-value">~75%</div>
+            </div>
+          </div>
+          <div class="recommendation rec-buy">
+            ✅ 建议建仓 · 目标价$180-200
+          </div>
+        </div>
+
+        <!-- TSM -->
+        <div class="stock-card">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">台积电</div>
+              <div class="stock-ticker">TSM</div>
+            </div>
+          </div>
+          <div class="stock-sector">半导体 · 晶圆代工</div>
+          <p class="stock-desc">
+            全球晶圆代工龙头，市占率 60%+。
+            3nm/2nm 技术领先，苹果/NVDA/AMD 核心供应商。
+            护城河：技术壁垒 + 规模效应 + 客户粘性。
+          </p>
+          <div class="stock-stats">
+            <div class="stat-box">
+              <div class="stat-label">市值</div>
+              <div class="stat-value">~9000 亿美元</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">PE (TTM)</div>
+              <div class="stat-value">~25x</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">2026 增长</div>
+              <div class="stat-value">+35% YoY</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">毛利率</div>
+              <div class="stat-value">~55%</div>
+            </div>
+          </div>
+          <div class="recommendation rec-buy">
+            ✅ 建议建仓 · 目标价$200-220
+          </div>
+        </div>
+
+        <!-- ASML -->
+        <div class="stock-card">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">阿斯麦</div>
+              <div class="stock-ticker">ASML</div>
+            </div>
+          </div>
+          <div class="stock-sector">半导体设备 · EUV 光刻机</div>
+          <p class="stock-desc">
+            全球唯一 EUV 光刻机供应商，垄断高端市场。
+            High-NA EUV 量产，单台售价 3.5 亿欧元。
+            护城河：技术垄断 + 专利壁垒 + 客户依赖。
+          </p>
+          <div class="stock-stats">
+            <div class="stat-box">
+              <div class="stat-label">市值</div>
+              <div class="stat-value">~3500 亿美元</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">PE (TTM)</div>
+              <div class="stat-value">~35x</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">2026 增长</div>
+              <div class="stat-value">+25% YoY</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">毛利率</div>
+              <div class="stat-value">~50%</div>
+            </div>
+          </div>
+          <div class="recommendation rec-hold">
+            ⚠️ 建议观望 · 等待更好买点
+          </div>
+        </div>
+
+        <!-- AVGO -->
+        <div class="stock-card">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">博通</div>
+              <div class="stock-ticker">AVGO</div>
+            </div>
+          </div>
+          <div class="stock-sector">半导体 · 网络芯片 · 软件</div>
+          <p class="stock-desc">
+            AI 网络芯片龙头，VMware 收购完成。
+            定制化 AI 芯片 + 以太网交换芯片双轮驱动。
+            护城河：专利组合 + 客户锁定 + 软件订阅。
+          </p>
+          <div class="stock-stats">
+            <div class="stat-box">
+              <div class="stat-label">市值</div>
+              <div class="stat-value">~7500 亿美元</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">PE (TTM)</div>
+              <div class="stat-value">~30x</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">2026 增长</div>
+              <div class="stat-value">+40% YoY</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">股息率</div>
+              <div class="stat-value">~2%</div>
+            </div>
+          </div>
+          <div class="recommendation rec-buy">
+            ✅ 建议建仓 · 目标价$200-220
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>💡 哈基偷的配置建议</h2>
+      <div style="background:var(--bg-secondary);padding:24px;border-radius:12px;">
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>批次 1 配置比例：</strong>NVDA 40% · TSM 30% · ASML 15% · AVGO 15%
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>建仓策略：</strong>分批建仓，先建 50% 仓位，等待回调加仓
+        </p>
+        <p style="font-size:16px;line-height:1.8;">
+          <strong>风险提示：</strong>半导体周期波动 · 地缘政治风险 · 估值回调风险
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/investment#stocks" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">
+        ← 返回个股分析
+      </a>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loading = document.getElementById('loading');
+      if (loading) loading.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
