@@ -139,6 +139,13 @@ body {
   opacity: 0.8;
 }
 
+.logo-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
 .logo-emoji {
   font-size: 28px;
 }
