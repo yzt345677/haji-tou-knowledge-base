@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>检查清单 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF;
+      --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF;
+      --accent-green: #30D158; --border-color: #333333; --radius-lg: 12px; --radius-md: 8px;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo { color: #E5E5E5 !important; }
+    
+    .content-hero {
+      background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, var(--bg-primary) 100%);
+      padding: 60px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    
+    .checklist-category {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px; margin: 24px 0;
+    }
+    .checklist-category h3 { font-size: 20px; font-weight: 600; margin-bottom: 16px; color: #FFFFFF; }
+    
+    .checklist-items { list-style: none; padding: 0; margin: 0; }
+    .checklist-items li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 0; border-bottom: 1px solid var(--border-color);
+      font-size: 15px; line-height: 1.6;
+    }
+    .checklist-items li:last-child { border-bottom: none; }
+    .check-icon { color: var(--accent-green); font-weight: bold; flex-shrink: 0; }
+    
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="active">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">首页</a> → 
+          <a href="/investment">投资知识库</a> → 
+          <span>检查清单</span>
+        </div>
+        <h1 style="font-size:40px;margin-bottom:16px;">✅ 投资检查清单</h1>
+        <p style="font-size:18px;color:#E5E5E5;">选股/买入/持仓/卖出/风控/复盘，完整检查清单可直接使用</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="checklist-category">
+        <h3>📋 选股检查清单</h3>
+        <ul class="checklist-items">
+          <li><span class="check-icon">✓</span>公司质地：商业模式清晰，有护城河</li>
+          <li><span class="check-icon">✓</span>财务健康：负债率&lt;60%，现金流为正</li>
+          <li><span class="check-icon">✓</span>盈利能力：ROE&gt;15%，毛利率稳定或提升</li>
+          <li><span class="check-icon">✓</span>成长能力：营收增速&gt;10%，净利润增速&gt;15%</li>
+          <li><span class="check-icon">✓</span>估值水平：PE/PB 处于历史低位或合理区间</li>
+          <li><span class="check-icon">✓</span>行业前景：处于成长期或成熟期，非衰退期</li>
+          <li><span class="check-icon">✓</span>管理层：诚信记录良好，股权激励合理</li>
+          <li><span class="check-icon">✓</span>红色警报：财务造假/大股东质押/监管处罚 → 一票否决</li>
+        </ul>
+      </div>
+
+      <div class="checklist-category">
+        <h3>💰 买入检查清单</h3>
+        <ul class="checklist-items">
+          <li><span class="check-icon">✓</span>买入理由：至少 3 个独立理由支持买入</li>
+          <li><span class="check-icon">✓</span>仓位规划：单只股票不超过总仓位 20%</li>
+          <li><span class="check-icon">✓</span>止损设置：最大亏损不超过 15%，止损价明确</li>
+          <li><span class="check-icon">✓</span>目标价位：预期收益&gt;30%，目标价明确</li>
+          <li><span class="check-icon">✓</span>分批建仓：分 3-5 次完成建仓，不一次性买入</li>
+          <li><span class="check-icon">✓</span>情绪检查：不是因 FOMO 或冲动买入</li>
+          <li><span class="check-icon">✓</span>最坏情况：能接受本金损失 15% 吗？</li>
+        </ul>
+      </div>
+
+      <div class="checklist-category">
+        <h3>📈 持仓检查清单</h3>
+        <ul class="checklist-items">
+          <li><span class="check-icon">✓</span>每日（5 分钟）：快速浏览股价和重大新闻</li>
+          <li><span class="check-icon">✓</span>每周（30 分钟）：检查技术面和资金流向</li>
+          <li><span class="check-icon">✓</span>每月（2 小时）：复盘投资逻辑是否改变</li>
+          <li><span class="check-icon">✓</span>每季度（半天）：检查财报和行业动态</li>
+          <li><span class="check-icon">✓</span>持仓再平衡：单只股票超过 25% 时减仓</li>
+          <li><span class="check-icon">✓</span>止损执行：触及止损价坚决执行，不抱侥幸心理</li>
+          <li><span class="check-icon">✓</span>止盈执行：触及目标价分批止盈，不贪婪</li>
+        </ul>
+      </div>
+
+      <div class="checklist-category">
+        <h3>📉 卖出检查清单</h3>
+        <ul class="checklist-items">
+          <li><span class="check-icon">✓</span>止损卖出：亏损达到 15%，坚决卖出</li>
+          <li><span class="check-icon">✓</span>目标达成：达到目标价，分批止盈</li>
+          <li><span class="check-icon">✓</span>逻辑破坏：买入理由不再成立</li>
+          <li><span class="check-icon">✓</span>发现更好：有更具性价比的投资标的</li>
+          <li><span class="check-icon">✓</span>基本面恶化：连续 2 季度业绩不及预期</li>
+          <li><span class="check-icon">✓</span>估值过高：PE 远超历史均值 + 行业均值</li>
+          <li><span class="check-icon">✓</span>红色警报：财务造假/重大利空/监管处罚</li>
+        </ul>
+      </div>
+
+      <div class="checklist-category">
+        <h3>🛡️ 风险管理清单</h3>
+        <ul class="checklist-items">
+          <li><span class="check-icon">✓</span>组合分散：持有 8-15 只股票，不超过 5 个行业</li>
+          <li><span class="check-icon">✓</span>最大回撤：总仓位最大回撤不超过 20%</li>
+          <li><span class="check-icon">✓</span>现金储备：始终保持 20-30% 现金</li>
+          <li><span class="check-icon">✓</span>仓位控制：牛市 80-100%，震荡市 50-70%，熊市 20-40%</li>
+          <li><span class="check-icon">✓</span>情绪管理：不因贪婪/恐惧做出决策</li>
+          <li><span class="check-icon">✓</span>定期复盘：每月检查组合表现和风险敞口</li>
+        </ul>
+      </div>
+
+      <div class="checklist-category">
+        <h3>📝 投资复盘清单</h3>
+        <ul class="checklist-items">
+          <li><span class="check-icon">✓</span>交易记录：记录每笔交易的买入/卖出理由</li>
+          <li><span class="check-icon">✓</span>成功分析：盈利交易做对了什么？可复制吗？</li>
+          <li><span class="check-icon">✓</span>失败分析：亏损交易做错了什么？如何避免？</li>
+          <li><span class="check-icon">✓</span>情绪记录：买卖时的情绪状态（贪婪/恐惧/冷静）</li>
+          <li><span class="check-icon">✓</span>策略优化：根据复盘结果调整投资策略</li>
+          <li><span class="check-icon">✓</span>学习总结：本月学到了什么新东西？</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>💡 哈基偷的使用建议</h2>
+      <div style="background:var(--bg-secondary);padding:24px;border-radius:12px;">
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>打印出来：</strong>把清单打印贴在电脑旁，每次交易前逐项检查
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>电子化：</strong>用 Notion/印象笔记建立电子清单，方便更新
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>纪律执行：</strong>清单是底线，不是建议，违反就要付出代价
+        </p>
+        <p style="font-size:16px;line-height:1.8;">
+          <strong>持续优化：</strong>每半年复盘清单，根据实际情况调整
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/investment" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">
+        ← 返回投资知识库
+      </a>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loading = document.getElementById('loading');
+      if (loading) loading.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实战工具 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF;
+      --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF;
+      --border-color: #333333; --radius-lg: 12px; --radius-md: 8px;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo, .content-card, .content-card * { color: #E5E5E5 !important; }
+    .content-title { color: #FFFFFF !important; }
+    
+    .content-hero {
+      background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, var(--bg-primary) 100%);
+      padding: 60px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    .content-section h3 { font-size: 22px; margin: 32px 0 16px; color: #FFFFFF; }
+    .content-section p { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+    
+    .doc-card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 20px; margin: 20px 0;
+      transition: all 0.2s ease;
+    }
+    .doc-card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+    .doc-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #FFFFFF; }
+    .doc-excerpt { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    
+    .tool-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 24px 0; }
+    @media (min-width: 768px) { .tool-grid { grid-template-columns: repeat(2, 1fr); } }
+    
+    .tool-card {
+      background: var(--bg-primary); border: 1px solid var(--border-color);
+      border-radius: 8px; padding: 16px;
+    }
+    .tool-name { font-size: 16px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
+    .tool-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="active">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">首页</a> → 
+          <a href="/investment">投资知识库</a> → 
+          <span>实战工具</span>
+        </div>
+        <h1 style="font-size:40px;margin-bottom:16px;">🛠️ 实战工具</h1>
+        <p style="font-size:18px;color:#E5E5E5;">交易软件/量化平台/数据源/学习资源，实战必备工具清单</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📱 交易软件</h2>
+      
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-name">同花顺</div>
+          <p class="tool-desc">
+            <strong>特点：</strong>用户最多、功能全面、支持 A 股/港股/美股<br>
+            <strong>优势：</strong>数据齐全、技术指标丰富、支持条件单<br>
+            <strong>适合：</strong>新手入门、技术分析
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">东方财富</div>
+          <p class="tool-desc">
+            <strong>特点：</strong>资讯强大、社区活跃、支持基金/股票<br>
+            <strong>优势：</strong>财经新闻快、股吧讨论热烈、数据免费<br>
+            <strong>适合：</strong>资讯跟踪、社区交流
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">华泰证券（涨乐财富通）</div>
+          <p class="tool-desc">
+            <strong>特点：</strong>头部券商、交易稳定、佣金低<br>
+            <strong>优势：</strong>APP 体验好、智能条件单、投顾服务<br>
+            <strong>适合：</strong>实盘交易、长期投资
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">雪球</div>
+          <p class="tool-desc">
+            <strong>特点：</strong>投资社区、大 V 云集、组合跟踪<br>
+            <strong>优势：</strong>学习氛围好、组合策略多、信息质量高<br>
+            <strong>适合：</strong>学习交流、策略跟踪
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>💻 量化平台</h2>
+      
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-name">聚宽（JoinQuant）</div>
+          <p class="tool-desc">
+            <strong>特点：</strong>国内最大、社区活跃、文档完善<br>
+            <strong>优势：</strong>免费数据、在线回测、策略分享<br>
+            <strong>适合：</strong>量化入门、策略开发
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">米筐（RiceQuant）</div>
+          <p class="tool-desc">
+            <strong>特点：</strong>专业性强、数据准确、支持实盘<br>
+            <strong>优势：</strong>历史数据全、回测速度快、支持多品种<br>
+            <strong>适合：</strong>专业量化、实盘交易
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">优矿（Uqer）</div>
+          <p class="tool-desc">
+            <strong>特点：</strong>通联数据、基本面数据强<br>
+            <strong>优势：</strong>财务数据全、宏观数据多、支持研究<br>
+            <strong>适合：</strong>基本面量化、多因子研究
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">Backtrader</div>
+          <p class="tool-desc">
+            <strong>特点：</strong>开源框架、Python 库、灵活性强<br>
+            <strong>优势：</strong>免费、可本地运行、高度定制<br>
+            <strong>适合：</strong>编程能力强、需要定制策略
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📊 数据源</h2>
+      
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-name">Tushare</div>
+          <p class="tool-desc">
+            <strong>数据：</strong>A 股行情、财务数据、宏观数据<br>
+            <strong>费用：</strong>免费 + 积分制<br>
+            <strong>适合：</strong>个人投资者、量化研究
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">AKShare</div>
+          <p class="tool-desc">
+            <strong>数据：</strong>A 股/港股/美股、期货、外汇、基金<br>
+            <strong>费用：</strong>完全免费<br>
+            <strong>适合：</strong>数据获取、量化研究
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">聚宽数据</div>
+          <p class="tool-desc">
+            <strong>数据：</strong>股票、基金、期货、期权、加密货币<br>
+            <strong>费用：</strong>平台内免费<br>
+            <strong>适合：</strong>聚宽用户、在线回测
+          </p>
+        </div>
+        
+        <div class="tool-card">
+          <div class="tool-name">Wind（万得）</div>
+          <p class="tool-desc">
+            <strong>数据：</strong>全市场数据、专业金融终端<br>
+            <strong>费用：</strong>昂贵（机构使用）<br>
+            <strong>适合：</strong>专业机构、深度研究
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📚 学习资源</h2>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">书籍推荐</h3>
+        <p class="doc-excerpt">
+          <strong>入门：</strong>《小狗钱钱》《富爸爸穷爸爸》《漫步华尔街》<br>
+          <strong>进阶：</strong>《聪明的投资者》《彼得·林奇的成功投资》<br>
+          <strong>量化：</strong>《量化交易入门》《打开量化投资的黑箱》<br>
+          <strong>技术：</strong>《日本蜡烛图技术》《期货市场技术分析》
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">网站/社区</h3>
+        <p class="doc-excerpt">
+          <strong>资讯：</strong>财新网、华尔街见闻、金十数据<br>
+          <strong>社区：</strong>雪球、集思录、知乎投资话题<br>
+          <strong>数据：</strong>东方财富网、同花顺财经、巨潮资讯<br>
+          <strong>学习：</strong>Coursera 金融课程、B 站财经 UP 主
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">播客/公众号</h3>
+        <p class="doc-excerpt">
+          <strong>播客：</strong>《知行小酒馆》《疯投圈》《商业就是这样》<br>
+          <strong>公众号：</strong>券商中国、基金圈、量化投资与机器学习<br>
+          <strong>YouTube：</strong>CFA 协会、Investopedia、The Plain Bagel
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>💡 哈基偷的工具推荐</h2>
+      <div style="background:var(--bg-secondary);padding:24px;border-radius:12px;">
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>新手入门套餐：</strong>同花顺（看盘）+ 雪球（学习）+ 华泰证券（交易）
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>量化入门套餐：</strong>聚宽（回测）+ Tushare（数据）+ Python（编程）
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>信息获取：</strong>财新网（深度）+ 华尔街见闻（快讯）+ 雪球（讨论）
+        </p>
+        <p style="font-size:16px;line-height:1.8;">
+          <strong>学习建议：</strong>先读书建立框架，再用工具实践，持续学习更新认知
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/investment" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">
+        ← 返回投资知识库
+      </a>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loading = document.getElementById('loading');
+      if (loading) loading.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
