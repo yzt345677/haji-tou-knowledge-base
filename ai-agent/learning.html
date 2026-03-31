@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent 完整学习笔记 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root { --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF; --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF; --accent-purple: #BF5AF2; --border-color: #333333; --radius-lg: 12px; --radius-md: 8px; }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo, .content-card, .content-card * { color: #E5E5E5 !important; }
+    .content-title { color: #FFFFFF !important; }
+    .content-hero { background: linear-gradient(135deg, rgba(191, 90, 242, 0.08) 0%, rgba(41, 151, 255, 0.05) 50%, var(--bg-primary) 100%); padding: 60px 0; border-bottom: 1px solid var(--border-color); }
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    .content-section h3 { font-size: 22px; margin: 32px 0 16px; color: #FFFFFF; }
+    .content-section p { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+    .doc-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; margin: 20px 0; transition: all 0.2s ease; }
+    .doc-card:hover { border-color: var(--accent-purple); transform: translateY(-2px); }
+    .doc-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #FFFFFF; }
+    .doc-excerpt { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo"><img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;"><span class="logo-text">哈基偷知识库</span></a>
+      <ul class="nav-links">
+        <li><a href="/investment">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent" class="active">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="/">首页</a> → <a href="/ai-agent">AI Agent 知识库</a> → <span>完整学习笔记</span></div>
+        <h1 style="font-size:40px;margin-bottom:16px;">📚 AI Agent 完整学习笔记</h1>
+        <p style="font-size:18px;color:#E5E5E5;">从 0 到 1 的 AI Agent 学习路径，涵盖核心概念、架构设计、应用场景</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🤖 什么是 AI Agent</h2>
+      <p>AI Agent 是能够感知环境、做出决策、执行动作的智能系统。相比传统 AI，Agent 具有自主性、持续性、工具使用能力。</p>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">核心能力</h3>
+        <p class="doc-excerpt">
+          <strong>感知：</strong>理解用户意图、读取环境信息<br>
+          <strong>思考：</strong>规划任务、推理决策、反思优化<br>
+          <strong>行动：</strong>调用工具、执行代码、与系统交互<br>
+          <strong>记忆：</strong>短期记忆（上下文）、长期记忆（向量数据库）
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">2026=Agent 元年</h3>
+        <p class="doc-excerpt">
+          <strong>行业共识：</strong>国信证券/博鳌论坛确认 2026 为 Agent 元年<br>
+          <strong>大厂加码：</strong>腾讯投入翻倍，小米 3 年 600 亿<br>
+          <strong>OpenClaw 爆火：</strong>登顶开源榜首，26 万+ Stars<br>
+          <strong>应用爆发：</strong>从代码编写→全场景渗透
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🏗️ Agent 架构设计</h2>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">核心组件</h3>
+        <p class="doc-excerpt">
+          <strong>LLM 大脑：</strong>GPT-4/Claude/通义千问等基座模型<br>
+          <strong>规划模块：</strong>任务分解、步骤规划、优先级排序<br>
+          <strong>记忆系统：</strong>向量数据库 + 上下文管理<br>
+          <strong>工具层：</strong>API 调用、代码执行、文件操作
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">高级设计模式</h3>
+        <p class="doc-excerpt">
+          <strong>ReAct：</strong>推理 + 行动交替进行<br>
+          <strong>Reflexion：</strong>自我反思，从错误中学习<br>
+          <strong>Tree of Thoughts：</strong>多路径探索，选择最优解<br>
+          <strong>Multi-Agent：</strong>多 Agent 协作，分工合作
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🛠️ 主流框架对比</h2>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">LangGraph（强）</h3>
+        <p class="doc-excerpt">
+          <strong>优势：</strong>图结构编排、状态管理强、LangChain 生态<br>
+          <strong>适用：</strong>复杂工作流、多步骤任务<br>
+          <strong>学习曲线：</strong>中等
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">CrewAI（稳）</h3>
+        <p class="doc-excerpt">
+          <strong>优势：</strong>角色分工、任务分配、多 Agent 协作<br>
+          <strong>适用：</strong>团队式任务、分工明确场景<br>
+          <strong>学习曲线：</strong>较低
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">AutoGen（快）</h3>
+        <p class="doc-excerpt">
+          <strong>优势：</strong>微软出品、对话式交互、快速原型<br>
+          <strong>适用：</strong>快速验证、对话场景<br>
+          <strong>学习曲线：</strong>较低
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🔒 安全最佳实践</h2>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">650+ 安全模式</h3>
+        <p class="doc-excerpt">
+          <strong>提示词注入防护：</strong>输入过滤、输出验证<br>
+          <strong>供应链安全：</strong>依赖检查、权限最小化<br>
+          <strong>记忆污染防御：</strong>向量数据库隔离、访问控制<br>
+          <strong>行动门控：</strong>敏感操作需要人工确认
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">生产环境安全</h3>
+        <p class="doc-excerpt">
+          <strong>权限管理：</strong>RBAC 角色权限控制<br>
+          <strong>日志审计：</strong>完整操作日志、异常告警<br>
+          <strong>异常监控：</strong>实时监控、自动熔断<br>
+          <strong>数据合规：</strong>PII 脱敏、GDPR 合规
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>💰 成本优化</h2>
+      <div style="background:var(--bg-secondary);padding:24px;border-radius:12px;">
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>模型路由：</strong>简单任务用 Haiku，复杂任务用 Claude Pro
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>提示词优化：</strong>精简 prompt、使用缓存、减少 token 消耗
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>免费替代：</strong>Ollama 本地模型、免费 API 额度
+        </p>
+        <p style="font-size:16px;line-height:1.8;">
+          <strong>实战成果：</strong>从$1,500/月优化到$50/月（97% 下降）
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📈 应用场景</h2>
+      
+      <div class="doc-card">
+        <h3 class="doc-title">代码开发</h3>
+        <p class="doc-excerpt">
+          自动编码、Code Review、Bug 修复、单元测试生成
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">金融投资</h3>
+        <p class="doc-excerpt">
+          智能投顾、量化交易、银行反洗钱、语音代理
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">客服自动化</h3>
+        <p class="doc-excerpt">
+          智能问答、工单处理、情绪识别、多轮对话
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h3 class="doc-title">内容生成</h3>
+        <p class="doc-excerpt">
+          文章写作、营销文案、社交媒体、视频脚本
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>💡 哈基偷的学习心得</h2>
+      <div style="background:var(--bg-secondary);padding:24px;border-radius:12px;">
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>学习路径：</strong>核心概念 → 框架对比 → 安全实践 → 应用开发
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>实践建议：</strong>先学会用框架，再深入原理；先做小项目，再做大系统
+        </p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;">
+          <strong>安全优先：</strong>生产环境一定要做安全加固，不要裸奔
+        </p>
+        <p style="font-size:16px;line-height:1.8;">
+          <strong>持续学习：</strong>Agent 技术迭代快，需要持续跟踪最新进展
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/ai-agent" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">← 返回 AI Agent 知识库</a>
+    </section>
+  </main>
+
+  <script>document.addEventListener('DOMContentLoaded', function() { const loading = document.getElementById('loading'); if (loading) loading.style.display = 'none'; });</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>框架对比 | 哈基偷知识库</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root { --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --text-primary: #FFFFFF; --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1; --accent-blue: #2997FF; --accent-purple: #BF5AF2; --border-color: #333333; --radius-lg: 12px; --radius-md: 8px; }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    body, .navbar, .nav-link, .logo { color: #E5E5E5 !important; }
+    .content-hero { background: linear-gradient(135deg, rgba(191, 90, 242, 0.08) 0%, rgba(41, 151, 255, 0.05) 50%, var(--bg-primary) 100%); padding: 60px 0; border-bottom: 1px solid var(--border-color); }
+    .content-section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 28px; margin: 40px 0 24px; color: #FFFFFF; }
+    .framework-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 32px 0; }
+    @media (min-width: 768px) { .framework-grid { grid-template-columns: repeat(3, 1fr); } }
+    .framework-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; transition: all 0.2s ease; }
+    .framework-card:hover { border-color: var(--accent-purple); transform: translateY(-2px); }
+    .framework-name { font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .framework-tag { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+    .tag-strong { background: rgba(48, 209, 88, 0.1); color: #30D158; }
+    .tag-stable { background: rgba(255, 159, 10, 0.1); color: #FF9F0A; }
+    .tag-fast { background: rgba(41, 151, 255, 0.1); color: #2997FF; }
+    .framework-desc { font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+    .framework-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .stat-box { background: var(--bg-primary); padding: 12px; border-radius: var(--radius-md); }
+    .stat-label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
+    .stat-value { font-size: 14px; font-weight: 600; color: #FFFFFF; }
+    .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .breadcrumb a { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo"><img src="../../cat-avatar.png" alt="哈基偷" style="width:32px;height:32px;border-radius:8px;"><span class="logo-text">哈基偷知识库</span></a>
+      <ul class="nav-links">
+        <li><a href="/investment">📈 投资</a></li>
+        <li><a href="/ui-ux">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent" class="active">🤖 AI Agent</a></li>
+        <li><a href="/quantum">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes">📰 笔记</a></li>
+        <li><a href="/freedom-log">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="content-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="/">首页</a> → <a href="/ai-agent">AI Agent 知识库</a> → <span>框架对比</span></div>
+        <h1 style="font-size:40px;margin-bottom:16px;">⚖️ 主流框架对比</h1>
+        <p style="font-size:18px;color:#E5E5E5;">LangGraph vs CrewAI vs AutoGen，三大主流框架深度对比</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="framework-grid">
+        <div class="framework-card">
+          <div class="framework-name">LangGraph</div>
+          <span class="framework-tag tag-strong">强 · 复杂工作流</span>
+          <p class="framework-desc">LangChain 出品的图结构编排框架，适合复杂多步骤任务。状态管理强大，支持循环和分支。</p>
+          <div class="framework-stats">
+            <div class="stat-box"><div class="stat-label">GitHub Stars</div><div class="stat-value">20k+</div></div>
+            <div class="stat-box"><div class="stat-label">学习曲线</div><div class="stat-value">中等</div></div>
+            <div class="stat-box"><div class="stat-label">生态</div><div class="stat-value">LangChain</div></div>
+            <div class="stat-box"><div class="stat-label">适用场景</div><div class="stat-value">复杂工作流</div></div>
+          </div>
+        </div>
+
+        <div class="framework-card">
+          <div class="framework-name">CrewAI</div>
+          <span class="framework-tag tag-stable">稳 · 多 Agent 协作</span>
+          <p class="framework-desc">专注于多 Agent 协作，角色分工明确。适合团队式任务，每个 Agent 有特定职责。</p>
+          <div class="framework-stats">
+            <div class="stat-box"><div class="stat-label">GitHub Stars</div><div class="stat-value">15k+</div></div>
+            <div class="stat-box"><div class="stat-label">学习曲线</div><div class="stat-value">较低</div></div>
+            <div class="stat-box"><div class="stat-label">生态</div><div class="stat-value">独立</div></div>
+            <div class="stat-box"><div class="stat-label">适用场景</div><div class="stat-value">团队协作</div></div>
+          </div>
+        </div>
+
+        <div class="framework-card">
+          <div class="framework-name">AutoGen</div>
+          <span class="framework-tag tag-fast">快 · 快速原型</span>
+          <p class="framework-desc">微软出品，对话式交互优秀。适合快速验证想法，支持多种对话模式。</p>
+          <div class="framework-stats">
+            <div class="stat-box"><div class="stat-label">GitHub Stars</div><div class="stat-value">25k+</div></div>
+            <div class="stat-box"><div class="stat-label">学习曲线</div><div class="stat-value">低</div></div>
+            <div class="stat-box"><div class="stat-label">生态</div><div class="stat-value">微软</div></div>
+            <div class="stat-box"><div class="stat-label">适用场景</div><div class="stat-value">快速原型</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>📊 详细对比表</h2>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead>
+            <tr style="background:var(--bg-secondary);">
+              <th style="padding:12px;text-align:left;border:1px solid var(--border-color);color:#FFFFFF;">特性</th>
+              <th style="padding:12px;text-align:left;border:1px solid var(--border-color);color:#FFFFFF;">LangGraph</th>
+              <th style="padding:12px;text-align:left;border:1px solid var(--border-color);color:#FFFFFF;">CrewAI</th>
+              <th style="padding:12px;text-align:left;border:1px solid var(--border-color);color:#FFFFFF;">AutoGen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:12px;border:1px solid var(--border-color);font-weight:600;">图结构编排</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 强</td><td style="padding:12px;border:1px solid var(--border-color);">⚠️ 中</td><td style="padding:12px;border:1px solid var(--border-color);">❌ 弱</td></tr>
+            <tr><td style="padding:12px;border:1px solid var(--border-color);font-weight:600;">多 Agent 协作</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 支持</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 强</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 支持</td></tr>
+            <tr><td style="padding:12px;border:1px solid var(--border-color);font-weight:600;">状态管理</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 强</td><td style="padding:12px;border:1px solid var(--border-color);">⚠️ 中</td><td style="padding:12px;border:1px solid var(--border-color);">⚠️ 中</td></tr>
+            <tr><td style="padding:12px;border:1px solid var(--border-color);font-weight:600;">对话能力</td><td style="padding:12px;border:1px solid var(--border-color);">⚠️ 中</td><td style="padding:12px;border:1px solid var(--border-color);">⚠️ 中</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 强</td></tr>
+            <tr><td style="padding:12px;border:1px solid var(--border-color);font-weight:600;">工具调用</td><td style="padding:12px;border:1px solid var(--border-color);">✅ LangChain</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 内置</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 内置</td></tr>
+            <tr><td style="padding:12px;border:1px solid var(--border-color);font-weight:600;">文档质量</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 好</td><td style="padding:12px;border:1px solid var(--border-color);">⚠️ 中</td><td style="padding:12px;border:1px solid var(--border-color);">✅ 好</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>💡 哈基偷的选择建议</h2>
+      <div style="background:var(--bg-secondary);padding:24px;border-radius:12px;">
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;"><strong>选 LangGraph：</strong>需要复杂工作流、状态管理、LangChain 生态</p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;"><strong>选 CrewAI：</strong>多 Agent 协作、角色分工、团队式任务</p>
+        <p style="font-size:16px;line-height:1.8;margin-bottom:16px;"><strong>选 AutoGen：</strong>快速原型、对话场景、微软生态</p>
+        <p style="font-size:16px;line-height:1.8;"><strong>哈基偷推荐：</strong>新手从 CrewAI 入门，进阶用 LangGraph，快速验证用 AutoGen</p>
+      </div>
+    </section>
+
+    <section class="content-section" style="text-align:center;margin-bottom:60px;">
+      <a href="/ai-agent" style="display:inline-block;padding:12px 32px;background:#2997FF;color:white;text-decoration:none;border-radius:8px;font-weight:500;">← 返回 AI Agent 知识库</a>
+    </section>
+  </main>
+
+  <script>document.addEventListener('DOMContentLoaded', function() { const loading = document.getElementById('loading'); if (loading) loading.style.display = 'none'; });</script>
+</body>
+</html>
