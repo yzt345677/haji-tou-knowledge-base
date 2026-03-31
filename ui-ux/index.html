@@ -9,6 +9,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* 强制覆盖所有蓝色链接 */
+    a, a:visited, a:hover, a:active {
+      color: #E5E5E5 !important;
+      text-decoration: none !important;
+    }
+    
+    a:hover {
+      color: #FFFFFF !important;
+    }
+    
+    /* 强制白色文字 */
+    body, .navbar, .nav-link, .logo, .logo-text,
+    .module-card, .module-card *, .principle-card, .principle-card *,
+    .case-card, .case-card *, .style-item, .style-item *,
+    .checklist-item, .checklist-item *, .stat-box, .stat-box *,
+    .batch-card, .batch-card *, .timeline-item, .timeline-item * {
+      color: #E5E5E5 !important;
+    }
+    
+    .module-title, .principle-title, .case-title, .style-name,
+    .batch-number, .stat-box-value, .hero-title {
+      color: #FFFFFF !important;
+    }
+    
+    .module-tag, .case-tag, .principle-topic {
+      color: #2997FF !important;
+    }
+  </style>
+  <style>
     /* UI/UX 知识库专属样式 */
     :root {
   --bg-primary: #0D0D0D;
