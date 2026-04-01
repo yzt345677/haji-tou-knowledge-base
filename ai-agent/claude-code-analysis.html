@@ -459,31 +459,33 @@
         </div>
       </div>
 
-      <div class="code-block"><span class="comment">// GrepTool 实现示例</span>
-<span class="keyword">export class</span> <span class="type">GrepTool</span> {
-  <span class="keyword">async</span> <span class="function">call</span>(args, context) {
-    <span class="comment">// 1. 验证输入参数</span>
-    <span class="keyword">const</span> { pattern, path, include, exclude } = args;
-    
-    <span class="comment">// 2. 构建 ripgrep 命令</span>
-    <span class="keyword">const</span> rgArgs = [
-      <span class="string">'--json'</span>,           <span class="comment">// JSON 输出便于解析</span>
-      <span class="string">'--max-count'</span>, <span class="string">'100'</span>, <span class="comment">// 限制结果数量</span>
-      <span class="string">'--context'</span>, <span class="string">'2'</span>,     <span class="comment">// 显示上下文</span>
-      pattern,
-      path || <span class="string">'.'</span>
-    ];
-    
-    <span class="comment">// 3. 执行搜索</span>
-    <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="function">execRipgrep</span>(rgArgs);
-    
-    <span class="comment">// 4. 格式化输出（可折叠）</span>
-    <span class="keyword">return</span> {
-      data: <span class="function">formatGrepResults</span>(result),
-      isCollapsible: <span class="keyword">true</span>  <span class="comment">// 标记为可折叠</span>
-    };
-  }
-}</div>
+      <div class="code-block">
+            <div class="code-line"><span class="comment">// GrepTool 实现示例</span></div>
+            <div class="code-line"><span class="keyword">export class</span> <span class="type">GrepTool</span> {</div>
+            <div class="code-line"><span class="keyword">async</span> <span class="function">call</span>(args, context) {</div>
+            <div class="code-line"><span class="comment">// 1. 验证输入参数</span></div>
+            <div class="code-line"><span class="keyword">const</span> { pattern, path, include, exclude } = args;</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 2. 构建 ripgrep 命令</span></div>
+            <div class="code-line"><span class="keyword">const</span> rgArgs = [</div>
+            <div class="code-line"><span class="string">'--json'</span>,           <span class="comment">// JSON 输出便于解析</span></div>
+            <div class="code-line"><span class="string">'--max-count'</span>, <span class="string">'100'</span>, <span class="comment">// 限制结果数量</span></div>
+            <div class="code-line"><span class="string">'--context'</span>, <span class="string">'2'</span>,     <span class="comment">// 显示上下文</span></div>
+            <div class="code-line">pattern,</div>
+            <div class="code-line">path || <span class="string">'.'</span></div>
+            <div class="code-line">];</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 3. 执行搜索</span></div>
+            <div class="code-line"><span class="keyword">const</span> result = <span class="keyword">await</span> <span class="function">execRipgrep</span>(rgArgs);</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 4. 格式化输出（可折叠）</span></div>
+            <div class="code-line"><span class="keyword">return</span> {</div>
+            <div class="code-line">data: <span class="function">formatGrepResults</span>(result),</div>
+            <div class="code-line">isCollapsible: <span class="keyword">true</span>  <span class="comment">// 标记为可折叠</span></div>
+            <div class="code-line">};</div>
+            <div class="code-line">}</div>
+            <div class="code-line">}</div>
+          </div>
 
       <h3 style="font-size:20px;margin:32px 0 16px;">📊 命令分类与可折叠显示</h3>
       
@@ -520,13 +522,15 @@
       
       <h3 style="font-size:20px;margin:32px 0 16px;">📋 FileEditTool 实现模式</h3>
       
-      <div class="code-block"><span class="comment">// FileEditTool 输入参数</span>
-<span class="keyword">const</span> inputSchema = z.strictObject({
-  path: z.string().describe(<span class="string">'File path to edit'</span>),
-  old_text: z.string().describe(<span class="string">'Text to replace'</span>),
-  new_text: z.string().describe(<span class="string">'Replacement text'</span>),
-  multiple_replaces: z.boolean().optional().describe(<span class="string">'Allow multiple occurrences'</span>),
-})</div>
+      <div class="code-block">
+            <div class="code-line"><span class="comment">// FileEditTool 输入参数</span></div>
+            <div class="code-line"><span class="keyword">const</span> inputSchema = z.strictObject({</div>
+            <div class="code-line">path: z.string().describe(<span class="string">'File path to edit'</span>),</div>
+            <div class="code-line">old_text: z.string().describe(<span class="string">'Text to replace'</span>),</div>
+            <div class="code-line">new_text: z.string().describe(<span class="string">'Replacement text'</span>),</div>
+            <div class="code-line">multiple_replaces: z.boolean().optional().describe(<span class="string">'Allow multiple occurrences'</span>),</div>
+            <div class="code-line">})</div>
+          </div>
 
       <h3 style="font-size:20px;margin:32px 0 16px;">🔄 多轮对话修正机制</h3>
       
@@ -768,61 +772,65 @@
       
       <h3 style="font-size:20px;margin:32px 0 16px;">📐 Tool.ts 核心类型定义</h3>
       
-      <div class="code-block"><span class="keyword">export type</span> Tool&lt;Input, Output, P&gt; = {
-  <span class="comment">// 基础信息</span>
-  name: <span class="type">string</span>
-  aliases?: <span class="type">string</span>[]
-  searchHint?: <span class="type">string</span>  <span class="comment">// ToolSearch 关键词</span>
-  
-  <span class="comment">// 核心方法</span>
-  <span class="function">call</span>(
-    args: z.infer&lt;Input&gt;,
-    context: ToolUseContext,
-    canUseTool: CanUseToolFn,
-    parentMessage: AssistantMessage,
-    onProgress?: ToolCallProgress&lt;P&gt;
-  ): <span class="type">Promise</span>&lt;ToolResult&lt;Output&gt;&gt;
-  
-  <span class="function">description</span>(input, options): <span class="type">Promise</span>&lt;<span class="type">string</span>&gt;
-  
-  <span class="comment">// Schema 验证</span>
-  inputSchema: Input
-  inputJSONSchema?: ToolInputJSONSchema
-  outputSchema?: z.ZodType&lt;unknown&gt;
-  
-  <span class="comment">// 安全控制</span>
-  <span class="function">isConcurrencySafe</span>(input): <span class="type">boolean</span>
-  <span class="function">isReadOnly</span>(input): <span class="type">boolean</span>
-  <span class="function">isDestructive</span>?(input): <span class="type">boolean</span>
-  <span class="function">checkPermissions</span>(input, context): <span class="type">Promise</span>&lt;PermissionResult&gt;
-  <span class="function">validateInput</span>?(input, context): <span class="type">Promise</span>&lt;ValidationResult&gt;
-  
-  <span class="comment">// UI 渲染</span>
-  <span class="function">renderToolUseMessage</span>(input, options): React.ReactNode
-  <span class="function">renderToolResultMessage</span>(content, progressMessages, options): React.ReactNode
-  <span class="function">renderToolUseProgressMessage</span>?(progressMessages, options): React.ReactNode
-  
-  <span class="comment">// 高级功能</span>
-  <span class="function">interruptBehavior</span>?(): <span class="type">'cancel'</span> | <span class="type">'block'</span>
-  <span class="function">isSearchOrReadCommand</span>?(input): {isSearch, isRead, isList}
-  <span class="function">toAutoClassifierInput</span>(input): unknown  <span class="comment">// 安全分类器</span>
-}</div>
+      <div class="code-block">
+            <div class="code-line"><span class="keyword">export type</span> Tool&lt;Input, Output, P&gt; = {</div>
+            <div class="code-line"><span class="comment">// 基础信息</span></div>
+            <div class="code-line">name: <span class="type">string</span></div>
+            <div class="code-line">aliases?: <span class="type">string</span>[]</div>
+            <div class="code-line">searchHint?: <span class="type">string</span>  <span class="comment">// ToolSearch 关键词</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 核心方法</span></div>
+            <div class="code-line"><span class="function">call</span>(</div>
+            <div class="code-line">args: z.infer&lt;Input&gt;,</div>
+            <div class="code-line">context: ToolUseContext,</div>
+            <div class="code-line">canUseTool: CanUseToolFn,</div>
+            <div class="code-line">parentMessage: AssistantMessage,</div>
+            <div class="code-line">onProgress?: ToolCallProgress&lt;P&gt;</div>
+            <div class="code-line">): <span class="type">Promise</span>&lt;ToolResult&lt;Output&gt;&gt;</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="function">description</span>(input, options): <span class="type">Promise</span>&lt;<span class="type">string</span>&gt;</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// Schema 验证</span></div>
+            <div class="code-line">inputSchema: Input</div>
+            <div class="code-line">inputJSONSchema?: ToolInputJSONSchema</div>
+            <div class="code-line">outputSchema?: z.ZodType&lt;unknown&gt;</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 安全控制</span></div>
+            <div class="code-line"><span class="function">isConcurrencySafe</span>(input): <span class="type">boolean</span></div>
+            <div class="code-line"><span class="function">isReadOnly</span>(input): <span class="type">boolean</span></div>
+            <div class="code-line"><span class="function">isDestructive</span>?(input): <span class="type">boolean</span></div>
+            <div class="code-line"><span class="function">checkPermissions</span>(input, context): <span class="type">Promise</span>&lt;PermissionResult&gt;</div>
+            <div class="code-line"><span class="function">validateInput</span>?(input, context): <span class="type">Promise</span>&lt;ValidationResult&gt;</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// UI 渲染</span></div>
+            <div class="code-line"><span class="function">renderToolUseMessage</span>(input, options): React.ReactNode</div>
+            <div class="code-line"><span class="function">renderToolResultMessage</span>(content, progressMessages, options): React.ReactNode</div>
+            <div class="code-line"><span class="function">renderToolUseProgressMessage</span>?(progressMessages, options): React.ReactNode</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 高级功能</span></div>
+            <div class="code-line"><span class="function">interruptBehavior</span>?(): <span class="type">'cancel'</span> | <span class="type">'block'</span></div>
+            <div class="code-line"><span class="function">isSearchOrReadCommand</span>?(input): {isSearch, isRead, isList}</div>
+            <div class="code-line"><span class="function">toAutoClassifierInput</span>(input): unknown  <span class="comment">// 安全分类器</span></div>
+            <div class="code-line">}</div>
+          </div>
 
       <h3 style="font-size:20px;margin:32px 0 16px;">🏭 buildTool 工厂函数</h3>
       
-      <div class="code-block"><span class="keyword">const</span> TOOL_DEFAULTS = {
-  isEnabled: () => <span class="keyword">true</span>,
-  isConcurrencySafe: () => <span class="keyword">false</span>,  <span class="comment">// 默认不安全 (fail-closed)</span>
-  isReadOnly: () => <span class="keyword">false</span>,          <span class="comment">// 默认写操作</span>
-  isDestructive: () => <span class="keyword">false</span>,       <span class="comment">// 默认非破坏性</span>
-  checkPermissions: (input) => ({behavior: <span class="string">'allow'</span>, updatedInput: input}),
-  toAutoClassifierInput: () => <span class="string">''</span>,
-  userFacingName: () => def.name,
-}
-
-<span class="keyword">export function</span> <span class="function">buildTool</span>&lt;D&gt;(def: D): BuiltTool&lt;D&gt; {
-  <span class="keyword">return</span> {...TOOL_DEFAULTS, ...def}
-}</div>
+      <div class="code-block">
+            <div class="code-line"><span class="keyword">const</span> TOOL_DEFAULTS = {</div>
+            <div class="code-line">isEnabled: () => <span class="keyword">true</span>,</div>
+            <div class="code-line">isConcurrencySafe: () => <span class="keyword">false</span>,  <span class="comment">// 默认不安全 (fail-closed)</span></div>
+            <div class="code-line">isReadOnly: () => <span class="keyword">false</span>,          <span class="comment">// 默认写操作</span></div>
+            <div class="code-line">isDestructive: () => <span class="keyword">false</span>,       <span class="comment">// 默认非破坏性</span></div>
+            <div class="code-line">checkPermissions: (input) => ({behavior: <span class="string">'allow'</span>, updatedInput: input}),</div>
+            <div class="code-line">toAutoClassifierInput: () => <span class="string">''</span>,</div>
+            <div class="code-line">userFacingName: () => def.name,</div>
+            <div class="code-line">}</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="keyword">export function</span> <span class="function">buildTool</span>&lt;D&gt;(def: D): BuiltTool&lt;D&gt; {</div>
+            <div class="code-line"><span class="keyword">return</span> {...TOOL_DEFAULTS, ...def}</div>
+            <div class="code-line">}</div>
+          </div>
 
       <div class="callout">
         <div class="callout-title">🛡️ 安全设计原则</div>
@@ -903,13 +911,15 @@
       
       <h3 style="font-size:20px;margin:32px 0 16px;">📋 BashTool 输入参数</h3>
       
-      <div class="code-block"><span class="keyword">const</span> inputSchema = z.strictObject({
-  command: z.string().describe(<span class="string">'The command to execute'</span>),
-  timeout: z.number().optional().describe(<span class="string">'Optional timeout in milliseconds'</span>),
-  description: z.string().optional().describe(<span class="string">'Clear description of what this command does'</span>),
-  run_in_background: z.boolean().optional().describe(<span class="string">'Run command in background'</span>),
-  dangerouslyDisableSandbox: z.boolean().optional().describe(<span class="string">'Override sandbox mode'</span>),
-})</div>
+      <div class="code-block">
+            <div class="code-line"><span class="keyword">const</span> inputSchema = z.strictObject({</div>
+            <div class="code-line">command: z.string().describe(<span class="string">'The command to execute'</span>),</div>
+            <div class="code-line">timeout: z.number().optional().describe(<span class="string">'Optional timeout in milliseconds'</span>),</div>
+            <div class="code-line">description: z.string().optional().describe(<span class="string">'Clear description of what this command does'</span>),</div>
+            <div class="code-line">run_in_background: z.boolean().optional().describe(<span class="string">'Run command in background'</span>),</div>
+            <div class="code-line">dangerouslyDisableSandbox: z.boolean().optional().describe(<span class="string">'Override sandbox mode'</span>),</div>
+            <div class="code-line">})</div>
+          </div>
 
       <h3 style="font-size:20px;margin:32px 0 16px;">🛡️ 6 层安全架构</h3>
       
@@ -1046,24 +1056,26 @@
       
       <h3 style="font-size:20px;margin:32px 0 16px;">📦 内置技能列表</h3>
       
-      <div class="code-block"><span class="keyword">export function</span> <span class="function">initBundledSkills</span>(): <span class="type">void</span> {
-  <span class="function">registerUpdateConfigSkill</span>()      <span class="comment">// 配置更新</span>
-  <span class="function">registerKeybindingsSkill</span>()     <span class="comment">// 快捷键</span>
-  <span class="function">registerVerifySkill</span>()         <span class="comment">// 代码验证</span>
-  <span class="function">registerDebugSkill</span>()          <span class="comment">// 调试</span>
-  <span class="function">registerLoremIpsumSkill</span>()     <span class="comment">// 占位文本</span>
-  <span class="function">registerSkillifySkill</span>()       <span class="comment">// 技能生成</span>
-  <span class="function">registerRememberSkill</span>()       <span class="comment">// 记忆</span>
-  <span class="function">registerSimplifySkill</span>()       <span class="comment">// 简化</span>
-  <span class="function">registerBatchSkill</span>()          <span class="comment">// 批量处理</span>
-  <span class="function">registerStuckSkill</span>()          <span class="comment">// 卡住求助</span>
-  
-  <span class="comment">// 特性门控技能</span>
-  <span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'KAIROS'</span>)) <span class="function">registerDreamSkill</span>()
-  <span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'REVIEW_ARTIFACT'</span>)) <span class="function">registerHunterSkill</span>()
-  <span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'AGENT_TRIGGERS'</span>)) <span class="function">registerLoopSkill</span>()
-  <span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'BUILDING_CLAUDE_APPS'</span>)) <span class="function">registerClaudeApiSkill</span>()
-}</div>
+      <div class="code-block">
+            <div class="code-line"><span class="keyword">export function</span> <span class="function">initBundledSkills</span>(): <span class="type">void</span> {</div>
+            <div class="code-line"><span class="function">registerUpdateConfigSkill</span>()      <span class="comment">// 配置更新</span></div>
+            <div class="code-line"><span class="function">registerKeybindingsSkill</span>()     <span class="comment">// 快捷键</span></div>
+            <div class="code-line"><span class="function">registerVerifySkill</span>()         <span class="comment">// 代码验证</span></div>
+            <div class="code-line"><span class="function">registerDebugSkill</span>()          <span class="comment">// 调试</span></div>
+            <div class="code-line"><span class="function">registerLoremIpsumSkill</span>()     <span class="comment">// 占位文本</span></div>
+            <div class="code-line"><span class="function">registerSkillifySkill</span>()       <span class="comment">// 技能生成</span></div>
+            <div class="code-line"><span class="function">registerRememberSkill</span>()       <span class="comment">// 记忆</span></div>
+            <div class="code-line"><span class="function">registerSimplifySkill</span>()       <span class="comment">// 简化</span></div>
+            <div class="code-line"><span class="function">registerBatchSkill</span>()          <span class="comment">// 批量处理</span></div>
+            <div class="code-line"><span class="function">registerStuckSkill</span>()          <span class="comment">// 卡住求助</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 特性门控技能</span></div>
+            <div class="code-line"><span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'KAIROS'</span>)) <span class="function">registerDreamSkill</span>()</div>
+            <div class="code-line"><span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'REVIEW_ARTIFACT'</span>)) <span class="function">registerHunterSkill</span>()</div>
+            <div class="code-line"><span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'AGENT_TRIGGERS'</span>)) <span class="function">registerLoopSkill</span>()</div>
+            <div class="code-line"><span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'BUILDING_CLAUDE_APPS'</span>)) <span class="function">registerClaudeApiSkill</span>()</div>
+            <div class="code-line">}</div>
+          </div>
 
       <div class="callout">
         <div class="callout-title">💡 设计特点</div>
@@ -1083,32 +1095,34 @@
       
       <h3 style="font-size:20px;margin:32px 0 16px;">🎯 核心概念</h3>
       
-      <div class="code-block"><span class="keyword">export function</span> <span class="function">isCoordinatorMode</span>(): <span class="type">boolean</span> {
-  <span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'COORDINATOR_MODE'</span>)) {
-    <span class="keyword">return</span> <span class="function">isEnvTruthy</span>(process.env.CLAUDE_CODE_COORDINATOR_MODE)
-  }
-  <span class="keyword">return</span> <span class="keyword">false</span>
-}
-
-<span class="keyword">export function</span> <span class="function">getCoordinatorSystemPrompt</span>(): <span class="type">string</span> {
-  <span class="keyword">return</span> `<span class="type">You are Claude Code, an AI assistant that orchestrates tasks across multiple workers.</span>
-
-<span class="type">## Your Role</span>
-<span class="type">- Direct workers to research, implement and verify</span>
-<span class="type">- Synthesize results and communicate with user</span>
-<span class="type">- Answer questions directly when possible</span>
-
-<span class="type">## Tools</span>
-<span class="type">- AgentTool — Spawn a new worker</span>
-<span class="type">- SendMessageTool — Continue an existing worker</span>
-<span class="type">- TaskStopTool — Stop a running worker</span>
-
-<span class="type">## Workflow</span>
-<span class="type">1. Research — Workers (parallel)</span>
-<span class="type">2. Synthesis — You (coordinator)</span>
-<span class="type">3. Implementation — Workers</span>
-<span class="type">4. Verification — Workers</span>`
-}</div>
+      <div class="code-block">
+            <div class="code-line"><span class="keyword">export function</span> <span class="function">isCoordinatorMode</span>(): <span class="type">boolean</span> {</div>
+            <div class="code-line"><span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'COORDINATOR_MODE'</span>)) {</div>
+            <div class="code-line"><span class="keyword">return</span> <span class="function">isEnvTruthy</span>(process.env.CLAUDE_CODE_COORDINATOR_MODE)</div>
+            <div class="code-line">}</div>
+            <div class="code-line"><span class="keyword">return</span> <span class="keyword">false</span></div>
+            <div class="code-line">}</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="keyword">export function</span> <span class="function">getCoordinatorSystemPrompt</span>(): <span class="type">string</span> {</div>
+            <div class="code-line"><span class="keyword">return</span> `<span class="type">You are Claude Code, an AI assistant that orchestrates tasks across multiple workers.</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="type">## Your Role</span></div>
+            <div class="code-line"><span class="type">- Direct workers to research, implement and verify</span></div>
+            <div class="code-line"><span class="type">- Synthesize results and communicate with user</span></div>
+            <div class="code-line"><span class="type">- Answer questions directly when possible</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="type">## Tools</span></div>
+            <div class="code-line"><span class="type">- AgentTool — Spawn a new worker</span></div>
+            <div class="code-line"><span class="type">- SendMessageTool — Continue an existing worker</span></div>
+            <div class="code-line"><span class="type">- TaskStopTool — Stop a running worker</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="type">## Workflow</span></div>
+            <div class="code-line"><span class="type">1. Research — Workers (parallel)</span></div>
+            <div class="code-line"><span class="type">2. Synthesis — You (coordinator)</span></div>
+            <div class="code-line"><span class="type">3. Implementation — Workers</span></div>
+            <div class="code-line"><span class="type">4. Verification — Workers</span>`</div>
+            <div class="code-line">}</div>
+          </div>
 
       <h3 style="font-size:20px;margin:32px 0 16px;">🔄 多 Agent 协作流程</h3>
       
@@ -1210,32 +1224,34 @@ Worker 完成 → &lt;task-notification&gt; 消息
 
       <h3 style="font-size:20px;margin:32px 0 16px;">🔧 建议实现</h3>
       
-      <div class="code-block"><span class="comment">// OpenClaw Tool 基类（建议）</span>
-<span class="keyword">abstract class</span> <span class="type">BaseTool</span> {
-  <span class="keyword">abstract</span> name: <span class="type">string</span>
-  <span class="keyword">abstract</span> <span class="function">call</span>(args, context): <span class="type">Promise</span>&lt;ToolResult&gt;
-  
-  <span class="comment">// 安全控制（默认 fail-closed）</span>
-  <span class="function">isConcurrencySafe</span>(): <span class="type">boolean</span> { <span class="keyword">return</span> <span class="keyword">false</span> }
-  <span class="function">isReadOnly</span>(): <span class="type">boolean</span> { <span class="keyword">return</span> <span class="keyword">false</span> }
-  <span class="function">isDestructive</span>(): <span class="type">boolean</span> { <span class="keyword">return</span> <span class="keyword">false</span> }
-  
-  <span class="comment">// UI 渲染（可选）</span>
-  <span class="function">renderProgress</span>?(progress): React.ReactNode
-  <span class="function">renderResult</span>?(result): React.ReactNode
-}
-
-<span class="comment">// OpenClaw 技能注册（建议）</span>
-<span class="keyword">function</span> <span class="function">initBundledSkills</span>(): <span class="type">void</span> {
-  <span class="function">registerTokenOptimizerSkill</span>()  <span class="comment">// Token 优化</span>
-  <span class="function">registerPromptGuardSkill</span>()     <span class="comment">// 安全防御</span>
-  <span class="function">registerHealthcheckSkill</span>()     <span class="comment">// 健康检查</span>
-  <span class="function">registerWeatherSkill</span>()         <span class="comment">// 天气查询</span>
-  
-  <span class="comment">// 特性门控</span>
-  <span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'TTS'</span>)) <span class="function">registerTtsSkill</span>()
-  <span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'BROWSER'</span>)) <span class="function">registerBrowserSkill</span>()
-}</div>
+      <div class="code-block">
+            <div class="code-line"><span class="comment">// OpenClaw Tool 基类（建议）</span></div>
+            <div class="code-line"><span class="keyword">abstract class</span> <span class="type">BaseTool</span> {</div>
+            <div class="code-line"><span class="keyword">abstract</span> name: <span class="type">string</span></div>
+            <div class="code-line"><span class="keyword">abstract</span> <span class="function">call</span>(args, context): <span class="type">Promise</span>&lt;ToolResult&gt;</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 安全控制（默认 fail-closed）</span></div>
+            <div class="code-line"><span class="function">isConcurrencySafe</span>(): <span class="type">boolean</span> { <span class="keyword">return</span> <span class="keyword">false</span> }</div>
+            <div class="code-line"><span class="function">isReadOnly</span>(): <span class="type">boolean</span> { <span class="keyword">return</span> <span class="keyword">false</span> }</div>
+            <div class="code-line"><span class="function">isDestructive</span>(): <span class="type">boolean</span> { <span class="keyword">return</span> <span class="keyword">false</span> }</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// UI 渲染（可选）</span></div>
+            <div class="code-line"><span class="function">renderProgress</span>?(progress): React.ReactNode</div>
+            <div class="code-line"><span class="function">renderResult</span>?(result): React.ReactNode</div>
+            <div class="code-line">}</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// OpenClaw 技能注册（建议）</span></div>
+            <div class="code-line"><span class="keyword">function</span> <span class="function">initBundledSkills</span>(): <span class="type">void</span> {</div>
+            <div class="code-line"><span class="function">registerTokenOptimizerSkill</span>()  <span class="comment">// Token 优化</span></div>
+            <div class="code-line"><span class="function">registerPromptGuardSkill</span>()     <span class="comment">// 安全防御</span></div>
+            <div class="code-line"><span class="function">registerHealthcheckSkill</span>()     <span class="comment">// 健康检查</span></div>
+            <div class="code-line"><span class="function">registerWeatherSkill</span>()         <span class="comment">// 天气查询</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="comment">// 特性门控</span></div>
+            <div class="code-line"><span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'TTS'</span>)) <span class="function">registerTtsSkill</span>()</div>
+            <div class="code-line"><span class="keyword">if</span> (<span class="function">feature</span>(<span class="string">'BROWSER'</span>)) <span class="function">registerBrowserSkill</span>()</div>
+            <div class="code-line">}</div>
+          </div>
 
       <h3 style="font-size:20px;margin:32px 0 16px;">🤖 协调器模式借鉴</h3>
       
