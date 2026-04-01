@@ -139,6 +139,24 @@
     .type { color: #4EC9B0 !important; }
     .number { color: #B5CEA8 !important; }
     
+    .code-block {
+      padding: 0;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    .code-line {
+      display: block;
+      padding: 2px 20px;
+      white-space: pre;
+    }
+    
+    .code-line:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
     .card {
       background: var(--bg-secondary); border: 1px solid var(--border-color);
       border-radius: var(--radius-lg); padding: 24px;

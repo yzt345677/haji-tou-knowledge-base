@@ -85,12 +85,21 @@
     }
     
     .code-block {
-      padding: 20px;
+      padding: 0;
       overflow-x: auto;
       font-family: var(--font-mono);
       font-size: 13px;
       line-height: 1.6;
-      color: var(--text-secondary);
+    }
+    
+    .code-line {
+      display: block;
+      padding: 2px 20px;
+      white-space: pre;
+    }
+    
+    .code-line:hover {
+      background: rgba(255, 255, 255, 0.05);
     }
     
     .keyword { color: #569CD6 !important; }
@@ -180,32 +189,34 @@
               <button class="code-action-btn">插入</button>
             </div>
           </div>
-          <div class="code-block"><span class="keyword">async</span> <span class="function">call</span>(args, context) {
-  <span class="comment">// 1. 构建 ripgrep 命令</span>
-  <span class="keyword">const</span> rgArgs = [
-    <span class="string">'--json'</span>,              <span class="comment">// JSON 输出便于解析</span>
-    <span class="string">'--max-count'</span>, <span class="string">'100'</span>,    <span class="comment">// 限制结果数量</span>
-    <span class="string">'--context'</span>, <span class="string">'2'</span>,        <span class="comment">// 显示上下文 2 行</span>
-    <span class="string">'--glob'</span>, args.include,   <span class="comment">// 文件类型过滤</span>
-    <span class="string">'--glob'</span>, <span class="string">`!${args.exclude}`</span>, <span class="comment">// 排除目录</span>
-    args.pattern,
-    args.path || <span class="string">'.'</span>
-  ];
-
-  <span class="comment">// 2. 执行 ripgrep</span>
-  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="function">execRipgrep</span>(rgArgs);
-
-  <span class="comment">// 3. 解析 JSON 输出</span>
-  <span class="keyword">const</span> matches = result.<span class="function">split</span>(<span class="string">'\n'</span>)
-    .<span class="function">filter</span>(line => line.<span class="function">trim</span>())
-    .<span class="function">map</span>(line => JSON.<span class="function">parse</span>(line));
-
-  <span class="comment">// 4. 格式化输出（可折叠显示）</span>
-  <span class="keyword">return</span> {
-    data: <span class="function">formatMatches</span>(matches),
-    isCollapsible: <span class="keyword">true</span>
-  };
-}</div>
+          <div class="code-block">
+            <div class="code-line"><span class="keyword">async</span> <span class="function">call</span>(args, context) {</div>
+            <div class="code-line">  <span class="comment">// 1. 构建 ripgrep 命令</span></div>
+            <div class="code-line">  <span class="keyword">const</span> rgArgs = [</div>
+            <div class="code-line">    <span class="string">'--json'</span>,              <span class="comment">// JSON 输出便于解析</span></div>
+            <div class="code-line">    <span class="string">'--max-count'</span>, <span class="string">'100'</span>,    <span class="comment">// 限制结果数量</span></div>
+            <div class="code-line">    <span class="string">'--context'</span>, <span class="string">'2'</span>,        <span class="comment">// 显示上下文 2 行</span></div>
+            <div class="code-line">    <span class="string">'--glob'</span>, args.include,   <span class="comment">// 文件类型过滤</span></div>
+            <div class="code-line">    <span class="string">'--glob'</span>, <span class="string">`!${args.exclude}`</span>, <span class="comment">// 排除目录</span></div>
+            <div class="code-line">    args.pattern,</div>
+            <div class="code-line">    args.path || <span class="string">'.'</span></div>
+            <div class="code-line">  ];</div>
+            <div class="code-line"></div>
+            <div class="code-line">  <span class="comment">// 2. 执行 ripgrep</span></div>
+            <div class="code-line">  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="function">execRipgrep</span>(rgArgs);</div>
+            <div class="code-line"></div>
+            <div class="code-line">  <span class="comment">// 3. 解析 JSON 输出</span></div>
+            <div class="code-line">  <span class="keyword">const</span> matches = result.<span class="function">split</span>(<span class="string">'\n'</span>)</div>
+            <div class="code-line">    .<span class="function">filter</span>(line => line.<span class="function">trim</span>())</div>
+            <div class="code-line">    .<span class="function">map</span>(line => JSON.<span class="function">parse</span>(line));</div>
+            <div class="code-line"></div>
+            <div class="code-line">  <span class="comment">// 4. 格式化输出（可折叠显示）</span></div>
+            <div class="code-line">  <span class="keyword">return</span> {</div>
+            <div class="code-line">    data: <span class="function">formatMatches</span>(matches),</div>
+            <div class="code-line">    isCollapsible: <span class="keyword">true</span></div>
+            <div class="code-line">  };</div>
+            <div class="code-line">}</div>
+          </div>
         </div>
       </div>
 
