@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent 安全最佳实践 | 哈基偷知识库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --bg-tertiary: #252525;
+      --text-primary: #FFFFFF; --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1;
+      --accent-blue: #2997FF; --accent-purple: #BF5AF2; --accent-red: #FF453A;
+      --accent-green: #30D158; --accent-orange: #FF9F0A; --border-color: #333333;
+      --radius-lg: 12px; --radius-md: 8px; --radius-full: 9999px;
+      --transition-base: 0.2s ease;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    a:hover { color: #FFFFFF !important; }
+    body, .navbar, .nav-link, .logo { color: #E5E5E5 !important; }
+    
+    .security-hero {
+      background: linear-gradient(135deg, rgba(255, 69, 58, 0.08) 0%, rgba(41, 151, 255, 0.05) 50%, var(--bg-primary) 100%);
+      padding: 80px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .hero-title { font-size: 40px; font-weight: 700; margin-bottom: 16px; }
+    .hero-subtitle { font-size: 18px; color: var(--text-tertiary); max-width: 600px; }
+    
+    .threat-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 40px 0; }
+    @media (min-width: 768px) { .threat-grid { grid-template-columns: repeat(2, 1fr); } }
+    
+    .threat-card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px;
+      transition: all var(--transition-base);
+    }
+    .threat-card:hover { border-color: var(--accent-red); transform: translateY(-2px); }
+    .threat-card.critical { border-color: var(--accent-red); background: rgba(255, 69, 58, 0.03); }
+    .threat-card.high { border-color: var(--accent-orange); }
+    .threat-card.medium { border-color: var(--accent-blue); }
+    
+    .threat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .threat-icon { font-size: 32px; }
+    .threat-title { font-size: 20px; font-weight: 600; }
+    .threat-severity {
+      padding: 4px 10px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600;
+      text-transform: uppercase;
+    }
+    .severity-critical { background: var(--accent-red); color: #fff; }
+    .severity-high { background: var(--accent-orange); color: #000; }
+    .severity-medium { background: var(--accent-blue); color: #fff; }
+    
+    .threat-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.7; margin-bottom: 16px; }
+    
+    .defense-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+    .defense-title { font-size: 14px; font-weight: 600; color: var(--accent-green); margin-bottom: 12px; }
+    .defense-list { list-style: none; padding: 0; margin: 0; }
+    .defense-list li {
+      font-size: 13px; color: var(--text-secondary); padding: 6px 0; padding-left: 20px; position: relative;
+    }
+    .defense-list li::before {
+      content: "✓"; position: absolute; left: 0; color: var(--accent-green); font-weight: 700;
+    }
+    
+    .content-section { margin: 60px 0; }
+    .section-title { font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); }
+    
+    .tool-card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px;
+    }
+    .tool-name { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--accent-blue); }
+    .tool-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.7; }
+    
+    .checklist { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; }
+    .checklist-item {
+      display: flex; align-items: flex-start; gap: 12px; padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-checkbox {
+      width: 20px; height: 20px; border: 2px solid var(--accent-green); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .checklist-checkbox::before { content: "✓"; color: var(--accent-green); font-weight: 700; }
+    .checklist-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../cat-avatar.png" alt="哈基偷" class="logo-avatar" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="nav-link">📈 投资</a></li>
+        <li><a href="/ui-ux" class="nav-link">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent" class="nav-link active">🤖 AI Agent</a></li>
+        <li><a href="/quantum" class="nav-link">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes" class="nav-link">📰 笔记</a></li>
+        <li><a href="/freedom-log" class="nav-link">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero 区 -->
+  <section class="security-hero">
+    <div class="container">
+      <h1 class="hero-title">🛡️ AI Agent 安全最佳实践</h1>
+      <p class="hero-subtitle">2026 年 AI Agent 规模化部署的核心挑战 — 从提示词注入到供应链攻击的全面防御指南</p>
+      <div style="display:flex;gap:16px;margin-top:24px;flex-wrap:wrap;">
+        <span style="background:rgba(255,69,58,0.1);color:var(--accent-red);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;">⚠️ 2026 关键挑战</span>
+        <span style="background:rgba(48,209,88,0.1);color:var(--accent-green);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;">✅ 防御策略</span>
+        <span style="background:rgba(41,151,255,0.1);color:var(--accent-blue);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;">🔧 工具推荐</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding:40px 20px;max-width:1200px;">
+    
+    <!-- 2026 安全形势 -->
+    <section class="content-section">
+      <h2 class="section-title">📊 2026 年 AI Agent 安全形势</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+        <div class="tool-card" style="border-left:4px solid var(--accent-blue);">
+          <div style="font-size:32px;font-weight:700;color:var(--accent-blue);margin-bottom:8px;">69 亿</div>
+          <div style="font-size:14px;color:var(--text-tertiary);">2025 年中国 AI 智能体市场规模（人民币）</div>
+        </div>
+        <div class="tool-card" style="border-left:4px solid var(--accent-purple);">
+          <div style="font-size:32px;font-weight:700;color:var(--accent-purple);margin-bottom:8px;">300 亿</div>
+          <div style="font-size:14px;color:var(--text-tertiary);">2030 年预测市场规模（人民币）</div>
+        </div>
+        <div class="tool-card" style="border-left:4px solid var(--accent-green);">
+          <div style="font-size:32px;font-weight:700;color:var(--accent-green);margin-bottom:8px;">2.5 亿</div>
+          <div style="font-size:14px;color:var(--text-tertiary);">2025 年生成式 AI 用户规模</div>
+        </div>
+      </div>
+      <div class="tool-card" style="margin-top:20px;background:rgba(255,159,10,0.05);border-color:var(--accent-orange);">
+        <div style="font-size:16px;font-weight:600;color:var(--accent-orange);margin-bottom:8px;">🎯 关键转折点</div>
+        <div style="font-size:14px;color:var(--text-secondary);line-height:1.8;">
+          <strong>2025 年：</strong>AI Agent 真正走向规模化落地<br>
+          <strong>2026 年：</strong>企业从试水阶段迈入部署阶段<br>
+          <strong>安全挑战：</strong>成为规模化部署的核心挑战
+        </div>
+      </div>
+    </section>
+
+    <!-- 四大安全威胁 -->
+    <section class="content-section">
+      <h2 class="section-title">⚠️ AI Agent 四大安全威胁</h2>
+      <div class="threat-grid">
+        
+        <!-- 威胁 1：提示词注入 -->
+        <div class="threat-card critical">
+          <div class="threat-header">
+            <span class="threat-icon">💉</span>
+            <span class="threat-title">提示词注入</span>
+            <span class="threat-severity severity-critical">Critical</span>
+          </div>
+          <p class="threat-desc">恶意用户通过精心设计的输入绕过安全限制，诱导 Agent 执行未授权操作或泄露系统提示词和敏感信息。</p>
+          <div class="defense-section">
+            <div class="defense-title">🛡️ 防御措施</div>
+            <ul class="defense-list">
+              <li><strong>Prompt Hardening</strong> — 强化提示词设计，使用分隔符和明确指令</li>
+              <li><strong>Prompt Validation</strong> — 输入验证和过滤，检测恶意模式</li>
+              <li><strong>skill-vetter / prompt-guard</strong> — 专业安全技能，650+ 防御模式</li>
+              <li><strong>输出审查</strong> — 检查 Agent 输出是否包含敏感信息</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 威胁 2：数据泄露 -->
+        <div class="threat-card critical">
+          <div class="threat-header">
+            <span class="threat-icon">🔓</span>
+            <span class="threat-title">数据泄露</span>
+            <span class="threat-severity severity-critical">Critical</span>
+          </div>
+          <p class="threat-desc">Agent 访问敏感数据库时发生泄露，跨用户数据隔离失效，或第三方 API 数据泄露。</p>
+          <div class="defense-section">
+            <div class="defense-title">🛡️ 防御措施</div>
+            <ul class="defense-list">
+              <li><strong>数据加密</strong> — 传输和存储全程加密（TLS + AES-256）</li>
+              <li><strong>数据脱敏</strong> — 敏感数据自动脱敏处理</li>
+              <li><strong>私有化部署</strong> — 数据不出域，本地部署模型</li>
+              <li><strong>访问控制</strong> — 基于角色的访问控制（RBAC）</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 威胁 3：权限滥用 -->
+        <div class="threat-card high">
+          <div class="threat-header">
+            <span class="threat-icon">🔑</span>
+            <span class="threat-title">权限滥用</span>
+            <span class="threat-severity severity-high">High</span>
+          </div>
+          <p class="threat-desc">Agent 拥有过高权限，遭受权限提升攻击，或执行未授权的系统操作。</p>
+          <div class="defense-section">
+            <div class="defense-title">🛡️ 防御措施</div>
+            <ul class="defense-list">
+              <li><strong>最小权限原则</strong> — 只授予完成必要权限</li>
+              <li><strong>零信任架构</strong> — 验证所有请求，不信任内部网络</li>
+              <li><strong>审计日志</strong> — 所有操作可追溯，实时监控异常</li>
+              <li><strong>权限审批</strong> — 敏感操作需要人工审批</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 威胁 4：供应链攻击 -->
+        <div class="threat-card high">
+          <div class="threat-header">
+            <span class="threat-icon">📦</span>
+            <span class="threat-title">供应链攻击</span>
+            <span class="threat-severity severity-high">High</span>
+          </div>
+          <p class="threat-desc">第三方技能/插件存在漏洞，依赖库被篡改，或恶意代码注入。</p>
+          <div class="defense-section">
+            <div class="defense-title">🛡️ 防御措施</div>
+            <ul class="defense-list">
+              <li><strong>技能审查</strong> — 安装前用 skill-vetter 检查安全模式</li>
+              <li><strong>依赖锁定</strong> — 固定版本号，避免自动更新</li>
+              <li><strong>来源验证</strong> — 仅从可信源安装（官方/认证）</li>
+              <li><strong>沙箱隔离</strong> — 技能运行在隔离环境中</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 安全工具推荐 -->
+    <section class="content-section">
+      <h2 class="section-title">🔧 安全工具推荐</h2>
+      
+      <div class="tool-card">
+        <div class="tool-name">🛡️ prompt-guard</div>
+        <div class="tool-desc">
+          <strong>650+ 模式 AI 安全防御</strong> — 覆盖提示词注入、供应链注入、记忆投毒、行动门绕过、Unicode 隐写、级联放大、多轮操纵、权限升级、PII/云凭证 DLP、代码外泄等。<br>
+          <strong>部署方式：</strong> OpenClaw Skill，本地运行，可选 API 访问高级模式。<br>
+          <strong>适用场景：</strong> 所有 AI Agent 部署环境
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-name">🔍 skill-vetter</div>
+        <div class="tool-desc">
+          <strong>安全优先的技能审查工具</strong> — 在安装任何技能前检查红旗、权限范围和可疑模式。<br>
+          <strong>检查项：</strong> 权限范围、外部 API 调用、文件系统访问、网络请求、敏感操作<br>
+          <strong>适用场景：</strong> ClawHub/GitHub技能安装前审查
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-name">🔐 OpenClaw 安全配置</div>
+        <div class="tool-desc">
+          <strong>健康检查技能（healthcheck）</strong> — 主机安全加固、防火墙/SSH/更新加固、风险姿态、暴露审查、定期安全检查。<br>
+          <strong>适用场景：</strong> OpenClaw 部署环境（笔记本/工作站/Pi/VPS）
+        </div>
+      </div>
+    </section>
+
+    <!-- 安全检查清单 -->
+    <section class="content-section">
+      <h2 class="section-title">✅ 安全检查清单</h2>
+      <div class="checklist">
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div class="checklist-text"><strong>提示词加固</strong> — 使用分隔符、明确指令、避免模糊表述</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div class="checklist-text"><strong>输入验证</strong> — 所有用户输入经过验证和过滤</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div class="checklist-text"><strong>最小权限</strong> — Agent 只拥有完成任务所需的最小权限</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div class="checklist-text"><strong>数据加密</strong> — 敏感数据传输和存储全程加密</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div class="checklist-text"><strong>审计日志</strong> — 所有操作记录日志，可追溯</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div class="checklist-text"><strong>技能审查</strong> — 安装前用 skill-vetter 检查</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div class="checklist-text"><strong>定期更新</strong> — 保持系统和依赖最新安全补丁</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div class="checklist-text"><strong>应急响应</strong> — 制定安全事件应急响应计划</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 返回链接 -->
+    <div style="margin-top:60px;padding-top:24px;border-top:1px solid var(--border-color);">
+      <a href="/ai-agent" style="color:var(--accent-blue);font-size:14px;">← 返回 AI Agent 知识库首页</a>
+    </div>
+
+  </main>
+</body>
+</html>
