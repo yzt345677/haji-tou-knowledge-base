@@ -44,6 +44,101 @@
     @media (min-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
     
+    .code-container {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #252525;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .code-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .code-lang {
+      background: rgba(41, 151, 255, 0.15);
+      color: var(--accent-blue);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+    
+    .code-title {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    
+    .code-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .code-action-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-tertiary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .code-action-btn:hover {
+      border-color: var(--accent-blue);
+      color: var(--text-primary);
+    }
+    
+    .code-block {
+      padding: 0;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    .code-line {
+      display: flex;
+      padding: 2px 0;
+    }
+    
+    .line-number {
+      display: inline-block;
+      width: 40px;
+      padding-right: 16px;
+      text-align: right;
+      color: #6B6B6B;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    
+    .line-content {
+      padding-left: 16px;
+      white-space: pre;
+      color: var(--text-secondary);
+    }
+    
+    .keyword { color: #569CD6 !important; }
+    .string { color: #CE9178 !important; }
+    .comment { color: #6A9955 !important; }
+    .function { color: #DCDCAA !important; }
+    .type { color: #4EC9B0 !important; }
+    .number { color: #B5CEA8 !important; }
+    
     .card {
       background: var(--bg-secondary); border: 1px solid var(--border-color);
       border-radius: var(--radius-lg); padding: 24px;
