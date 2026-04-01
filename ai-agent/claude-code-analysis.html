@@ -243,6 +243,368 @@
       </div>
     </section>
 
+    <!-- 核心功能深度解析 -->
+    <section class="content-section">
+      <h2 class="section-title">🔍 核心功能及其实现模式</h2>
+      <p class="section-subtitle">从代码库理解到完整工作流的四大核心能力</p>
+      
+      <div class="card-grid">
+        <div class="card" style="border-left:4px solid var(--accent-blue);">
+          <div class="card-icon">🔍</div>
+          <div class="card-title">理解代码库</div>
+          <div class="card-desc">
+            <strong>工具：</strong>GrepTool, GlobTool, FileReadTool<br>
+            <strong>实现：</strong>Tree-sitter AST 解析 + 语义搜索<br>
+            <strong>优化：</strong>可折叠显示（搜索/读取命令）
+          </div>
+        </div>
+        
+        <div class="card" style="border-left:4px solid var(--accent-green);">
+          <div class="card-icon">✏️</div>
+          <div class="card-title">编辑文件</div>
+          <div class="card-desc">
+            <strong>工具：</strong>FileEditTool, FileWriteTool<br>
+            <strong>实现：</strong>diff 匹配 + 多轮对话修正<br>
+            <strong>安全：</strong>路径约束检查 + 权限规则
+          </div>
+        </div>
+        
+        <div class="card" style="border-left:4px solid var(--accent-purple);">
+          <div class="card-icon">💻</div>
+          <div class="card-title">运行终端命令</div>
+          <div class="card-desc">
+            <strong>工具：</strong>BashTool, PowerShellTool<br>
+            <strong>实现：</strong>6 层安全架构 + AST 解析<br>
+            <strong>特性：</strong>后台执行/超时控制/输出持久化
+          </div>
+        </div>
+        
+        <div class="card" style="border-left:4px solid var(--accent-orange);">
+          <div class="card-icon">🔄</div>
+          <div class="card-title">处理完整工作流</div>
+          <div class="card-desc">
+            <strong>工具：</strong>AgentTool, TaskCreateTool<br>
+            <strong>实现：</strong>多 Agent 协作 + 任务编排<br>
+            <strong>模式：</strong>Research→Implement→Verify
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔍 理解代码库 -->
+    <section class="content-section">
+      <h2 class="section-title">🔍 核心功能 1：理解代码库</h2>
+      
+      <h3 style="font-size:20px;margin:32px 0 16px;">📋 代码搜索工具链</h3>
+      
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>工具</th>
+            <th>用途</th>
+            <th>实现</th>
+            <th>优化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>GrepTool</strong></td>
+            <td>内容搜索</td>
+            <td>ripgrep (rg) 封装</td>
+            <td>可折叠显示 + 结果截断</td>
+          </tr>
+          <tr>
+            <td><strong>GlobTool</strong></td>
+            <td>文件匹配</td>
+            <td>fast-glob 封装</td>
+            <td>通配符 + 排除规则</td>
+          </tr>
+          <tr>
+            <td><strong>LSPTool</strong></td>
+            <td>语言服务器</td>
+            <td>LSP 协议实现</td>
+            <td>符号跳转/定义查找</td>
+          </tr>
+          <tr>
+            <td><strong>FileReadTool</strong></td>
+            <td>文件读取</td>
+            <td>fs.readFile 封装</td>
+            <td>大文件分块 + 编码检测</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size:20px;margin:32px 0 16px;">🌳 Tree-sitter AST 解析</h3>
+      
+      <div class="callout">
+        <div class="callout-title">💡 为什么用 AST 而不是正则？</div>
+        <div class="callout-content">
+          <strong>准确性：</strong>AST 能理解代码结构，避免正则表达式误判<br>
+          <strong>语义理解：</strong>能区分字符串中的模式和真实代码<br>
+          <strong>跨语言支持：</strong>同一套接口支持多种编程语言<br>
+          <strong>安全性：</strong>能检测代码注入攻击（如命令替换）
+        </div>
+      </div>
+
+      <div class="code-block"><span class="comment">// GrepTool 实现示例</span>
+<span class="keyword">export class</span> <span class="type">GrepTool</span> {
+  <span class="keyword">async</span> <span class="function">call</span>(args, context) {
+    <span class="comment">// 1. 验证输入参数</span>
+    <span class="keyword">const</span> { pattern, path, include, exclude } = args;
+    
+    <span class="comment">// 2. 构建 ripgrep 命令</span>
+    <span class="keyword">const</span> rgArgs = [
+      <span class="string">'--json'</span>,           <span class="comment">// JSON 输出便于解析</span>
+      <span class="string">'--max-count'</span>, <span class="string">'100'</span>, <span class="comment">// 限制结果数量</span>
+      <span class="string">'--context'</span>, <span class="string">'2'</span>,     <span class="comment">// 显示上下文</span>
+      pattern,
+      path || <span class="string">'.'</span>
+    ];
+    
+    <span class="comment">// 3. 执行搜索</span>
+    <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="function">execRipgrep</span>(rgArgs);
+    
+    <span class="comment">// 4. 格式化输出（可折叠）</span>
+    <span class="keyword">return</span> {
+      data: <span class="function">formatGrepResults</span>(result),
+      isCollapsible: <span class="keyword">true</span>  <span class="comment">// 标记为可折叠</span>
+    };
+  }
+}</div>
+
+      <h3 style="font-size:20px;margin:32px 0 16px;">📊 命令分类与可折叠显示</h3>
+      
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">🔍 搜索命令</div>
+          <div class="card-desc">
+            <code>grep, find, rg, ag, ack, locate, which, whereis</code><br>
+            <strong>特性：</strong>结果可折叠，默认显示摘要
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">📖 读取命令</div>
+          <div class="card-desc">
+            <code>cat, head, tail, less, more, wc, stat, file, jq, awk, cut</code><br>
+            <strong>特性：</strong>大输出截断，支持分页
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">🔇 静默命令</div>
+          <div class="card-desc">
+            <code>mv, cp, rm, mkdir, chmod, touch, ln, cd, export</code><br>
+            <strong>特性：</strong>成功时无输出，失败时报错
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✏️ 编辑文件 -->
+    <section class="content-section">
+      <h2 class="section-title">✏️ 核心功能 2：编辑文件</h2>
+      
+      <h3 style="font-size:20px;margin:32px 0 16px;">📋 FileEditTool 实现模式</h3>
+      
+      <div class="code-block"><span class="comment">// FileEditTool 输入参数</span>
+<span class="keyword">const</span> inputSchema = z.strictObject({
+  path: z.string().describe(<span class="string">'File path to edit'</span>),
+  old_text: z.string().describe(<span class="string">'Text to replace'</span>),
+  new_text: z.string().describe(<span class="string">'Replacement text'</span>),
+  multiple_replaces: z.boolean().optional().describe(<span class="string">'Allow multiple occurrences'</span>),
+})</div>
+
+      <h3 style="font-size:20px;margin:32px 0 16px;">🔄 多轮对话修正机制</h3>
+      
+      <div class="architecture-diagram">FileEditTool 编辑流程
+
+用户请求编辑文件
+        ↓
+┌─────────────────────────────────────┐
+│ 1. 读取文件内容                      │
+│    - 检查文件存在性                  │
+│    - 检查读取权限                    │
+│    - 检测文件编码                    │
+└─────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────┐
+│ 2. 查找匹配内容                      │
+│    - 精确匹配 old_text               │
+│    - 多处匹配 → 询问用户             │
+│    - 无匹配 → 返回错误               │
+└─────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────┐
+│ 3. 应用修改                          │
+│    - 替换文本                        │
+│    - 生成 diff                       │
+│    - 写回文件                        │
+└─────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────┐
+│ 4. 验证与反馈                        │
+│    - 检查写入成功                    │
+│    - 返回 diff 结果                   │
+│    - 失败 → 提供修正建议             │
+└─────────────────────────────────────┘
+
+多轮修正：
+如果编辑失败（如 old_text 不匹配）：
+1. 返回错误信息和文件当前内容
+2. AI 分析错误原因
+3. 重新发起编辑请求
+4. 直到成功或用户放弃</div>
+
+      <h3 style="font-size:20px;margin:32px 0 16px;">🛡️ 安全约束</h3>
+      
+      <ul class="feature-list">
+        <li><strong>路径约束检查：</strong>禁止编辑工作目录外文件（除非显式允许）</li>
+        <li><strong>权限规则匹配：</strong>编辑敏感文件（.env, credentials.json）需审批</li>
+        <li><strong>输出重定向验证：</strong>检测并阻止危险重定向（> /dev/null, >> ~/.bashrc）</li>
+        <li><strong>大文件保护：</strong>超过阈值的文件（如>1MB）需显式确认</li>
+      </ul>
+    </section>
+
+    <!-- 💻 运行终端命令 -->
+    <section class="content-section">
+      <h2 class="section-title">💻 核心功能 3：运行终端命令</h2>
+      <p class="section-subtitle">详见上文 BashTool 6 层安全架构解析</p>
+      
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">⚡ 执行特性</div>
+          <div class="card-desc">
+            <strong>前台执行：</strong>等待命令完成，返回输出<br>
+            <strong>后台执行：</strong>run_in_background=true，完成后通知<br>
+            <strong>超时控制：</strong>默认 300s，最大 3600s
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">📤 输出管理</div>
+          <div class="card-desc">
+            <strong>格式化：</strong>stdout/stderr 分离<br>
+            <strong>截断：</strong>超过阈值自动截断<br>
+            <strong>持久化：</strong>大输出存储到临时文件
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">🖼️ 图片检测</div>
+          <div class="card-desc">
+            <strong>Base64 检测：</strong>识别图片输出<br>
+            <strong>自动渲染：</strong>在 UI 中显示图片<br>
+            <strong>适用场景：</strong>matplotlib, PIL 等
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔄 处理完整工作流 -->
+    <section class="content-section">
+      <h2 class="section-title">🔄 核心功能 4：处理完整工作流</h2>
+      
+      <h3 style="font-size:20px;margin:32px 0 16px;">🤖 多 Agent 协作模式</h3>
+      
+      <div class="architecture-diagram">完整工作流：从需求到部署
+
+用户："帮我实现一个用户登录功能"
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 1: Research（研究）                                  │
+│  - Agent 1: 分析现有代码结构                              │
+│    工具：GlobTool, FileReadTool                          │
+│    输出：research-notes.md                               │
+│  - Agent 2: 查找认证相关代码                              │
+│    工具：GrepTool, LSPTool                               │
+│    输出：auth-analysis.md                                │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 2: Synthesis（协调器综合）                           │
+│  - 阅读研究报告                                          │
+│  - 制定实现规格                                           │
+│  - 编写具体提示词                                         │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 3: Implementation（实现）                            │
+│  - Agent 3: 实现登录 API                                  │
+│    工具：FileEditTool, BashTool (测试)                   │
+│    输出：src/auth/login.ts + 测试通过                     │
+│  - Agent 4: 实现前端表单                                  │
+│    工具：FileEditTool                                    │
+│    输出：src/components/LoginForm.tsx                    │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 4: Verification（验证）                              │
+│  - Agent 5: 运行测试套件                                  │
+│    工具：BashTool (npm test)                             │
+│    输出：测试报告 + 覆盖率                                │
+│  - Agent 6: 代码审查                                      │
+│    工具：FileReadTool, SkillTool (/verify)               │
+│    输出：代码审查报告                                     │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 5: Deployment（部署）                                │
+│  - Agent 7: 提交代码                                      │
+│    工具：BashTool (git commit/push)                      │
+│    输出：commit hash + PR URL                            │
+└─────────────────────────────────────────────────────────┘</div>
+
+      <h3 style="font-size:20px;margin:32px 0 16px;">📋 任务管理工具</h3>
+      
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>工具</th>
+            <th>用途</th>
+            <th>关键参数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>TaskCreateTool</strong></td>
+            <td>创建子任务</td>
+            <td>description, prompt, subagent_type</td>
+          </tr>
+          <tr>
+            <td><strong>TaskListTool</strong></td>
+            <td>列出所有任务</td>
+            <td>status (pending/running/completed)</td>
+          </tr>
+          <tr>
+            <td><strong>TaskOutputTool</strong></td>
+            <td>获取任务输出</td>
+            <td>task_id, follow (实时跟踪)</td>
+          </tr>
+          <tr>
+            <td><strong>TaskStopTool</strong></td>
+            <td>停止任务</td>
+            <td>task_id, reason</td>
+          </tr>
+          <tr>
+            <td><strong>SendMessageTool</strong></td>
+            <td>继续任务</td>
+            <td>task_id, message (新指令)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="callout-title">💡 关键设计原则</div>
+        <div class="callout-content">
+          <strong>并行是超能力：</strong>Research 阶段多 Agent 并行，Implementation 阶段单 Agent 写文件<br>
+          <strong>Worker 看不到协调器对话：</strong>每个提示必须自包含所有上下文<br>
+          <strong>Continue vs Spawn：</strong>根据上下文重叠度决策（高重叠→继续，低重叠→新建）<br>
+          <strong>文件系统协作：</strong>通过文件传递上下文，避免单 Agent 上下文溢出
+        </div>
+      </div>
+    </section>
+
     <!-- 核心架构 -->
     <section id="architecture" class="content-section">
       <h2 class="section-title">🏗️ 核心架构</h2>
