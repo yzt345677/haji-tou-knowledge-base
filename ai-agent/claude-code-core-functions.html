@@ -37,9 +37,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 16px;
+      padding: 8px 16px;
       background: #252525;
       border-bottom: 1px solid var(--border-color);
+      font-family: var(--font-mono);
+      font-size: 12px;
     }
     
     .code-header-left {
@@ -49,13 +51,13 @@
     }
     
     .code-lang {
-      background: rgba(41, 151, 255, 0.15);
-      color: var(--accent-blue);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      font-family: var(--font-mono);
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+    
+    .code-lang::before {
+      content: '📄 ';
+      margin-right: 6px;
     }
     
     .code-title {
@@ -182,11 +184,9 @@
           <div class="code-header">
             <div class="code-header-left">
               <span class="code-lang">typescript</span>
-              <span class="code-title">GrepTool.ts 核心实现</span>
             </div>
             <div class="code-actions">
               <button class="code-action-btn">复制</button>
-              <button class="code-action-btn">插入</button>
             </div>
           </div>
           <div class="code-block">
