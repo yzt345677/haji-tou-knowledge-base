@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent 提示词工程与交互最佳实践 | 哈基偷知识库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --bg-tertiary: #252525;
+      --text-primary: #FFFFFF; --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1;
+      --accent-blue: #2997FF; --accent-purple: #BF5AF2; --accent-green: #30D158;
+      --accent-orange: #FF9F0A; --border-color: #333333;
+      --radius-lg: 12px; --radius-md: 8px; --radius-full: 9999px;
+      --transition-base: 0.2s ease;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    a:hover { color: #FFFFFF !important; }
+    body, .navbar, .nav-link, .logo { color: #E5E5E5 !important; }
+    
+    .prompt-hero {
+      background: linear-gradient(135deg, rgba(191, 90, 242, 0.08) 0%, rgba(41, 151, 255, 0.05) 50%, var(--bg-primary) 100%);
+      padding: 80px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .hero-title { font-size: 40px; font-weight: 700; margin-bottom: 16px; }
+    .hero-subtitle { font-size: 18px; color: var(--text-tertiary); max-width: 800px; line-height: 1.7; }
+    .hero-tags { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .hero-tag {
+      background: rgba(41, 151, 255, 0.15); color: var(--accent-blue);
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
+    }
+    
+    .content-section { margin: 60px 0; }
+    .section-title { font-size: 32px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); }
+    .section-subtitle { font-size: 18px; color: var(--text-tertiary); margin-bottom: 32px; }
+    
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 32px 0; }
+    @media (min-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
+    
+    .card {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px;
+      transition: all var(--transition-base);
+    }
+    .card:hover { border-color: var(--accent-blue); transform: translateY(-4px); }
+    .card-icon { font-size: 32px; margin-bottom: 16px; }
+    .card-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary); }
+    .card-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.7; }
+    
+    .comparison-table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 14px;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 14px 16px; text-align: left; border: 1px solid var(--border-color);
+    }
+    .comparison-table th {
+      background: var(--bg-tertiary); font-weight: 600; color: var(--text-primary);
+    }
+    .comparison-table td { color: var(--text-secondary); }
+    .comparison-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+    
+    .callout {
+      background: rgba(191, 90, 242, 0.05); border: 1px solid var(--accent-purple);
+      border-radius: var(--radius-md); padding: 24px; margin: 32px 0;
+    }
+    .callout-title { font-size: 16px; font-weight: 600; color: var(--accent-purple); margin-bottom: 12px; }
+    .callout-content { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+    
+    .skill-list { list-style: none; padding: 0; margin: 24px 0; }
+    .skill-item {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px;
+      border-left: 4px solid var(--accent-blue);
+    }
+    .skill-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary); }
+    .skill-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.7; margin-bottom: 16px; }
+    .skill-example {
+      background: var(--bg-tertiary); border-radius: var(--radius-md);
+      padding: 16px; font-family: monospace; font-size: 13px; line-height: 1.6;
+    }
+    .skill-example .bad { color: #FF453A; }
+    .skill-example .good { color: #30D158; }
+    
+    .architecture-diagram {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px; margin: 24px 0;
+      font-family: monospace; font-size: 13px; line-height: 1.8;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../cat-avatar.png" alt="哈基偷" class="logo-avatar" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="nav-link">📈 投资</a></li>
+        <li><a href="/ui-ux" class="nav-link">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent" class="nav-link active">🤖 AI Agent</a></li>
+        <li><a href="/quantum" class="nav-link">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes" class="nav-link">📰 笔记</a></li>
+        <li><a href="/freedom-log" class="nav-link">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero 区 -->
+  <section class="prompt-hero">
+    <div class="container">
+      <h1 class="hero-title">📝 AI Agent 提示词工程与交互最佳实践</h1>
+      <p class="hero-subtitle">
+        2026 年 AI 已从"说"的模型转变为"做"的执行者。人类角色从"语言推敲者"转变为"目标定义者"与"系统指挥官"。<br>
+        掌握智能体架构设计、多智能体编排、意图定义与价值对齐、监控与事件响应四大核心技能。
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">🎯 意图定义</span>
+        <span class="hero-tag">🤖 多 Agent 编排</span>
+        <span class="hero-tag">📊 监控响应</span>
+        <span class="hero-tag">💡 最佳实践</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding:40px 20px;max-width:1200px;">
+    
+    <!-- 范式转移 -->
+    <section class="content-section">
+      <h2 class="section-title">🔄 范式转移：从 Prompt 工程到 Agent 指挥</h2>
+      
+      <div class="callout">
+        <div class="callout-title">💡 核心洞察</div>
+        <div class="callout-content">
+          <strong>2026 年共识：</strong>AI 已从"说"的模型转变为"做"的执行者<br>
+          <strong>名言：</strong>"Prompt 已死，Agent 永生？" — 2026 年 AI 社区讨论热点
+        </div>
+      </div>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>维度</th>
+            <th>过去（2022-2025）</th>
+            <th>现在（2026）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AI 角色</strong></td>
+            <td>文本生成工具</td>
+            <td>感知、决策、执行与反思闭环</td>
+          </tr>
+          <tr>
+            <td><strong>人类角色</strong></td>
+            <td>语言推敲者</td>
+            <td>目标定义者与系统指挥官</td>
+          </tr>
+          <tr>
+            <td><strong>核心任务</strong></td>
+            <td>写精准的 Prompt</td>
+            <td>意图设定、价值对齐、伦理仲裁</td>
+          </tr>
+          <tr>
+            <td><strong>交互方式</strong></td>
+            <td>单次对话</td>
+            <td>多轮协作 + 工具调用</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 四大核心技能 -->
+    <section class="content-section">
+      <h2 class="section-title">📊 2026 年职场人四大 AI 智能体技能</h2>
+      <p class="section-subtitle">从提示词工程到智能体指挥的核心能力转变</p>
+      
+      <div class="skill-list">
+        
+        <!-- 技能 1 -->
+        <div class="skill-item">
+          <div class="skill-title">🏗️ 技能 1：智能体架构设计与拆解（Agent Architecture）</div>
+          <div class="skill-desc">
+            将复杂任务分解成可被 Agent 执行的模块化组件，理解任务流、依赖关系、输出格式。
+          </div>
+          <div class="skill-example">
+<span class="bad">❌ 旧方式：「帮我写一个网站」</span>
+
+<span class="good">✅ 新方式：</span>
+  1. 需求分析 Agent → 输出需求文档
+  2. UI 设计 Agent → 输出设计稿
+  3. 前端开发 Agent → 输出代码
+  4. 测试 Agent → 输出测试报告</div>
+        </div>
+
+        <!-- 技能 2 -->
+        <div class="skill-item">
+          <div class="skill-title">🎼 技能 2：多智能体编排（Multi-Agent Orchestration）</div>
+          <div class="skill-desc">
+            协调多个 Agent 协同工作，设计 Agent 间通信协议，处理冲突和异常。
+          </div>
+          <div class="card-grid" style="margin-top:16px;">
+            <div class="card">
+              <div class="card-title">中心化编排</div>
+              <div class="card-desc">一个主 Agent 协调其他 Agent，适合复杂工作流</div>
+            </div>
+            <div class="card">
+              <div class="card-title">去中心化协作</div>
+              <div class="card-desc">Agent 自主协商，适合开放式任务</div>
+            </div>
+            <div class="card">
+              <div class="card-title">混合架构</div>
+              <div class="card-desc">结合两者优势，适合企业级应用</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 技能 3 -->
+        <div class="skill-item">
+          <div class="skill-title">🎯 技能 3：意图定义与价值对齐（Intent & Alignment）</div>
+          <div class="skill-desc">
+            清晰定义目标和成功标准，确保 Agent 理解人类意图，监控价值对齐（不做有害的事）。
+          </div>
+          <div class="skill-example">
+<span class="good">✅ 最佳实践：</span>
+  1. 明确目标 — 定义清晰的最终状态
+  2. 设定边界 — 什么可以做，什么不可以
+  3. 定义成功 — 如何衡量任务完成
+  4. 异常处理 — 遇到问题时怎么办</div>
+        </div>
+
+        <!-- 技能 4 -->
+        <div class="skill-item">
+          <div class="skill-title">📊 技能 4：监控与事件响应（Monitoring & Response）</div>
+          <div class="skill-desc">
+            监控 Agent 行为和输出，设置告警和异常检测，集成到现有事件响应流程。
+          </div>
+          <div class="card-grid" style="margin-top:16px;">
+            <div class="card">
+              <div class="card-icon">💬</div>
+              <div class="card-title">Slack / Teams</div>
+              <div class="card-desc">实时告警通知</div>
+            </div>
+            <div class="card">
+              <div class="card-icon">📧</div>
+              <div class="card-title">邮件通知</div>
+              <div class="card-desc">重要事件通知</div>
+            </div>
+            <div class="card">
+              <div class="card-icon">📈</div>
+              <div class="card-title">仪表板</div>
+              <div class="card-desc">可视化监控</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 提示词工程最佳实践 -->
+    <section class="content-section">
+      <h2 class="section-title">🎯 提示词工程最佳实践（2026 版）</h2>
+      
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">具体明确（Be Specific）</div>
+          <div class="card-desc">
+            避免模糊描述，包含具体细节、约束条件、期望格式。<br>
+            <strong>示例：</strong>"写一个 Python 函数，输入列表，返回排序后的新列表，使用快速排序算法"
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <div class="card-title">提供上下文（Provide Context）</div>
+          <div class="card-desc">
+            说明任务背景、目标受众、使用场景。<br>
+            <strong>示例：</strong>"这是一个电商网站的结账页面，目标用户是首次购物的消费者"
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">🔢</div>
+          <div class="card-title">分步指示（Step-by-Step）</div>
+          <div class="card-desc">
+            复杂任务分解为清晰步骤，引导 AI 逐步思考。<br>
+            <strong>示例：</strong>"1. 分析需求 2. 设计架构 3. 编写代码 4. 添加测试"
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">✅</div>
+          <div class="card-title">定义成功标准（Define Success）</div>
+          <div class="card-desc">
+            明确说明什么是"完成"，包含验收标准。<br>
+            <strong>示例：</strong>"代码必须通过所有单元测试，覆盖率>80%"
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">🚫</div>
+          <div class="card-title">设定边界（Set Boundaries）</div>
+          <div class="card-desc">
+            说明什么不可以做，避免 AI 越界。<br>
+            <strong>示例：</strong>"不要修改数据库结构，只读操作"
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">🔁</div>
+          <div class="card-title">迭代优化（Iterate）</div>
+          <div class="card-desc">
+            根据 AI 输出调整提示词，逐步逼近目标。<br>
+            <strong>示例：</strong>"上次的代码缺少错误处理，请添加 try-catch 块"
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 多 Agent 协作模式 -->
+    <section class="content-section">
+      <h2 class="section-title">🤖 多 Agent 协作模式</h2>
+      
+      <div class="architecture-diagram">多 Agent 协作架构
+
+┌─────────────────────────────────────────────────────────┐
+│                   用户（指挥官）                         │
+│              定义目标、设定边界、验收结果                 │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────┐
+│              主协调器 Agent（Orchestrator）              │
+│   - 任务分解与分配                                        │
+│   - 协调 Agent 间通信                                     │
+│   - 冲突解决与异常处理                                    │
+└─────────────────────────────────────────────────────────┘
+          │               │               │
+          ▼               ▼               ▼
+    ┌──────────┐   ┌──────────┐   ┌──────────┐
+    │ Research │   │ Implement│   │  Verify  │
+    │  Agent   │   │  Agent   │   │  Agent   │
+    │  研究    │   │  实现    │   │  验证    │
+    └──────────┘   └──────────┘   └──────────┘
+          │               │               │
+          ▼               ▼               ▼
+    ┌──────────┐   ┌──────────┐   ┌──────────┐
+    │  工具    │   │  工具    │   │  工具    │
+    │ Bash     │   │ FileEdit │   │  Test    │
+    │ Grep     │   │ FileRead │   │  Lint    │
+    └──────────┘   └──────────┘   └──────────┘</div>
+
+      <div class="callout">
+        <div class="callout-title">💡 关键洞察</div>
+        <div class="callout-content">
+          <strong>并行是超能力：</strong>Research 阶段多 Agent 并行，Implementation 阶段单 Agent 写文件<br>
+          <strong>Worker 看不到协调器对话：</strong>每个提示必须自包含所有上下文<br>
+          <strong>Continue vs Spawn：</strong>根据上下文重叠度决策（高重叠→继续，低重叠→新建）
+        </div>
+      </div>
+    </section>
+
+    <!-- 常见反模式 -->
+    <section class="content-section">
+      <h2 class="section-title">⚠️ 常见反模式与避免方法</h2>
+      
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>反模式</th>
+            <th>问题</th>
+            <th>正确做法</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>"根据你的研究"</strong></td>
+            <td>把理解责任推给 Agent</td>
+            <td>自己综合研究结果，写出具体规格</td>
+          </tr>
+          <tr>
+            <td><strong>"修复我们讨论的 bug"</strong></td>
+            <td>Agent 看不到对话历史</td>
+            <td>包含完整上下文：文件路径、行号、错误信息</td>
+          </tr>
+          <tr>
+            <td><strong>"创建一个 PR"</strong></td>
+            <td>模糊：哪个分支？draft？</td>
+            <td>明确：分支名、目标分支、draft/ready、reviewer</td>
+          </tr>
+          <tr>
+            <td><strong>"测试一下"</strong></td>
+            <td>没有定义成功标准</td>
+            <td>明确：运行哪些测试、期望结果、覆盖率要求</td>
+          </tr>
+          <tr>
+            <td><strong>串行启动所有 Agent</strong></td>
+            <td>浪费并行能力</td>
+            <td>Research 阶段并行启动多个 Agent</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 返回链接 -->
+    <div style="margin-top:60px;padding-top:24px;border-top:1px solid var(--border-color);">
+      <a href="/ai-agent" style="color:var(--accent-blue);font-size:14px;">← 返回 AI Agent 知识库首页</a>
+    </div>
+
+  </main>
+</body>
+</html>
