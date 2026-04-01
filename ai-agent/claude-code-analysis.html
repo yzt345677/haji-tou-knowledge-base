@@ -421,6 +421,149 @@
       </div>
     </section>
 
+    <!-- BashTool 深度解析 -->
+    <section class="content-section">
+      <h2 class="section-title">💻 BashTool 终端命令执行深度解析</h2>
+      <p class="section-subtitle">6 层安全架构 + 20+ 危险模式检测 + Tree-sitter AST 解析</p>
+      
+      <h3 style="font-size:20px;margin:32px 0 16px;">📋 BashTool 输入参数</h3>
+      
+      <div class="code-block"><span class="keyword">const</span> inputSchema = z.strictObject({
+  command: z.string().describe(<span class="string">'The command to execute'</span>),
+  timeout: z.number().optional().describe(<span class="string">'Optional timeout in milliseconds'</span>),
+  description: z.string().optional().describe(<span class="string">'Clear description of what this command does'</span>),
+  run_in_background: z.boolean().optional().describe(<span class="string">'Run command in background'</span>),
+  dangerouslyDisableSandbox: z.boolean().optional().describe(<span class="string">'Override sandbox mode'</span>),
+})</div>
+
+      <h3 style="font-size:20px;margin:32px 0 16px;">🛡️ 6 层安全架构</h3>
+      
+      <div class="architecture-diagram">BashTool 6 层安全防护
+
+┌──────────────────────────────────────────────────────────────┐
+│                      用户命令请求                             │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    第 1 层：命令分类                          │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
+│  │ 搜索命令    │ │ 读取命令    │ │ 写入/危险命令            │ │
+│  │ grep,find   │ │ cat,head    │ │ rm,mv,git push          │ │
+│  └─────────────┘ └─────────────┘ └─────────────────────────┘ │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    第 2 层：安全检测                          │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
+│  │ 命令替换    │ │ 参数注入    │ │ Zsh 危险命令            │ │
+│  │ $() ` `    │ │ IFS/Unicode │ │ zmodload/emulate        │ │
+│  └─────────────┘ └─────────────┘ └─────────────────────────┘ │
+│                  ↓ 危险 → 拒绝                                │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    第 3 层：权限规则                          │
+│  ┌─────────────────────────────────────────────────────────┐ │
+│  │ allow: ["git:*", "npm run:*"]                           │ │
+│  │ deny:  ["rm -rf /*", "curl | bash"]                     │ │
+│  │ ask:   [其他命令]                                        │ │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    第 4 层：路径约束                          │
+│  ┌─────────────────────────────────────────────────────────┐ │
+│  │ 检查危险路径：/、~、/*                                   │ │
+│  │ 验证输出重定向目标                                       │ │
+│  │ 检查文件权限边界                                         │ │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    第 5 层：沙箱执行                          │
+│  ┌─────────────────────────────────────────────────────────┐ │
+│  │ 隔离执行环境 | 限制文件系统访问 | 网络隔离（可选）       │ │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+                          ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    第 6 层：执行与输出                        │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
+│  │ 前台执行    │ │ 后台执行    │ │ 超时控制                │ │
+│  └─────────────┘ └─────────────┘ └─────────────────────────┘ │
+│  ┌─────────────────────────────────────────────────────────┐ │
+│  │ 输出格式化 → 截断大输出 → 图片检测 → 持久化存储          │ │
+└──────────────────────────────────────────────────────────────┘</div>
+
+      <h3 style="font-size:20px;margin:32px 0 16px;">🔍 20+ 危险模式检测</h3>
+      
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>检测项</th>
+            <th>模式</th>
+            <th>风险</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>命令替换</strong></td>
+            <td><code>$()</code> <code>` `</code></td>
+            <td>执行子命令</td>
+          </tr>
+          <tr>
+            <td><strong>参数替换</strong></td>
+            <td><code>${}</code></td>
+            <td>变量注入</td>
+          </tr>
+          <tr>
+            <td><strong>进程替换</strong></td>
+            <td><code>&lt;()</code> <code>&gt;()</code></td>
+            <td>文件描述符攻击</td>
+          </tr>
+          <tr>
+            <td><strong>Unicode 空白</strong></td>
+            <td><code>\u00A0</code> <code>\u200B</code></td>
+            <td>视觉欺骗攻击</td>
+          </tr>
+          <tr>
+            <td><strong>IFS 注入</strong></td>
+            <td>字段分隔符</td>
+            <td>命令分割攻击</td>
+          </tr>
+          <tr>
+            <td><strong>Zsh 危险命令</strong></td>
+            <td>zmodload, emulate</td>
+            <td>模块加载/代码执行</td>
+          </tr>
+          <tr>
+            <td><strong>大括号展开</strong></td>
+            <td><code>{a,b}</code> <code>{1..10}</code></td>
+            <td>参数爆炸攻击</td>
+          </tr>
+          <tr>
+            <td><strong>反斜杠转义</strong></td>
+            <td><code>\|</code> <code>\&amp;</code></td>
+            <td>操作符绕过</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="callout-title">💡 关键设计亮点</div>
+        <div class="callout-content">
+          <strong>Tree-sitter AST 解析：</strong>精确解析 Bash 语法，避免正则表达式误判<br>
+          <strong>通配符权限规则：</strong>"git:*"、"npm run:*"灵活匹配，支持前缀规则<br>
+          <strong>安全环境变量：</strong>NODE_ENV/CI/DEBUG 等可跳过，自定义变量需审批<br>
+          <strong>输出持久化：</strong>大输出自动存储到文件，避免上下文溢出<br>
+          <strong>后台执行：</strong>支持长时间运行命令，不阻塞主线程
+        </div>
+      </div>
+    </section>
+
     <!-- 技能系统分析 -->
     <section id="skill-system" class="content-section">
       <h2 class="section-title">🎯 技能系统分析</h2>
