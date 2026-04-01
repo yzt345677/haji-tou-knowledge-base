@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 核心功能工作原理 | 哈基偷知识库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --bg-tertiary: #252525;
+      --text-primary: #FFFFFF; --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1;
+      --accent-blue: #2997FF; --accent-purple: #BF5AF2; --accent-green: #30D158;
+      --accent-orange: #FF9F0A; --border-color: #333333;
+      --radius-lg: 12px; --radius-md: 8px; --radius-sm: 6px;
+      --code-bg: #1E1E1E; --font-mono: 'Fira Code', monospace;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    a:hover { color: #FFFFFF !important; }
+    body, .navbar, .nav-link, .logo { color: #E5E5E5 !important; }
+    
+    .content-section { margin: 60px 0; }
+    .section-title { font-size: 32px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); }
+    .section-subtitle { font-size: 18px; color: var(--text-tertiary); margin-bottom: 32px; }
+    
+    .code-block {
+      background: var(--code-bg); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 20px; margin: 20px 0;
+      overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6;
+    }
+    .code-block .comment { color: #6A9955; }
+    .code-block .keyword { color: #569CD6; }
+    .code-block .string { color: #CE9178; }
+    .code-block .type { color: #4EC9B0; }
+    .code-block .function { color: #DCDCAA; }
+    
+    .workflow-step {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px; margin: 20px 0;
+      border-left: 4px solid var(--accent-blue);
+    }
+    .workflow-step h4 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary); }
+    .workflow-step p { font-size: 14px; color: var(--text-tertiary); line-height: 1.7; }
+    
+    .callout {
+      background: rgba(41, 151, 255, 0.05); border: 1px solid var(--accent-blue);
+      border-radius: var(--radius-md); padding: 20px; margin: 24px 0;
+    }
+    .callout-title { font-size: 16px; font-weight: 600; color: var(--accent-blue); margin-bottom: 12px; }
+    .callout-content { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+    
+    .architecture-diagram {
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 24px; margin: 24px 0;
+      font-family: var(--font-mono); font-size: 13px; line-height: 1.8;
+      overflow-x: auto; white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../cat-avatar.png" alt="哈基偷" class="logo-avatar" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="nav-link">📈 投资</a></li>
+        <li><a href="/ui-ux" class="nav-link">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent" class="nav-link active">🤖 AI Agent</a></li>
+        <li><a href="/quantum" class="nav-link">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes" class="nav-link">📰 笔记</a></li>
+        <li><a href="/freedom-log" class="nav-link">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container" style="padding:40px 20px;max-width:1200px;">
+    
+    <!-- 🔍 理解代码库 -->
+    <section class="content-section">
+      <h2 class="section-title">🔍 Claude Code 如何理解代码库</h2>
+      <p class="section-subtitle">从文件搜索到 AST 解析的完整流程</p>
+      
+      <div class="workflow-step">
+        <h4>步骤 1：用户发起搜索请求</h4>
+        <p>用户说："帮我找到所有处理用户认证的代码"</p>
+      </div>
+
+      <div class="workflow-step">
+        <h4>步骤 2：Claude 选择工具并生成参数</h4>
+        <div class="code-block"><span class="comment">// Claude 决定使用 GrepTool</span>
+{
+  <span class="string">"tool"</span>: <span class="string">"GrepTool"</span>,
+  <span class="string">"parameters"</span>: {
+    <span class="string">"pattern"</span>: <span class="string">"(auth|authenticate|login|session)"</span>,
+    <span class="string">"path"</span>: <span class="string">"src/"</span>,
+    <span class="string">"include"</span>: <span class="string">"*.{ts,tsx,js,jsx}"</span>,
+    <span class="string">"exclude"</span>: <span class="string">"node_modules/**"</span>
+  }
+}</div>
+      </div>
+
+      <div class="workflow-step">
+        <h4>步骤 3：GrepTool 执行 ripgrep 搜索</h4>
+        <div class="code-block"><span class="comment">// GrepTool.ts 核心实现</span>
+<span class="keyword">async</span> <span class="function">call</span>(args, context) {
+  <span class="comment">// 1. 构建 ripgrep 命令</span>
+  <span class="keyword">const</span> rgArgs = [
+    <span class="string">'--json'</span>,              <span class="comment">// JSON 输出便于解析</span>
+    <span class="string">'--max-count'</span>, <span class="string">'100'</span>,    <span class="comment">// 限制结果数量</span>
+    <span class="string">'--context'</span>, <span class="string">'2'</span>,        <span class="comment">// 显示上下文 2 行</span>
+    <span class="string">'--glob'</span>, args.include,   <span class="comment">// 文件类型过滤</span>
+    <span class="string">'--glob'</span>, <span class="string">`!${args.exclude}`</span>, <span class="comment">// 排除目录</span>
+    args.pattern,
+    args.path || <span class="string">'.'</span>
+  ];
+
+  <span class="comment">// 2. 执行 ripgrep</span>
+  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="function">execRipgrep</span>(rgArgs);
+
+  <span class="comment">// 3. 解析 JSON 输出</span>
+  <span class="keyword">const</span> matches = result.<span class="function">split</span>(<span class="string">'\n'</span>)
+    .<span class="function">filter</span>(line => line.<span class="function">trim</span>())
+    .<span class="function">map</span>(line => JSON.<span class="function">parse</span>(line));
+
+  <span class="comment">// 4. 格式化输出（可折叠显示）</span>
+  <span class="keyword">return</span> {
+    data: <span class="function">formatMatches</span>(matches),
+    isCollapsible: <span class="keyword">true</span>
+  };
+}</div>
+      </div>
+
+      <div class="workflow-step">
+        <h4>步骤 4：ripgrep 返回结果</h4>
+        <div class="code-block"><span class="comment">// ripgrep JSON 输出示例</span>
+{
+  <span class="string">"type"</span>: <span class="string">"match"</span>,
+  <span class="string">"data"</span>: {
+    <span class="string">"path"</span>: { <span class="string">"text"</span>: <span class="string">"src/auth/login.ts"</span> },
+    <span class="string">"lines"</span>: {
+      <span class="string">"text"</span>: <span class="string">"export async function authenticateUser(credentials) {"</span>,
+      <span class="string">"line_number"</span>: <span class="number">15</span>
+    },
+    <span class="string">"submatches"</span>: [
+      { <span class="string">"match"</span>: <span class="string">"authenticate"</span>, <span class="string">"start"</span>: <span class="number">22</span>, <span class="string">"end"</span>: <span class="number">34</span> }
+    ]
+  }
+}</div>
+      </div>
+
+      <div class="workflow-step">
+        <h4>步骤 5：Claude 分析搜索结果</h4>
+        <p>Claude 看到搜索结果后：</p>
+        <ul style="font-size:14px;color:var(--text-tertiary);line-height:1.7;">
+          <li>识别出 `src/auth/login.ts` 包含认证逻辑</li>
+          <li>识别出 `src/middleware/auth.ts` 是认证中间件</li>
+          <li>识别出 `src/utils/session.ts` 处理会话管理</li>
+          <li>决定下一步读取这些文件的完整内容</li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">💡 关键技术点</div>
+        <div class="callout-content">
+          <strong>ripgrep 优化：</strong>使用 `--json` 输出便于程序解析，`--context` 显示上下文帮助理解<br>
+          <strong>可折叠显示：</strong>搜索结果标记为可折叠，避免占用过多上下文空间<br>
+          <strong>智能过滤：</strong>自动排除 `node_modules`、`.git` 等目录，聚焦业务代码<br>
+          <strong>多文件类型：</strong>通过 `--glob` 支持 TypeScript/JavaScript/Python 等多种语言
+        </div>
+      </div>
+    </section>
+
+    <!-- ✏️ 编辑文件 -->
+    <section class="content-section">
+      <h2 class="section-title">✏️ Claude Code 如何编辑文件</h2>
+      <p class="section-subtitle">从 diff 匹配到多轮修正的完整流程</p>
+      
+      <div class="workflow-step">
+        <h4>步骤 1：用户请求修改</h4>
+        <p>用户说："在 authenticateUser 函数中添加密码强度验证"</p>
+      </div>
+
+      <div class="workflow-step">
+        <h4>步骤 2：Claude 读取文件内容</h4>
+        <div class="code-block"><span class="comment">// FileReadTool 读取文件</span>
+<span class="keyword">async</span> <span class="function">call</span>(args, context) {
+  <span class="keyword">const</span> content = <span class="keyword">await</span> fs.<span class="function">readFile</span>(args.path, <span class="string">'utf-8'</span>);
+  
+  <span class="keyword">return</span> {
+    data: {
+      path: args.path,
+      content: content,
+      size: content.length
+    }
+  };
+}</div>
+      </div>
+
+      <div class="workflow-step">
+        <h4>步骤 3：Claude 生成编辑指令</h4>
+        <div class="code-block"><span class="comment">// Claude 决定使用 FileEditTool</span>
+{
+  <span class="string">"tool"</span>: <span class="string">"FileEditTool"</span>,
+  <span class="string">"parameters"</span>: {
+    <span class="string">"path"</span>: <span class="string">"src/auth/login.ts"</span>,
+    <span class="string">"old_text"</span>: <span class="string">`export async function authenticateUser(credentials) {
+  const user = await findUserByEmail(credentials.email);
+  if (!user) throw new Error('User not found');
+  
+  const isValid = await comparePassword(credentials.password, user.password);
+  if (!isValid) throw new Error('Invalid password');
+  
+  return createSession(user);
+}`</span>,
+    <span class="string">"new_text"</span>: <span class="string">`export async function authenticateUser(credentials) {
+  // 密码强度验证
+  if (!validatePasswordStrength(credentials.password)) {
+    throw new Error('Password does not meet requirements');
+  }
+  
+  const user = await findUserByEmail(credentials.email);
+  if (!user) throw new Error('User not found');
+  
+  const isValid = await comparePassword(credentials.password, user.password);
+  if (!isValid) throw new Error('Invalid password');
+  
+  return createSession(user);
+}`</span>
+  }
+}</div>
+      </div>
+
+      <div class="workflow-step">
+        <h4>步骤 4：FileEditTool 执行编辑</h4>
+        <div class="code-block"><span class="comment">// FileEditTool.ts 核心实现</span>
+<span class="keyword">async</span> <span class="function">call</span>(args, context) {
+  <span class="comment">// 1. 读取文件当前内容</span>
+  <span class="keyword">const</span> fileContent = <span class="keyword">await</span> fs.<span class="function">readFile</span>(args.path, <span class="string">'utf-8'</span>);
+  
+  <span class="comment">// 2. 查找 old_text 出现位置</span>
+  <span class="keyword">const</span> occurrences = <span class="function">countOccurrences</span>(fileContent, args.old_text);
+  
+  <span class="keyword">if</span> (occurrences === <span class="number">0</span>) {
+    <span class="keyword">throw new</span> <span class="type">Error</span>(<span class="string">`Text not found in file: ${args.path}`</span>);
+  }
+  
+  <span class="keyword">if</span> (occurrences > <span class="number">1</span> && !args.multiple_replaces) {
+    <span class="keyword">throw new</span> <span class="type">Error</span>(<span class="string">`Found ${occurrences} occurrences. Use multiple_replaces=true`</span>);
+  }
+  
+  <span class="comment">// 3. 应用替换</span>
+  <span class="keyword">const</span> newContent = fileContent.<span class="function">replace</span>(args.old_text, args.new_text);
+  
+  <span class="comment">// 4. 写回文件</span>
+  <span class="keyword">await</span> fs.<span class="function">writeFile</span>(args.path, newContent, <span class="string">'utf-8'</span>);
+  
+  <span class="comment">// 5. 生成 diff</span>
+  <span class="keyword">const</span> diff = <span class="function">generateDiff</span>(fileContent, newContent);
+  
+  <span class="keyword">return</span> {
+    data: {
+      path: args.path,
+      diff: diff,
+      occurrences: occurrences
+    }
+  };
+}</div>
+      </div>
+
+      <div class="workflow-step">
+        <h4>步骤 5：处理编辑失败（多轮修正）</h4>
+        <div class="code-block"><span class="comment">// 场景：old_text 不匹配</span>
+
+FileEditTool 返回错误：
+{
+  <span class="string">"error"</span>: <span class="string">"Text not found in file"</span>,
+  <span class="string">"suggestion"</span>: <span class="string">"The code may have changed. Here's the current content:"</span>,
+  <span class="string">"current_content"</span>: <span class="string">"..."</span>
+}
+
+Claude 分析错误后：
+1. 读取当前文件内容
+2. 重新定位要修改的代码
+3. 生成新的编辑指令（使用正确的 old_text）
+4. 再次尝试编辑</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">💡 关键技术点</div>
+        <div class="callout-content">
+          <strong>精确匹配：</strong>使用字符串精确匹配而非模糊匹配，避免误修改<br>
+          <strong>多处检测：</strong>检测多处匹配并询问用户，避免批量误改<br>
+          <strong>diff 生成：</strong>生成标准 diff 格式，便于用户审查<br>
+          <strong>多轮修正：</strong>编辑失败时自动分析原因并重新尝试
+        </div>
+      </div>
+    </section>
+
+    <!-- 💻 运行终端命令 -->
+    <section class="content-section">
+      <h2 class="section-title">💻 Claude Code 如何运行终端命令</h2>
+      <p class="section-subtitle">6 层安全检查 + AST 解析 + 沙箱执行</p>
+      
+      <div class="architecture-diagram">终端命令执行完整流程
+
+用户："运行 npm install"
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第 1 层：命令分类                                         │
+│ - 识别为"包管理命令"                                      │
+│ - 标记为"中等风险"（需要网络访问）                         │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第 2 层：安全检测（bashSecurity.ts）                      │
+│ - 检测命令替换：$()、``                                  │
+│ - 检测参数注入：${}                                      │
+│ - 检测进程替换：<()、>()                                 │
+│ - 检测 Unicode 攻击：\u00A0、\u200B                        │
+│ - 结果：✅ 安全，无危险模式                               │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第 3 层：权限规则匹配（bashPermissions.ts）                │
+│ - 检查用户规则：allow: ["npm:*"]                         │
+│ - 匹配成功 → 自动批准                                     │
+│ - 无规则 → 询问用户                                       │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第 4 层：路径约束检查（pathValidation.ts）                 │
+│ - 检查工作目录：/Users/yzt/project                        │
+│ - 检查输出重定向：无                                      │
+│ - 检查危险路径：无                                        │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第 5 层：沙箱执行（shouldUseSandbox.ts）                   │
+│ - 判断：npm install 不需要沙箱                            │
+│ - 原因：需要网络访问、需要修改 node_modules               │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第 6 层：执行与输出                                        │
+│ - spawn('npm', ['install'], {cwd: '/Users/yzt/project'}) │
+│ - 捕获 stdout/stderr                                     │
+│ - 超时控制：300 秒                                         │
+│ - 输出格式化：截断大输出                                   │
+└─────────────────────────────────────────────────────────┘</div>
+
+      <div class="workflow-step">
+        <h4>核心代码：BashTool 执行流程</h4>
+        <div class="code-block"><span class="comment">// BashTool.ts 简化实现</span>
+<span class="keyword">async</span> <span class="function">call</span>(args, context) {
+  <span class="comment">// 1. 命令分类</span>
+  <span class="keyword">const</span> commandType = <span class="function">classifyCommand</span>(args.command);
+  
+  <span class="comment">// 2. 安全检测</span>
+  <span class="keyword">const</span> securityCheck = <span class="keyword">await</span> <span class="function">runSecurityChecks</span>(args.command);
+  <span class="keyword">if</span> (!securityCheck.safe) {
+    <span class="keyword">throw new</span> <span class="type">Error</span>(securityCheck.reason);
+  }
+  
+  <span class="comment">// 3. 权限检查</span>
+  <span class="keyword">const</span> permission = <span class="keyword">await</span> <span class="function">checkPermissions</span>(args.command, context);
+  <span class="keyword">if</span> (permission.decision === <span class="string">'deny'</span>) {
+    <span class="keyword">throw new</span> <span class="type">Error</span>(<span class="string">'Command denied by permission rules'</span>);
+  }
+  <span class="keyword">if</span> (permission.decision === <span class="string">'ask'</span>) {
+    <span class="keyword">await</span> <span class="function">askUserPermission</span>(permission);
+  }
+  
+  <span class="comment">// 4. 路径约束检查</span>
+  <span class="keyword">const</span> pathCheck = <span class="keyword">await</span> <span class="function">checkPathConstraints</span>(args.command);
+  <span class="keyword">if</span> (!pathCheck.valid) {
+    <span class="keyword">throw new</span> <span class="type">Error</span>(pathCheck.reason);
+  }
+  
+  <span class="comment">// 5. 沙箱决策</span>
+  <span class="keyword">const</span> useSandbox = <span class="function">shouldUseSandbox</span>(args);
+  
+  <span class="comment">// 6. 执行命令</span>
+  <span class="keyword">const</span> child = spawn(args.command, [], {
+    shell: <span class="keyword">true</span>,
+    cwd: context.cwd,
+    stdio: [<span class="string">'pipe'</span>, <span class="string">'pipe'</span>, <span class="string">'pipe'</span>]
+  });
+  
+  <span class="comment">// 7. 捕获输出</span>
+  <span class="keyword">const</span> [stdout, stderr] = <span class="keyword">await</span> Promise.all([
+    <span class="function">readStream</span>(child.stdout),
+    <span class="function">readStream</span>(child.stderr)
+  ]);
+  
+  <span class="comment">// 8. 输出处理</span>
+  <span class="keyword">return</span> {
+    data: {
+      stdout: <span class="function">truncateOutput</span>(stdout),
+      stderr: <span class="function">truncateOutput</span>(stderr),
+      exitCode: child.exitCode,
+      persistedOutputPath: <span class="function">persistIfLarge</span>(stdout, stderr)
+    }
+  };
+}</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">💡 关键技术点</div>
+        <div class="callout-content">
+          <strong>AST 解析：</strong>使用 Tree-sitter 解析 Bash AST，准确识别命令结构<br>
+          <strong>20+ 危险模式：</strong>命令替换/参数注入/进程替换/Unicode 攻击/IFS 注入等<br>
+          <strong>通配符规则：</strong>支持"npm:*"、"git:*"等前缀规则，灵活授权<br>
+          <strong>输出持久化：</strong>大输出（>100KB）自动存储到临时文件，避免上下文溢出<br>
+          <strong>后台执行：</strong>run_in_background=true 支持长时间运行命令
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔄 处理完整工作流 -->
+    <section class="content-section">
+      <h2 class="section-title">🔄 Claude Code 如何处理完整工作流</h2>
+      <p class="section-subtitle">多 Agent 协作 + 任务编排 + 文件系统上下文传递</p>
+      
+      <div class="architecture-diagram">完整工作流：实现用户登录功能
+
+用户："帮我实现一个用户登录功能"
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 协调器（Claude）分析任务                                  │
+│ - 这是一个复杂任务，需要多步完成                           │
+│ - 需要：研究现有代码 → 实现功能 → 测试验证 → 提交代码      │
+│ - 决策：启动多个 Worker 并行处理                           │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 1: Research（并行启动 2 个 Worker）                     │
+├─────────────────────────────────────────────────────────┤
+│ Worker 1: 分析代码结构                                    │
+│ Prompt: "分析 src/目录结构，找出认证相关文件"              │
+│ 工具：GlobTool("**/*.ts"), FileReadTool                 │
+│ 输出：写入 research-notes.md                            │
+│                                                         │
+│ Worker 2: 查找认证代码                                    │
+│ Prompt: "搜索所有与认证相关的代码"                         │
+│ 工具：GrepTool("(auth|login|session)")                  │
+│ 输出：写入 auth-analysis.md                             │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 2: Synthesis（协调器综合）                           │
+│ - 读取 research-notes.md                                │
+│ - 读取 auth-analysis.md                                 │
+│ - 综合理解：项目使用 JWT 认证，有现成的 auth 中间件          │
+│ - 制定实现规格：                                         │
+│   1. 创建 LoginForm 组件                                │
+│   2. 实现 login API 端点                                 │
+│   3. 添加密码强度验证                                    │
+│   4. 编写单元测试                                        │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 3: Implementation（串行执行）                        │
+├─────────────────────────────────────────────────────────┤
+│ Worker 3: 实现登录 API                                    │
+│ Prompt: "在 src/auth/login.ts 实现 login 函数，包含："      │
+│         "1. 密码强度验证                                 │
+│         "2. 用户查找                                     │
+│         "3. 密码比对                                     │
+│         "4. JWT 令牌生成                                  │
+│ 工具：FileEditTool, BashTool(运行测试)                  │
+│ 输出：src/auth/login.ts + 测试通过                       │
+│                                                         │
+│ Worker 4: 实现前端表单                                    │
+│ Prompt: "创建 LoginForm 组件，包含："                      │
+│         "1. 邮箱和密码输入框                             │
+│         "2. 表单验证                                     │
+│         "3. 提交处理                                     │
+│ 工具：FileEditTool                                      │
+│ 输出：src/components/LoginForm.tsx                      │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 4: Verification（并行执行）                          │
+├─────────────────────────────────────────────────────────┤
+│ Worker 5: 运行测试套件                                    │
+│ Prompt: "运行所有测试，确保登录功能正常"                   │
+│ 工具：BashTool("npm test")                              │
+│ 输出：测试报告 + 覆盖率                                   │
+│                                                         │
+│ Worker 6: 代码审查                                        │
+│ Prompt: "审查登录功能代码，检查安全问题"                   │
+│ 工具：FileReadTool, SkillTool(/verify)                  │
+│ 输出：代码审查报告                                        │
+└─────────────────────────────────────────────────────────┘
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│ 阶段 5: Deployment（提交代码）                            │
+│ Worker 7: 提交并创建 PR                                   │
+│ Prompt: "提交代码并创建 PR"                               │
+│ 工具：BashTool(git add/commit/push), gh pr create     │
+│ 输出：commit hash + PR URL                              │
+└─────────────────────────────────────────────────────────┘</div>
+
+      <div class="workflow-step">
+        <h4>关键代码：协调器启动 Worker</h4>
+        <div class="code-block"><span class="comment">// 协调器调用 AgentTool 启动 Worker</span>
+{
+  <span class="string">"tool"</span>: <span class="string">"AgentTool"</span>,
+  <span class="string">"parameters"</span>: {
+    <span class="string">"description"</span>: <span class="string">"分析代码结构"</span>,
+    <span class="string">"subagent_type"</span>: <span class="string">"worker"</span>,
+    <span class="string">"prompt"</span>: <span class="string">"分析 src/目录结构，找出认证相关文件。
+使用 GlobTool 列出所有.ts 文件，然后用 FileReadTool 读取关键文件。
+将分析结果写入 research-notes.md。"</span>
+  }
+}
+
+<span class="comment">// 并行启动多个 Worker</span>
+{
+  <span class="string">"tool"</span>: <span class="string">"AgentTool"</span>,
+  <span class="string">"parameters"</span>: {
+    <span class="string">"description"</span>: <span class="string">"查找认证代码"</span>,
+    <span class="string">"subagent_type"</span>: <span class="string">"worker"</span>,
+    <span class="string">"prompt"</span>: <span class="string">"搜索所有与认证相关的代码。
+使用 GrepTool 搜索 (auth|login|session) 模式。
+将搜索结果和分析写入 auth-analysis.md。"</span>
+  }
+}</div>
+      </div>
+
+      <div class="workflow-step">
+        <h4>关键代码：Worker 通过文件传递上下文</h4>
+        <div class="code-block"><span class="comment">// Worker 1 写入研究笔记</span>
+<span class="comment">// research-notes.md</span>
+# 代码结构分析
+
+## 认证相关文件
+- src/auth/login.ts - 登录逻辑
+- src/auth/middleware.ts - 认证中间件
+- src/utils/session.ts - 会话管理
+
+## 依赖
+- jsonwebtoken - JWT 处理
+- bcrypt - 密码加密
+
+---
+<span class="comment">// Worker 2 写入分析报告</span>
+<span class="comment">// auth-analysis.md</span>
+# 认证代码分析
+
+## 现有功能
+- 用户查找：findUserByEmail()
+- 密码比对：comparePassword()
+- 会话创建：createSession()
+
+## 缺失功能
+- 密码强度验证
+- 登录失败限流
+- JWT 令牌刷新
+
+---
+<span class="comment">// 协调器读取文件综合理解</span>
+<span class="keyword">const</span> researchNotes = <span class="keyword">await</span> <span class="function">readFile</span>(<span class="string">'research-notes.md'</span>);
+<span class="keyword">const</span> authAnalysis = <span class="keyword">await</span> <span class="function">readFile</span>(<span class="string">'auth-analysis.md'</span>);
+
+<span class="comment">// 综合理解后制定实现规格</span>
+<span class="keyword">const</span> spec = <span class="function">synthesizeSpec</span>(researchNotes, authAnalysis);</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">💡 关键技术点</div>
+        <div class="callout-content">
+          <strong>并行是超能力：</strong>Research 阶段多 Worker 并行，Implementation 阶段单 Worker 写文件<br>
+          <strong>Worker 看不到协调器对话：</strong>每个提示必须自包含所有上下文<br>
+          <strong>文件系统协作：</strong>通过文件传递上下文，避免单 Agent 上下文溢出<br>
+          <strong>Continue vs Spawn：</strong>高上下文重叠→SendMessageTool 继续，低重叠→AgentTool 新建<br>
+          <strong>任务通知：</strong>Worker 完成通过&lt;task-notification&gt;消息通知协调器
+        </div>
+      </div>
+    </section>
+
+    <!-- 返回链接 -->
+    <div style="margin-top:60px;padding-top:24px;border-top:1px solid var(--border-color);">
+      <a href="/ai-agent/claude-code-analysis.html" style="color:var(--accent-blue);font-size:14px;">← 返回 Claude Code 源码分析</a>
+    </div>
+
+  </main>
+</body>
+</html>
