@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent 多 Agent 协作系统 | 哈基偷知识库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root {
+      --bg-primary: #0D0D0D; --bg-secondary: #1A1A1A; --bg-tertiary: #252525;
+      --text-primary: #FFFFFF; --text-secondary: #E5E5E5; --text-tertiary: #A1A1A1;
+      --accent-blue: #2997FF; --accent-purple: #BF5AF2; --accent-green: #30D158;
+      --border-color: #333333;
+      --code-bg: #1E1E1E; --code-border: #2D2D2D;
+    }
+    a, a:visited, a:hover { color: #E5E5E5 !important; text-decoration: none !important; }
+    a:hover { color: #FFFFFF !important; }
+    body, .navbar, .nav-link, .logo { color: #E5E5E5 !important; }
+    
+    .content-section { margin: 60px 0; }
+    .section-title { font-size: 32px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); }
+    
+    .code-container {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #252525;
+      border-bottom: 1px solid var(--code-border);
+    }
+    
+    .code-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .code-lang {
+      background: rgba(41, 151, 255, 0.15);
+      color: var(--accent-blue);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+    
+    .code-title {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    
+    .code-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .code-action-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-tertiary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .code-action-btn:hover {
+      border-color: var(--accent-blue);
+      color: var(--text-primary);
+    }
+    
+    .code-block {
+      padding: 0;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    .code-line {
+      display: flex;
+      padding: 2px 0;
+    }
+    
+    .line-number {
+      display: inline-block;
+      width: 40px;
+      padding-right: 16px;
+      text-align: right;
+      color: #6B6B6B;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    
+    .line-content {
+      padding-left: 16px;
+      white-space: pre;
+    }
+    
+    .keyword { color: #569CD6; }
+    .string { color: #CE9178; }
+    .comment { color: #6A9955; }
+    .function { color: #DCDCAA; }
+    .type { color: #4EC9B0; }
+    .number { color: #B5CEA8; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="/" class="logo">
+        <img src="../cat-avatar.png" alt="哈基偷" class="logo-avatar" style="width:32px;height:32px;border-radius:8px;">
+        <span class="logo-text">哈基偷知识库</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/investment" class="nav-link">📈 投资</a></li>
+        <li><a href="/ui-ux" class="nav-link">🎨 UI/UX</a></li>
+        <li><a href="/ai-agent" class="nav-link active">🤖 AI Agent</a></li>
+        <li><a href="/quantum" class="nav-link">⚛️ 量子计算</a></li>
+        <li><a href="/daily-notes" class="nav-link">📰 笔记</a></li>
+        <li><a href="/freedom-log" class="nav-link">📔 日记</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container" style="padding:40px 20px;max-width:1200px;">
+    
+    <section class="content-section">
+      <h2 class="section-title">💻 BashTool 输入参数</h2>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <div class="code-header-left">
+            <span class="code-lang">typescript</span>
+            <span class="code-title">BashTool.ts 输入参数定义</span>
+          </div>
+          <div class="code-actions">
+            <button class="code-action-btn">复制</button>
+            <button class="code-action-btn">插入</button>
+          </div>
+        </div>
+        <div class="code-block">
+          <div class="code-line"><span class="line-number">1</span><span class="line-content"><span class="keyword">const</span> inputSchema = z.strictObject({</span></div>
+          <div class="code-line"><span class="line-number">2</span><span class="line-content">  command: z.string().describe(<span class="string">'The command to execute'</span>),</span></div>
+          <div class="code-line"><span class="line-number">3</span><span class="line-content">  timeout: z.number().optional().describe(<span class="string">'Optional timeout in milliseconds'</span>),</span></div>
+          <div class="code-line"><span class="line-number">4</span><span class="line-content">  description: z.string().optional().describe(<span class="string">'Clear description of what this command does'</span>),</span></div>
+          <div class="code-line"><span class="line-number">5</span><span class="line-content">  run_in_background: z.boolean().optional().describe(<span class="string">'Run command in background'</span>),</span></div>
+          <div class="code-line"><span class="line-number">6</span><span class="line-content">  dangerouslyDisableSandbox: z.boolean().optional().describe(<span class="string">'Override sandbox mode'</span>),</span></div>
+          <div class="code-line"><span class="line-number">7</span><span class="line-content">})</span></div>
+        </div>
+      </div>
+      
+    </section>
+
+  </main>
+</body>
+</html>

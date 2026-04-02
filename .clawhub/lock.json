@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1773201125808
+    },
+    "multi-search-engine": {
+      "version": "2.0.1",
+      "installedAt": 1773201250539
+    },
+    "skill-creator": {
+      "version": "0.1.0",
+      "installedAt": 1773201545762
+    },
+    "tavily-search": {
+      "version": "1.0.0",
+      "installedAt": 1773202444121
+    },
+    "openai-whisper": {
+      "version": "1.0.0",
+      "installedAt": 1773208447867
+    },
+    "pdf": {
+      "version": "0.1.0",
+      "installedAt": 1773217994169
+    },
+    "obsidian": {
+      "version": "1.0.0",
+      "installedAt": 1773220329724
+    },
+    "apple-notes": {
+      "version": "1.0.0",
+      "installedAt": 1773221287260
+    },
+    "apple-reminders": {
+      "version": "1.0.0",
+      "installedAt": 1773221709471
+    },
+    "model-usage": {
+      "version": "1.0.0",
+      "installedAt": 1773222544040
+    },
+    "youdaonote-clip": {
+      "version": "1.21.8",
+      "installedAt": 1773481262081
+    },
+    "youdaonote-news": {
+      "version": "1.7.7",
+      "installedAt": 1773481502978
+    }
+  }
+}

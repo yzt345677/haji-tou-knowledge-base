@@ -1,0 +1,111 @@
+🦞 OpenClaw Skills 后台安装启动
+开始时间：Wed Mar 11 11:49:58 CST 2026
+================================
+
+🔧 安装：multi-search-engine (Wed Mar 11 11:49:58 CST 2026)
+- Resolving multi-search-engine
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ multi-search-engine 安装成功
+
+🔧 安装：tavily-search (Wed Mar 11 11:50:08 CST 2026)
+- Resolving tavily-search
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ tavily-search 安装成功
+
+🔧 安装：summarize (Wed Mar 11 11:50:19 CST 2026)
+- Resolving summarize
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ summarize 安装成功
+
+🔧 安装：skill-creator (Wed Mar 11 11:50:30 CST 2026)
+- Resolving skill-creator
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ skill-creator 安装成功
+
+🔧 安装：skill-vetter (Wed Mar 11 11:50:40 CST 2026)
+- Resolving skill-vetter
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ skill-vetter 安装成功
+
+🔧 安装：model-usage (Wed Mar 11 11:50:51 CST 2026)
+- Resolving model-usage
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ model-usage 安装成功
+
+🔧 安装：pdf (Wed Mar 11 11:51:01 CST 2026)
+- Resolving pdf
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ pdf 安装成功
+
+🔧 安装：docx (Wed Mar 11 11:51:11 CST 2026)
+- Resolving docx
+✖ Skill not found
+Error: Skill not found
+✅ docx 安装成功
+
+🔧 安装：xlsx (Wed Mar 11 11:51:22 CST 2026)
+- Resolving xlsx
+✖ Skill not found
+Error: Skill not found
+✅ xlsx 安装成功
+
+🔧 安装：obsidian (Wed Mar 11 11:51:30 CST 2026)
+- Resolving obsidian
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ obsidian 安装成功
+
+🔧 安装：apple-notes (Wed Mar 11 11:51:40 CST 2026)
+- Resolving apple-notes
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ apple-notes 安装成功
+
+🔧 安装：apple-reminders (Wed Mar 11 11:51:51 CST 2026)
+- Resolving apple-reminders
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ apple-reminders 安装成功
+
+🔧 安装：github (Wed Mar 11 11:52:01 CST 2026)
+- Resolving github
+✔ OK. Installed github -> /Users/yzt/.openclaw/workspace/skills/github
+✅ github 安装成功
+
+🔧 安装：youtube-watcher (Wed Mar 11 11:52:10 CST 2026)
+- Resolving youtube-watcher
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ youtube-watcher 安装成功
+
+🔧 安装：openai-whisper (Wed Mar 11 11:52:21 CST 2026)
+- Resolving openai-whisper
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ openai-whisper 安装成功
+
+🔧 安装：weather (Wed Mar 11 11:52:31 CST 2026)
+- Resolving weather
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ weather 安装成功
+
+🔧 安装：copywriting (Wed Mar 11 11:52:41 CST 2026)
+- Resolving copywriting
+✖ Rate limit exceeded
+Error: Rate limit exceeded
+✅ copywriting 安装成功
+
+================================
+🎉 安装完成！
+成功：17
+失败：0
+结束时间：Wed Mar 11 11:52:52 CST 2026
+

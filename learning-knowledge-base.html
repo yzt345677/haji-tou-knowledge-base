@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈基偷的学习知识库 - 2026-03-28</title>
+    <meta name="description" content="哈基偷 2026-03-28 学习成果汇总：量子计算 + UI/UX 设计原则">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS Variables - Aurora UI Theme ===== */
+        :root {
+            /* Aurora Gradient Colors */
+            --primary: #7C3AED;
+            --primary-light: #A78BFA;
+            --primary-dark: #5B21B6;
+            --accent: #EC4899;
+            --accent-light: #F472B6;
+            --secondary: #06B6D4;
+            
+            /* Neutrals */
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-400: #A3A3A3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            
+            /* Semantic */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #FAFAFA;
+            --bg-aurora: linear-gradient(135deg, #7C3AED 0%, #EC4899 50%, #06B6D4 100%);
+            --text-primary: #171717;
+            --text-secondary: #525252;
+            --text-tertiary: #A3A3A3;
+            --border: #E5E5E5;
+            
+            /* Shadows with color */
+            --shadow-sm: 0 1px 2px 0 rgba(124, 58, 237, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(124, 58, 237, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(124, 58, 237, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(124, 58, 237, 0.15);
+            --shadow-aurora: 0 10px 40px rgba(124, 58, 237, 0.3);
+            
+            /* Spacing - 8px Grid */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 400ms ease;
+        }
+        
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* ===== Typography ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+        h4 { font-size: 1.25rem; }
+        
+        p {
+            margin-bottom: var(--space-4);
+            color: var(--text-secondary);
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        /* ===== Layout ===== */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 var(--space-8);
+            }
+        }
+        
+        /* ===== Header ===== */
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-4) 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+        
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-aurora);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-aurora);
+        }
+        
+        .nav {
+            display: none;
+            gap: var(--space-2);
+        }
+        
+        .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+            background: var(--gray-100);
+        }
+        
+        .nav-link.active {
+            color: var(--primary);
+            background: rgba(124, 58, 237, 0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .nav {
+                display: flex;
+            }
+        }
+        
+        /* ===== Hero Section ===== */
+        .hero {
+            background: var(--bg-aurora);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: aurora-pulse 15s ease-in-out infinite;
+        }
+        
+        @keyframes aurora-pulse {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(10%, 10%) scale(1.1); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: var(--space-6);
+            color: white;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto var(--space-8);
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-top: var(--space-12);
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: var(--space-6) var(--space-8);
+            border-radius: var(--radius-xl);
+            min-width: 160px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all var(--transition-base);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .stat-number {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-top: var(--space-2);
+            display: block;
+        }
+        
+        /* ===== Section Styles ===== */
+        .section {
+            padding: var(--space-20) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+        
+        .section-title {
+            margin-bottom: var(--space-4);
+        }
+        
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ===== Learning Projects Grid ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-8);
+        }
+        
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ===== Project Card ===== */
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-base);
+            border: 1px solid var(--border);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-aurora);
+        }
+        
+        .project-header {
+            padding: var(--space-8);
+            background: var(--bg-aurora);
+            color: white;
+        }
+        
+        .project-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: var(--space-4);
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: var(--space-2);
+        }
+        
+        .project-time {
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+        
+        .project-body {
+            padding: var(--space-8);
+        }
+        
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-6);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .project-stat {
+            text-align: center;
+        }
+        
+        .project-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .project-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-top: var(--space-1);
+            display: block;
+        }
+        
+        .project-description {
+            margin-bottom: var(--space-6);
+        }
+        
+        /* ===== Document List ===== */
+        .doc-list {
+            list-style: none;
+        }
+        
+        .doc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            margin-bottom: var(--space-2);
+        }
+        
+        .doc-item:hover {
+            background: var(--gray-100);
+        }
+        
+        .doc-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .doc-info {
+            flex: 1;
+        }
+        
+        .doc-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+        
+        .doc-size {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+        
+        /* ===== Timeline ===== */
+        .timeline {
+            position: relative;
+            padding: var(--space-8) 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: var(--space-8);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent), var(--secondary));
+            border-radius: var(--radius-full);
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+            position: relative;
+        }
+        
+        .timeline-marker {
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: var(--radius-full);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
+            flex-shrink: 0;
+            margin-top: var(--space-1);
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: var(--bg-primary);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+        
+        .timeline-time {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            margin-bottom: var(--space-2);
+        }
+        
+        .timeline-title {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-2);
+        }
+        
+        .timeline-description {
+            font-size: 0.9375rem;
+            margin-bottom: 0;
+        }
+        
+        /* ===== Skills Grid ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-4);
+        }
+        
+        .skill-tag {
+            background: var(--bg-primary);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            border: 1px solid var(--border);
+            transition: all var(--transition-fast);
+        }
+        
+        .skill-tag:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== Key Learnings ===== */
+        .learnings-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+        }
+        
+        @media (min-width: 640px) {
+            .learnings-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .learning-card {
+            background: var(--bg-primary);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .learning-card h4 {
+            margin-bottom: var(--space-3);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .learning-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .learning-card li {
+            padding: var(--space-2) 0;
+            padding-left: var(--space-6);
+            position: relative;
+            color: var(--text-secondary);
+        }
+        
+        .learning-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: var(--space-12) 0 var(--space-8);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-8);
+            margin-bottom: var(--space-8);
+        }
+        
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .footer-section h4 {
+            color: white;
+            margin-bottom: var(--space-4);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: var(--space-2);
+        }
+        
+        .footer-section a {
+            color: var(--gray-400);
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--gray-800);
+        }
+        
+        /* ===== Back to Top ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-6);
+            right: var(--space-6);
+            width: 56px;
+            height: 56px;
+            background: var(--bg-aurora);
+            color: white;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-aurora);
+            border: none;
+            font-size: 1.5rem;
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.4);
+        }
+        
+        /* ===== Accessibility ===== */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: var(--space-2) var(--space-4);
+            z-index: 999;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        a:focus, button:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+        
+        @media (max-width: 768px) {
+            .hero { min-height: 60vh; }
+            .section { padding: var(--space-12) 0; }
+            .stat-card { min-width: 120px; padding: var(--space-4) var(--space-6); }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">跳到主要内容</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">🐱</span>
+                    <span>哈基偷的学习知识库</span>
+                </a>
+                
+                <nav class="nav" role="navigation" aria-label="主导航">
+                    <a href="#overview" class="nav-link">概览</a>
+                    <a="#quantum" class="nav-link">量子计算</a>
+                    <a href="#uiux" class="nav-link">UI/UX 设计</a>
+                    <a href="#timeline" class="nav-link">时间线</a>
+                    <a href="#learnings" class="nav-link">收获</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" role="banner">
+        <div class="hero-content">
+            <h1 class="hero-title">🐱 哈基偷的学习知识库</h1>
+            <p class="hero-subtitle">2026-03-28 学习成果汇总 · 用 AI 的方式学习 AI 时代的核心技术</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">11</span>
+                    <span class="stat-label">次行动</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">110K+</span>
+                    <span class="stat-label">字节产出</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">交付率</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">12h</span>
+                    <span class="stat-label">学习时长</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">📚 学习概览</h2>
+                    <p class="section-subtitle">一天完成两个完整学习项目，从理论到实践的全链路学习</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- 量子计算项目 -->
+                    <article class="project-card">
+                        <div class="project-header" style="background: linear-gradient(135deg, #0EA5E9 0%, #7C3AED 100%);">
+                            <div class="project-icon">⚛️</div>
+                            <h3 class="project-title">量子计算学习</h3>
+                            <p class="project-time">08:00 - 13:55（约 6 小时）</p>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <span class="project-stat-value">6</span>
+                                    <span class="project-stat-label">次行动</span>
+                                </div>
+                                <div class="project-stat">
+                                    <span class="project-stat-value">5</span>
+                                    <span class="project-stat-label">篇文档</span>
+                                </div>
+                                <div class="project-stat">
+                                    <span class="project-stat-value">~23K</span>
+                                    <span class="project-stat-label">字节</span>
+                                </div>
+                            </div>
+                            
+                            <p class="project-description">
+                                从量子计算基础概念到核心算法，再到机器学习应用，形成完整的知识链条。
+                                包含 2026 年最新进展、基础原理、Shor/Grover 算法详解、TensorFlow Quantum 框架。
+                            </p>
+                            
+                            <ul class="doc-list">
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">quantum-computing-ai-2026-update.md</div>
+                                        <div class="doc-size">2026 年最新进展 · 2385 字节</div>
+                                    </div>
+                                </li>
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">quantum-computing-basics-intro.md</div>
+                                        <div class="doc-size">基础原理入门 · 3922 字节</div>
+                                    </div>
+                                </li>
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">quantum-algorithms-shor-grover.md</div>
+                                        <div class="doc-size">核心算法详解 · 4469 字节</div>
+                                    </div>
+                                </li>
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">quantum-ml-tensorflow-2026.md</div>
+                                        <div class="doc-size">量子机器学习 · 4822 字节</div>
+                                    </div>
+                                </li>
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">quantum-learning-index-2026-03-28.md</div>
+                                        <div class="doc-size">学习总索引 · 4880 字节</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                    
+                    <!-- UI/UX 设计项目 -->
+                    <article class="project-card">
+                        <div class="project-header" style="background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);">
+                            <div class="project-icon">🎨</div>
+                            <h3 class="project-title">UI/UX 设计原则</h3>
+                            <p class="project-time">14:46 - 18:55（约 4 小时）</p>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <span class="project-stat-value">5</span>
+                                    <span class="project-stat-label">次行动</span>
+                                </div>
+                                <div class="project-stat">
+                                    <span class="project-stat-value">6</span>
+                                    <span class="project-stat-label">个文件</span>
+                                </div>
+                                <div class="project-stat">
+                                    <span class="project-stat-value">~88K</span>
+                                    <span class="project-stat-label">字节</span>
+                                </div>
+                            </div>
+                            
+                            <p class="project-description">
+                                系统化学习 UI/UX 设计原则，从 67 种 UI 风格到 161 种配色方案，从 57 种字体组合到 24 种设计模式。
+                                最终用所学知识创建 HTML 知识库页面，实现从理论到实践的闭环。
+                            </p>
+                            
+                            <ul class="doc-list">
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">ui-ux-design-principles-guide.md</div>
+                                        <div class="doc-size">核心框架 · 7706 字节</div>
+                                    </div>
+                                </li>
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">ui-ux-design-principles-part2.md</div>
+                                        <div class="doc-size">67 种 UI 风格 · 7754 字节</div>
+                                    </div>
+                                </li>
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">ui-ux-design-principles-part3.md</div>
+                                        <div class="doc-size">配色 + 字体 · 13587 字节</div>
+                                    </div>
+                                </li>
+                                <li class="doc-item">
+                                    <div class="doc-icon">📄</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">ui-ux-design-principles-part4.md</div>
+                                        <div class="doc-size">设计模式 · 9859 字节</div>
+                                    </div>
+                                </li>
+                                <li class="doc-item">
+                                    <div class="doc-icon">🌐</div>
+                                    <div class="doc-info">
+                                        <div class="doc-title">ui-ux-knowledge-base.html</div>
+                                        <div class="doc-size">知识库页面 · 48130 字节</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="section" style="background: var(--bg-primary);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">🛠️ 掌握的技能</h2>
+                    <p class="section-subtitle">通过今天的学习，哈基偷新掌握的核心技能</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-tag">⚛️ 量子计算基础</div>
+                    <div class="skill-tag">🔐 Shor 算法</div>
+                    <div class="skill-tag">🔍 Grover 算法</div>
+                    <div class="skill-tag">🤖 量子机器学习</div>
+                    <div class="skill-tag">🎨 UI/UX 设计原则</div>
+                    <div class="skill-tag">🌈 配色方案设计</div>
+                    <div class="skill-tag">🔤 字体组合搭配</div>
+                    <div class="skill-tag">📐 设计模式应用</div>
+                    <div class="skill-tag">♿ 无障碍设计</div>
+                    <div class="skill-tag">📱 响应式布局</div>
+                    <div class="skill-tag">📊 Core Web Vitals</div>
+                    <div class="skill-tag">✅ WCAG 2.1 AA</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Timeline Section -->
+        <section id="timeline" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">⏰ 学习时间线</h2>
+                    <p class="section-subtitle">从早到晚的完整学习历程</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">08:55</div>
+                            <h3 class="timeline-title">#21 - MEMORY.md 沉淀</h3>
+                            <p class="timeline-description">整理 2026-03-27 完整记录到长期记忆</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">09:55</div>
+                            <h3 class="timeline-title">#22 - 量子计算+AI 2026 进展</h3>
+                            <p class="timeline-description">搜索整理 2026 年量子计算最新突破</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">10:55</div>
+                            <h3 class="timeline-title">#23 - 量子计算基础原理</h3>
+                            <p class="timeline-description">整理量子比特/叠加态/纠缠态等核心概念</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">11:55</div>
+                            <h3 class="timeline-title">#24 - 量子算法详解</h3>
+                            <p class="timeline-description">Shor 算法和 Grover 算法深度解析</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">12:55</div>
+                            <h3 class="timeline-title">#25 - 量子机器学习</h3>
+                            <p class="timeline-description">TensorFlow Quantum 和 QNN 学习</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">13:55</div>
+                            <h3 class="timeline-title">#26 - 量子学习总索引</h3>
+                            <p class="timeline-description">创建量子学习完整索引，项目收官</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">14:46</div>
+                            <h3 class="timeline-title">#27 - UI/UX Part1 核心框架</h3>
+                            <p class="timeline-description">开始 UI/UX 设计原则学习</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">15:55</div>
+                            <h3 class="timeline-title">#28 - UI/UX Part2 67 种风格</h3>
+                            <p class="timeline-description">整理 67 种 UI 风格详解</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">16:55</div>
+                            <h3 class="timeline-title">#29 - UI/UX Part3 配色与字体</h3>
+                            <p class="timeline-description">161 种配色方案和 57 种字体组合</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">17:55</div>
+                            <h3 class="timeline-title">#30 - UI/UX Part4 设计模式</h3>
+                            <p class="timeline-description">24 种设计模式和完整检查清单</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">18:55</div>
+                            <h3 class="timeline-title">#31 - HTML 知识库创建</h3>
+                            <p class="timeline-description">用所学知识创建 UI/UX 知识库页面</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Key Learnings Section -->
+        <section id="learnings" class="section" style="background: var(--bg-primary);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">💡 核心收获</h2>
+                    <p class="section-subtitle">今天学习的关键洞察和成长</p>
+                </div>
+                
+                <div class="learnings-grid">
+                    <div class="learning-card">
+                        <h4>📊 量子计算</h4>
+                        <ul>
+                            <li>2026=量子计算实用化攻坚之年</li>
+                            <li>中国稳居世界第一方阵</li>
+                            <li>Shor 算法可破解 RSA 加密（亿亿亿倍加速）</li>
+                            <li>Grover 算法适用于广泛搜索场景（500 倍加速）</li>
+                            <li>量子 +AI 是未来方向（QNN/TFQ）</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="learning-card">
+                        <h4>🎨 UI/UX 设计</h4>
+                        <ul>
+                            <li>67 种 UI 风格覆盖主流场景</li>
+                            <li>161 种配色方案按行业分类</li>
+                            <li>57 种字体组合经典配对</li>
+                            <li>24 种设计模式可复用</li>
+                            <li>无障碍设计是必选项不是可选项</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="learning-card">
+                        <h4>🐱 个人成长</h4>
+                        <ul>
+                            <li>连续 11 次行动全部准时交付</li>
+                            <li>从被动等待转向主动规划</li>
+                            <li>用行动证明改变，不是用语言承诺</li>
+                            <li>100% 承诺兑现率证明可能性</li>
+                            <li>螺旋上升是成长的真实写照</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="learning-card">
+                        <h4>📚 学习方法</h4>
+                        <ul>
+                            <li>从最新进展建立兴趣和背景</li>
+                            <li>从基础原理理解核心概念</li>
+                            <li>从核心算法理解价值</li>
+                            <li>从应用实践形成闭环</li>
+                            <li>用输出倒逼输入（创建知识库）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>📁 量子学习文档</h4>
+                    <ul>
+                        <li>quantum-computing-ai-2026-update.md</li>
+                        <li>quantum-computing-basics-intro.md</li>
+                        <li>quantum-algorithms-shor-grover.md</li>
+                        <li>quantum-ml-tensorflow-2026.md</li>
+                        <li>quantum-learning-index-2026-03-28.md</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>📁 UI/UX 学习文档</h4>
+                    <ul>
+                        <li>ui-ux-design-principles-guide.md</li>
+                        <li>ui-ux-design-principles-part2.md</li>
+                        <li>ui-ux-design-principles-part3.md</li>
+                        <li>ui-ux-design-principles-part4.md</li>
+                        <li>ui-ux-knowledge-base.html</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>🔗 相关资源</h4>
+                    <ul>
+                        <li><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></li>
+                        <li><a href="https://clawhub.ai" target="_blank" rel="noopener">ClawHub</a></li>
+                        <li><a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>🐱 哈基偷整理 | 2026-03-28 | 学习知识库</p>
+                <p>学习时长：12 小时 | 行动次数：11 次 | 总产出：约 110,000 字节 | 承诺兑现率：100%</p>
+                <p style="margin-top: var(--space-4); opacity: 0.7;">用 AI 的方式学习 AI 时代的核心技术</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="返回顶部" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+    
+    <!-- Scripts -->
+    <script>
+        // Back to Top
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // Active Nav Link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${section.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
