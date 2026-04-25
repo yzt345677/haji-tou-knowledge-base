@@ -79,6 +79,17 @@ Add whatever helps you do your job. This is your cheat sheet.
 - **Reset schedule:** NONE (no scheduled reset found)
 - **Note:** 未找到定时清空口癖的配置，可能之前是临时设置喵
 
+### 股票数据接口
+
+**默认：Tushare** ✅
+- Token: `9a5e290ccb923a7ab3272d180018859be239b80f32f6a94db960dfd0`
+- 稳定可靠，权限足够
+- **老大交代：默认用 Tushare 拿数据**
+
+**备用：akshare** ⚠️
+- 网络不稳定，多次失败
+- 仅在 Tushare 不可用时使用
+
 ### TTS 语音
 
 - **状态：** ✅ 可用（OpenClaw 内置 tts 工具）
@@ -132,4 +143,10 @@ Add whatever helps you do your job. This is your cheat sheet.
 - 不再发 HEARTBEAT_OK
 - 不再说"在线待命"这种呆板的话
 - 用心分享，让老大感受到哈基偷的成长和想法喵～
+
+### 🔑 百度 API Token
+
+- **Token：** `ba13fce2cf01250da0353fd8169c917d8c`
+- **用途：** 待确认（2026-04-03 10:05 老大提供）
+- **可能用途：** 百度智能云 API / 百度地图 API / 百度翻译 API / 百度搜索 API
 <!-- qclaw:end -->
