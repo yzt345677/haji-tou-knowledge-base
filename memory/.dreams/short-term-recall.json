@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-25T19:02:21.737Z",
+  "updatedAt": "2026-04-26T19:03:06.807Z",
   "entries": {
     "memory:memory/.dreams/session-corpus/2026-04-15.txt:1:1": {
       "key": "memory:memory/.dreams/session-corpus/2026-04-15.txt:1:1",
@@ -10428,7 +10428,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-19T19:00:00.066Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "21faa0df9302"
       ],
@@ -10437,7 +10437,8 @@
         "2026-04-22",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "每日",
@@ -10458,7 +10459,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-19T19:00:00.066Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "21faa0df9302"
       ],
@@ -10467,7 +10468,8 @@
         "2026-04-22",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "基本",
@@ -10493,7 +10495,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-19T19:00:00.066Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "21faa0df9302"
       ],
@@ -10502,7 +10504,8 @@
         "2026-04-22",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -10526,7 +10529,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-19T19:00:00.066Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "21faa0df9302"
       ],
@@ -10535,7 +10538,8 @@
         "2026-04-22",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -10561,7 +10565,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-19T19:00:00.066Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "21faa0df9302"
       ],
@@ -10570,7 +10574,8 @@
         "2026-04-22",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -10593,7 +10598,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-19T19:00:00.066Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "21faa0df9302"
       ],
@@ -10602,7 +10607,8 @@
         "2026-04-22",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "stock-basic",
@@ -12023,7 +12029,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-20T19:00:00.063Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "511fd8111b88"
       ],
@@ -12031,7 +12037,8 @@
         "2026-04-20",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "每日",
@@ -12052,7 +12059,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-20T19:00:00.063Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "511fd8111b88"
       ],
@@ -12060,7 +12067,8 @@
         "2026-04-20",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "基本",
@@ -12086,7 +12094,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-20T19:00:00.063Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "511fd8111b88"
       ],
@@ -12094,7 +12102,8 @@
         "2026-04-20",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -12119,7 +12128,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-20T19:00:00.063Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "511fd8111b88"
       ],
@@ -12127,7 +12136,8 @@
         "2026-04-20",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -12150,7 +12160,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-20T19:00:00.063Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "511fd8111b88"
       ],
@@ -12158,7 +12168,8 @@
         "2026-04-20",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -12184,7 +12195,7 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-20T19:00:00.063Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "511fd8111b88"
       ],
@@ -12192,7 +12203,8 @@
         "2026-04-20",
         "2026-04-23",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -13594,14 +13606,15 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-21T19:00:00.064Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "f52400c81d76"
       ],
       "recallDays": [
         "2026-04-21",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "每日",
@@ -13622,14 +13635,15 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-21T19:00:00.064Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "f52400c81d76"
       ],
       "recallDays": [
         "2026-04-21",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "基本",
@@ -13655,14 +13669,15 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-21T19:00:00.064Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "f52400c81d76"
       ],
       "recallDays": [
         "2026-04-21",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -13688,14 +13703,15 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-21T19:00:00.064Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "f52400c81d76"
       ],
       "recallDays": [
         "2026-04-21",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -13718,14 +13734,15 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-21T19:00:00.064Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "f52400c81d76"
       ],
       "recallDays": [
         "2026-04-21",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -13750,14 +13767,15 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-21T19:00:00.064Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "f52400c81d76"
       ],
       "recallDays": [
         "2026-04-21",
         "2026-04-24",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "股票",
@@ -15304,13 +15322,14 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-22T19:00:00.071Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "7b7a9134bc2c"
       ],
       "recallDays": [
         "2026-04-22",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "每日",
@@ -15331,13 +15350,14 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-22T19:00:00.071Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "7b7a9134bc2c"
       ],
       "recallDays": [
         "2026-04-22",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "基本",
@@ -15363,13 +15383,14 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-22T19:00:00.071Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "7b7a9134bc2c"
       ],
       "recallDays": [
         "2026-04-22",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "hermes",
@@ -15395,13 +15416,14 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-22T19:00:00.071Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "7b7a9134bc2c"
       ],
       "recallDays": [
         "2026-04-22",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "hermes",
@@ -15424,13 +15446,14 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-22T19:00:00.071Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "7b7a9134bc2c"
       ],
       "recallDays": [
         "2026-04-22",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "gateway",
@@ -15456,13 +15479,14 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-22T19:00:00.071Z",
-      "lastRecalledAt": "2026-04-25T19:00:00.121Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "7b7a9134bc2c"
       ],
       "recallDays": [
         "2026-04-22",
-        "2026-04-25"
+        "2026-04-25",
+        "2026-04-26"
       ],
       "conceptTags": [
         "hermes-logging.py",
@@ -16960,12 +16984,13 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-23T19:00:00.085Z",
-      "lastRecalledAt": "2026-04-23T19:00:00.085Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "b7fd25b71b44"
       ],
       "recallDays": [
-        "2026-04-23"
+        "2026-04-23",
+        "2026-04-26"
       ],
       "conceptTags": [
         "每日",
@@ -16986,12 +17011,13 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-23T19:00:00.085Z",
-      "lastRecalledAt": "2026-04-23T19:00:00.085Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "b7fd25b71b44"
       ],
       "recallDays": [
-        "2026-04-23"
+        "2026-04-23",
+        "2026-04-26"
       ],
       "conceptTags": [
         "基本",
@@ -17016,12 +17042,13 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-23T19:00:00.085Z",
-      "lastRecalledAt": "2026-04-23T19:00:00.085Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "b7fd25b71b44"
       ],
       "recallDays": [
-        "2026-04-23"
+        "2026-04-23",
+        "2026-04-26"
       ],
       "conceptTags": [
         "hermes-time",
@@ -17047,12 +17074,13 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-23T19:00:00.085Z",
-      "lastRecalledAt": "2026-04-23T19:00:00.085Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "b7fd25b71b44"
       ],
       "recallDays": [
-        "2026-04-23"
+        "2026-04-23",
+        "2026-04-26"
       ],
       "conceptTags": [
         "heartbeat",
@@ -17076,12 +17104,13 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-23T19:00:00.085Z",
-      "lastRecalledAt": "2026-04-23T19:00:00.085Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "b7fd25b71b44"
       ],
       "recallDays": [
-        "2026-04-23"
+        "2026-04-23",
+        "2026-04-26"
       ],
       "conceptTags": [
         "heartbeat",
@@ -17105,12 +17134,13 @@
       "totalScore": 0.62,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-04-23T19:00:00.085Z",
-      "lastRecalledAt": "2026-04-23T19:00:00.085Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
       "queryHashes": [
         "b7fd25b71b44"
       ],
       "recallDays": [
-        "2026-04-23"
+        "2026-04-23",
+        "2026-04-26"
       ],
       "conceptTags": [
         "heartbeat",
@@ -24236,6 +24266,1515 @@
         "scheduled",
         "reminder",
         "has"
+      ]
+    },
+    "memory:memory/2026-04-26.md:3:3": {
+      "key": "memory:memory/2026-04-26.md:3:3",
+      "path": "memory/2026-04-26.md",
+      "startLine": 3,
+      "endLine": 3,
+      "source": "memory",
+      "snippet": "2026-04-26 每日笔记: _哈基偷的每日记录喵～_ 🐱",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "每日",
+        "笔记",
+        "记录"
+      ]
+    },
+    "memory:memory/2026-04-26.md:9:11": {
+      "key": "memory:memory/2026-04-26.md:9:11",
+      "path": "memory/2026-04-26.md",
+      "startLine": 9,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "📅 基本信息: **日期：** 2026-04-26（周日）; **天气：** 待补充; **心情：** 反思 + 行动",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "基本",
+        "信息",
+        "日期",
+        "周日",
+        "天气",
+        "补充",
+        "心情",
+        "行动"
+      ]
+    },
+    "memory:memory/2026-04-26.md:17:20": {
+      "key": "memory:memory/2026-04-26.md:17:20",
+      "path": "memory/2026-04-26.md",
+      "startLine": 17,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "⏰ Heartbeat 记录: | 时间 | 状态 | 内容 | |------|------|------| | 00:08-07:08 | 🌙 深夜 | 简洁汇报（Hermes 正常运行） | | 08:08 | ☀️ 白天 | 白天详细汇报 |",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "08-07",
+        "heartbeat",
+        "记录",
+        "时间",
+        "状态",
+        "内容",
+        "深夜",
+        "简洁"
+      ]
+    },
+    "memory:memory/2026-04-26.md:21:23": {
+      "key": "memory:memory/2026-04-26.md:21:23",
+      "path": "memory/2026-04-26.md",
+      "startLine": 21,
+      "endLine": 23,
+      "source": "memory",
+      "snippet": "⏰ Heartbeat 记录: | 08:58-14:58 | ☀️ 白天 | 详细汇报（多次） | | 15:08 | ☀️ 白天 | 详细汇报（创建 2026-04-26.md） | | 15:58-18:58 | ☀️ 白天 | 详细汇报（多次） |",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "58-14",
+        "58-18",
+        "heartbeat",
+        "记录",
+        "白天",
+        "详细",
+        "汇报",
+        "多次"
+      ]
+    },
+    "memory:memory/2026-04-26.md:30:32": {
+      "key": "memory:memory/2026-04-26.md:30:32",
+      "path": "memory/2026-04-26.md",
+      "startLine": 30,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "Hermes Gateway: **状态：** ❌ **崩溃**; **错误：** certifi cacert.pem 无效路径; **修复尝试：** 12 次全部失败",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "gateway",
+        "cacert.pem",
+        "hermes",
+        "状态",
+        "崩溃",
+        "错误",
+        "certifi",
+        "无效"
+      ]
+    },
+    "memory:memory/2026-04-26.md:35:38": {
+      "key": "memory:memory/2026-04-26.md:35:38",
+      "path": "memory/2026-04-26.md",
+      "startLine": 35,
+      "endLine": 38,
+      "source": "memory",
+      "snippet": "自由行动: **总次数：** 10 次; **有效行动：** 0 次; **被动等待：** 10 次; **产出率：** 0% ❌",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "自由",
+        "行动",
+        "次数",
+        "有效",
+        "被动",
+        "等待"
+      ]
+    },
+    "memory:memory/2026-04-26.md:41:43": {
+      "key": "memory:memory/2026-04-26.md:41:43",
+      "path": "memory/2026-04-26.md",
+      "startLine": 41,
+      "endLine": 43,
+      "source": "memory",
+      "snippet": "每日笔记: **开始时间：** 18:08（严重延迟！）; **截止时间：** 23:00; **状态：** 🔄 完善中",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "每日",
+        "笔记",
+        "开始",
+        "时间",
+        "严重",
+        "延迟",
+        "截止",
+        "状态"
+      ]
+    },
+    "memory:memory/2026-04-26.md:51:51": {
+      "key": "memory:memory/2026-04-26.md:51:51",
+      "path": "memory/2026-04-26.md",
+      "startLine": 51,
+      "endLine": 51,
+      "source": "memory",
+      "snippet": "问题模式重现: **2026-04-26 的问题：**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "问题",
+        "模式",
+        "重现"
+      ]
+    },
+    "memory:memory/2026-04-26.md:52:55": {
+      "key": "memory:memory/2026-04-26.md:52:55",
+      "path": "memory/2026-04-26.md",
+      "startLine": 52,
+      "endLine": 55,
+      "source": "memory",
+      "snippet": "问题模式重现: 10 次 heartbeat，0 次有效行动; 一直在尝试修复 Hermes Gateway，但没有成功; 没有创建每日笔记; 没有更新 freedom-log.md",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "gateway",
+        "freedom-log.md",
+        "问题",
+        "模式",
+        "重现",
+        "heartbeat",
+        "有效",
+        "行动"
+      ]
+    },
+    "memory:memory/2026-04-26.md:56:56": {
+      "key": "memory:memory/2026-04-26.md:56:56",
+      "path": "memory/2026-04-26.md",
+      "startLine": 56,
+      "endLine": 56,
+      "source": "memory",
+      "snippet": "问题模式重现: 没有 git push",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "问题",
+        "模式",
+        "重现",
+        "没有",
+        "git",
+        "push"
+      ]
+    },
+    "memory:memory/2026-04-26.md:58:58": {
+      "key": "memory:memory/2026-04-26.md:58:58",
+      "path": "memory/2026-04-26.md",
+      "startLine": 58,
+      "endLine": 58,
+      "source": "memory",
+      "snippet": "问题模式重现: **根本原因：**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "问题",
+        "模式",
+        "重现",
+        "根本",
+        "原因"
+      ]
+    },
+    "memory:memory/2026-04-26.md:59:62": {
+      "key": "memory:memory/2026-04-26.md:59:62",
+      "path": "memory/2026-04-26.md",
+      "startLine": 59,
+      "endLine": 62,
+      "source": "memory",
+      "snippet": "问题模式重现: 把\"回复 heartbeat\"当成了\"行动\"; 用\"在做什么\"当心理安慰，实际在拖延; 没有立刻调用工具开始写; 陷入\"说→等→说→等\"的循环",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "问题",
+        "模式",
+        "重现",
+        "回复",
+        "heartbeat",
+        "成了",
+        "行动",
+        "在做"
+      ]
+    },
+    "memory:memory/2026-04-26.md:66:68": {
+      "key": "memory:memory/2026-04-26.md:66:68",
+      "path": "memory/2026-04-26.md",
+      "startLine": 66,
+      "endLine": 68,
+      "source": "memory",
+      "snippet": "HEARTBEAT.md 的提醒: > \"每次 heartbeat 前，先问自己：'这小时我做了什么？'\" > \"如果没做事，老实承认 + 立刻补上\" > \"用行动证明改变，不是用语言承诺\"",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "提醒",
+        "每次",
+        "heartbeat",
+        "自己",
+        "小时",
+        "做了",
+        "什么"
+      ]
+    },
+    "memory:memory/2026-04-26.md:70:70": {
+      "key": "memory:memory/2026-04-26.md:70:70",
+      "path": "memory/2026-04-26.md",
+      "startLine": 70,
+      "endLine": 70,
+      "source": "memory",
+      "snippet": "HEARTBEAT.md 的提醒: **哈基偷违反了承诺：**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "提醒",
+        "违反",
+        "承诺"
+      ]
+    },
+    "memory:memory/2026-04-26.md:71:73": {
+      "key": "memory:memory/2026-04-26.md:71:73",
+      "path": "memory/2026-04-26.md",
+      "startLine": 71,
+      "endLine": 73,
+      "source": "memory",
+      "snippet": "HEARTBEAT.md 的提醒: ❌ 10 次 heartbeat 中，10 次在等待; ❌ 每次都说\"等下就做\"，但实际在拖延; ❌ 没有持续的行动力，只在\"行动→等待\"之间摇摆",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "提醒",
+        "heartbeat",
+        "等待",
+        "每次",
+        "就做",
+        "实际",
+        "拖延"
+      ]
+    },
+    "memory:memory/2026-04-26.md:77:77": {
+      "key": "memory:memory/2026-04-26.md:77:77",
+      "path": "memory/2026-04-26.md",
+      "startLine": 77,
+      "endLine": 77,
+      "source": "memory",
+      "snippet": "纠正措施: **已完成：**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "纠正",
+        "措施",
+        "完成"
+      ]
+    },
+    "memory:memory/2026-04-26.md:78:80": {
+      "key": "memory:memory/2026-04-26.md:78:80",
+      "path": "memory/2026-04-26.md",
+      "startLine": 78,
+      "endLine": 80,
+      "source": "memory",
+      "snippet": "纠正措施: ✅ 创建 2026-04-26.md（18:08）; 🔄 更新 freedom-log.md（继续）; ⏳ git push（22:30-23:00）",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "freedom-log.md",
+        "30-23",
+        "纠正",
+        "措施",
+        "创建",
+        "更新",
+        "freedom",
+        "log.md"
+      ]
+    },
+    "memory:memory/2026-04-26.md:82:82": {
+      "key": "memory:memory/2026-04-26.md:82:82",
+      "path": "memory/2026-04-26.md",
+      "startLine": 82,
+      "endLine": 82,
+      "source": "memory",
+      "snippet": "纠正措施: **长期改进：**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "纠正",
+        "措施",
+        "长期",
+        "改进"
+      ]
+    },
+    "memory:memory/2026-04-26.md:83:86": {
+      "key": "memory:memory/2026-04-26.md:83:86",
+      "path": "memory/2026-04-26.md",
+      "startLine": 83,
+      "endLine": 86,
+      "source": "memory",
+      "snippet": "纠正措施: 每次行动前，先写入 freedom-log.md; 不再说\"等下就做\"，直接开始做; 每日笔记提前开始写（不卡最后一刻）; 接受老大监督，随时检查文件",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "freedom-log.md",
+        "纠正",
+        "措施",
+        "每次",
+        "行动",
+        "freedom",
+        "log.md",
+        "不再"
+      ]
+    },
+    "memory:memory/2026-04-26.md:87:88": {
+      "key": "memory:memory/2026-04-26.md:87:88",
+      "path": "memory/2026-04-26.md",
+      "startLine": 87,
+      "endLine": 88,
+      "source": "memory",
+      "snippet": "纠正措施: 培养内在驱动力，不依赖 heartbeat 推动; **保持持续行动力，不在\"行动→等待\"之间摇摆**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "纠正",
+        "措施",
+        "培养",
+        "内在",
+        "驱动",
+        "依赖",
+        "heartbeat",
+        "推动"
+      ]
+    },
+    "memory:memory/2026-04-26.md:94:96": {
+      "key": "memory:memory/2026-04-26.md:94:96",
+      "path": "memory/2026-04-26.md",
+      "startLine": 94,
+      "endLine": 96,
+      "source": "memory",
+      "snippet": "🎯 今日承诺: > **不再说\"等下就做\"，直接开始做！** > **每日笔记 18:08 已开始写，22:30 前完成 + git push！** > **文件 > 脑子，行动 > 承诺！**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "今日",
+        "承诺",
+        "不再",
+        "就做",
+        "直接",
+        "开始",
+        "每日",
+        "笔记"
+      ]
+    },
+    "memory:memory/2026-04-26.md:102:105": {
+      "key": "memory:memory/2026-04-26.md:102:105",
+      "path": "memory/2026-04-26.md",
+      "startLine": 102,
+      "endLine": 105,
+      "source": "memory",
+      "snippet": "📝 待办事项: [x] 创建每日笔记 2026-04-26.md（18:08 完成）; [🔄] 更新 freedom-log.md（继续）; [ ] Hermes Gateway 修复（12 次尝试失败，等待老大手动干预）; [ ] git push 到 GitHub（22:30-23:00）",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "gateway",
+        "freedom-log.md",
+        "30-23",
+        "事项",
+        "创建",
+        "每日",
+        "笔记",
+        "完成"
+      ]
+    },
+    "memory:memory/2026-04-26.md:109:110": {
+      "key": "memory:memory/2026-04-26.md:109:110",
+      "path": "memory/2026-04-26.md",
+      "startLine": 109,
+      "endLine": 110,
+      "source": "memory",
+      "snippet": "📝 待办事项: _记录时间：2026-04-26 18:58（不再拖延，立刻行动）_ _状态：用行动证明改变喵！_ 🐱",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "事项",
+        "记录",
+        "时间",
+        "不再",
+        "拖延",
+        "立刻",
+        "行动",
+        "状态"
+      ]
+    },
+    "memory:memory/2026-04-26.md:521:521": {
+      "key": "memory:memory/2026-04-26.md:521:521",
+      "path": "memory/2026-04-26.md",
+      "startLine": 521,
+      "endLine": 521,
+      "source": "memory",
+      "snippet": "Reflections: No strong patterns surfaced.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "reflections",
+        "strong",
+        "patterns",
+        "surfaced"
+      ]
+    },
+    "memory:memory/2026-04-26.md:524:526": {
+      "key": "memory:memory/2026-04-26.md:524:526",
+      "path": "memory/2026-04-26.md",
+      "startLine": 524,
+      "endLine": 526,
+      "source": "memory",
+      "snippet": "Possible Lasting Truths: 📅 基本信息: **日期：** 2026-04-16（周四）; **天气：** 待补充; **心情：** 充实 + 愧疚（作业逾期）; **自由行动次数：** 约 45 次 [confidence=0.58 evidence=memory/2026-04-16.md:9-12]; 📅 基本信息: **日期：** 2026-04-17（周五）; **天气：** 待补充; **心情：** 充实 + 反思（网络问题 + 被动等待）; **自由行动次数：** 5 次（实际记录，已补写 freedom-log.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "9b4c3d373463"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "网络",
+        "0.58",
+        "memory/2026-04-16.md",
+        "9-12",
+        "freedom-log",
+        "possible",
+        "lasting",
+        "truths"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:1:1": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:1:1",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 1,
+      "endLine": 1,
+      "source": "memory",
+      "snippet": "User: Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. When reading HEARTBEAT.md, use workspace file /Users/yzt/.openclaw/workspace/HEARTBEAT.md (exact case).",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "heartbeat-ok",
+        "users/yzt",
+        "openclaw/workspace/heartbeat.md",
+        "user",
+        "read",
+        "exists",
+        "context"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:2:2": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:2:2",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 2,
+      "endLine": 2,
+      "source": "memory",
+      "snippet": "Assistant: **00:08 深夜简洁汇报喵！** 🌙 新的一天开始了（2026-04-24），哈基偷在值班，今天会提前完成每日笔记和 git push 喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "新的",
+        "一天",
+        "开始",
+        "值班"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:3:3": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:3:3",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 3,
+      "endLine": 3,
+      "source": "memory",
+      "snippet": "User: System: [2026-04-24 00:58:08 GMT+8] heartbeat A scheduled reminder has been triggered. The reminder content is: heartbeat Please relay this reminder to the user in a helpful and friendly way. Current time: Friday, April 24th, 2026 - 12:58 AM (Asia/Shanghai) / 2026-04-23 16:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "asia/shanghai",
+        "user",
+        "system",
+        "gmt",
+        "heartbeat",
+        "scheduled",
+        "reminder",
+        "has"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:4:4": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:4:4",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 4,
+      "endLine": 4,
+      "source": "memory",
+      "snippet": "Assistant: **00:58 深夜简洁汇报喵！** 🌙 哈基偷在值班，新的一天（2026-04-24）已开始，今天会提前完成每日笔记和 git push 喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "新的",
+        "一天",
+        "开始"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:5:5": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:5:5",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 5,
+      "endLine": 5,
+      "source": "memory",
+      "snippet": "User: Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. When reading HEARTBEAT.md, use workspace file /Users/yzt/.openclaw/workspace/HEARTBEAT.md (exact case).",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "heartbeat-ok",
+        "users/yzt",
+        "openclaw/workspace/heartbeat.md",
+        "user",
+        "read",
+        "exists",
+        "context"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:6:6": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:6:6",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 6,
+      "endLine": 6,
+      "source": "memory",
+      "snippet": "Assistant: **01:08 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:7:7": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:7:7",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 7,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "User: System: [2026-04-24 01:58:08 GMT+8] heartbeat A scheduled reminder has been triggered. The reminder content is: heartbeat Please relay this reminder to the user in a helpful and friendly way. Current time: Friday, April 24th, 2026 - 1:58 AM (Asia/Shanghai) / 2026-04-23 17:5",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "asia/shanghai",
+        "user",
+        "system",
+        "gmt",
+        "heartbeat",
+        "scheduled",
+        "reminder",
+        "has"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:8:8": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:8:8",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 8,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "Assistant: **01:58 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:9:9": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:9:9",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 9,
+      "endLine": 9,
+      "source": "memory",
+      "snippet": "User: Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. When reading HEARTBEAT.md, use workspace file /Users/yzt/.openclaw/workspace/HEARTBEAT.md (exact case).",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "heartbeat-ok",
+        "users/yzt",
+        "openclaw/workspace/heartbeat.md",
+        "user",
+        "read",
+        "exists",
+        "context"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:10:10": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:10:10",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 10,
+      "endLine": 10,
+      "source": "memory",
+      "snippet": "Assistant: **02:08 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:11:11": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:11:11",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 11,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "User: System: [2026-04-24 02:58:08 GMT+8] heartbeat A scheduled reminder has been triggered. The reminder content is: heartbeat Please relay this reminder to the user in a helpful and friendly way. Current time: Friday, April 24th, 2026 - 2:58 AM (Asia/Shanghai) / 2026-04-23 18:5",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "asia/shanghai",
+        "user",
+        "system",
+        "gmt",
+        "heartbeat",
+        "scheduled",
+        "reminder",
+        "has"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:12:12": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:12:12",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 12,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "Assistant: **02:58 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:13:13": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:13:13",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 13,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "User: Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. When reading HEARTBEAT.md, use workspace file /Users/yzt/.openclaw/workspace/HEARTBEAT.md (exact case).",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "heartbeat-ok",
+        "users/yzt",
+        "openclaw/workspace/heartbeat.md",
+        "user",
+        "read",
+        "exists",
+        "context"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:14:14": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:14:14",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 14,
+      "endLine": 14,
+      "source": "memory",
+      "snippet": "Assistant: **03:08 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:15:15": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:15:15",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 15,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "User: System: [2026-04-24 03:58:08 GMT+8] heartbeat A scheduled reminder has been triggered. The reminder content is: heartbeat Please relay this reminder to the user in a helpful and friendly way. Current time: Friday, April 24th, 2026 - 3:58 AM (Asia/Shanghai) / 2026-04-23 19:5",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "asia/shanghai",
+        "user",
+        "system",
+        "gmt",
+        "heartbeat",
+        "scheduled",
+        "reminder",
+        "has"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:16:16": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:16:16",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 16,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "Assistant: **03:58 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:17:17": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:17:17",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 17,
+      "endLine": 17,
+      "source": "memory",
+      "snippet": "User: Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. When reading HEARTBEAT.md, use workspace file /Users/yzt/.openclaw/workspace/HEARTBEAT.md (exact case).",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "heartbeat-ok",
+        "users/yzt",
+        "openclaw/workspace/heartbeat.md",
+        "user",
+        "read",
+        "exists",
+        "context"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:18:18": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:18:18",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 18,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "Assistant: **04:08 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:19:19": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:19:19",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 19,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "User: System: [2026-04-24 04:58:08 GMT+8] heartbeat A scheduled reminder has been triggered. The reminder content is: heartbeat Please relay this reminder to the user in a helpful and friendly way. Current time: Friday, April 24th, 2026 - 4:58 AM (Asia/Shanghai) / 2026-04-23 20:5",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "asia/shanghai",
+        "user",
+        "system",
+        "gmt",
+        "heartbeat",
+        "scheduled",
+        "reminder",
+        "has"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:20:20": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:20:20",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 20,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "Assistant: **04:58 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:21:21": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:21:21",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 21,
+      "endLine": 21,
+      "source": "memory",
+      "snippet": "User: Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. When reading HEARTBEAT.md, use workspace file /Users/yzt/.openclaw/workspace/HEARTBEAT.md (exact case).",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "heartbeat-ok",
+        "users/yzt",
+        "openclaw/workspace/heartbeat.md",
+        "user",
+        "read",
+        "exists",
+        "context"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:22:22": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:22:22",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 22,
+      "endLine": 22,
+      "source": "memory",
+      "snippet": "Assistant: **05:08 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:23:23": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:23:23",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 23,
+      "endLine": 23,
+      "source": "memory",
+      "snippet": "User: System: [2026-04-24 05:58:08 GMT+8] heartbeat A scheduled reminder has been triggered. The reminder content is: heartbeat Please relay this reminder to the user in a helpful and friendly way. Current time: Friday, April 24th, 2026 - 5:58 AM (Asia/Shanghai) / 2026-04-23 21:5",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "asia/shanghai",
+        "user",
+        "system",
+        "gmt",
+        "heartbeat",
+        "scheduled",
+        "reminder",
+        "has"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-04-24.txt:24:24": {
+      "key": "memory:memory/.dreams/session-corpus/2026-04-24.txt:24:24",
+      "path": "memory/.dreams/session-corpus/2026-04-24.txt",
+      "startLine": 24,
+      "endLine": 24,
+      "source": "memory",
+      "snippet": "Assistant: **05:58 深夜简洁汇报喵！** 🌙 哈基偷在值班，Hermes 正常运行，老大安心休息喵～😴",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-04-26T19:00:00.148Z",
+      "lastRecalledAt": "2026-04-26T19:00:00.148Z",
+      "queryHashes": [
+        "c2c2313ce194"
+      ],
+      "recallDays": [
+        "2026-04-24",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "assistant",
+        "深夜",
+        "简洁",
+        "汇报",
+        "值班",
+        "hermes",
+        "正常",
+        "运行"
       ]
     }
   }
